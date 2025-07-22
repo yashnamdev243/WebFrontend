@@ -37,7 +37,7 @@ const ScrollToTopButton = () => {
   return (
     <motion.button
       onClick={scrollToTop}
-      className={`fixed lg:bottom-6 bottom-8 right-4 lg:right-6   bg-gradient-to-r from-[#4682B4] to-[#0C1832]   text-white p-4 rounded-full shadow-xl transition-all 
+      className={`fixed lg:bottom-6 bottom-8 right-4 lg:right-6   bg-gradient-to-r from-[#e98948] to-[#4f342f]   text-white p-4 rounded-full shadow-xl transition-all 
       duration-300 focus:outline-none flex items-center justify-center 
       ${isScrolledDown ? "opacity-70 scale-90" : "opacity-100 scale-100"}
       z-[9999]`}

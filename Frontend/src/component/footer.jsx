@@ -6,6 +6,8 @@ import {
   FaWhatsapp,
   FaPhoneAlt,
   FaMapMarkerAlt,
+  FaInstagram,
+  FaFacebookF,
 } from "react-icons/fa";
 import { useEffect } from "react";
 import AOS from "aos";
@@ -40,7 +42,7 @@ const Footer = () => {
           </p>
           <div className="mt-6 space-y-4">
             <p className="flex items-center justify-center md:justify-start space-x-4">
-              <FaEnvelope className="text-[#4682B4] lg:text-2xl" />
+              <FaEnvelope className="text-[#e98948] lg:text-2xl" />
               
               <a
                 href="mailto:Info@msgmp.co.in"
@@ -56,7 +58,7 @@ const Footer = () => {
               </a>
             </p>
             <p className="flex items-center justify-center md:justify-start space-x-3">
-              <FaPhoneAlt className="text-[#4682B4] lg:text-2xl" />
+              <FaPhoneAlt className="text-[#e98948] lg:text-2xl" />
               
               <>
                 <a
@@ -74,15 +76,16 @@ const Footer = () => {
               </>
             </p>
             <p className="flex items-center justify-center md:justify-start space-x-4">
-              <FaMapMarkerAlt className="text-[#4682B4] lg:text-3xl text-2xl mb-5" />
+              <FaMapMarkerAlt className="text-[#e98948] lg:text-3xl text-2xl mb-5" />
               <a
                 href="https://maps.app.goo.gl/t1Ewtw1vwWQ7WQ4UA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:underline"
               >
-                First Floor, 394, near Ratina Hospital PU-04, Vijay Nagar,
-                Indore, Madhya Pradesh 452010
+                Vill. Bakawan, Post-Mardana, Teh. Barwaha, Dist. Khargone (M.P.) 451113
+
+
               </a>
             </p>
           </div>
@@ -96,7 +99,7 @@ const Footer = () => {
             <li>
               <button
                 onClick={() => handleNavigation("/")}
-                className="text-gray-300 hover:text-[#4682B4] transition"
+                className="text-gray-300 hover:text-[#e98948] transition"
               >
                 Home
               </button>
@@ -104,7 +107,7 @@ const Footer = () => {
             <li>
               <button
                 onClick={() => handleNavigation("/about")}
-                className="text-gray-300 hover:text-[#4682B4] transition"
+                className="text-gray-300 hover:text-[#e98948] transition"
               >
                 About Us
               </button>
@@ -113,23 +116,23 @@ const Footer = () => {
             <li>
               <button
                 onClick={() => handleNavigation("/gallery")}
-                className="text-gray-300 hover:text-[#4682B4] transition"
+                className="text-gray-300 hover:text-[#e98948] transition"
               >
-                Project Gallery
+                 Gallery
               </button>
             </li>
-            <li>
+            {/* <li>
               <button
                 onClick={() => handleNavigation("/clientele")}
                 className="text-gray-300 hover:text-[#4682B4] transition"
               >
                 Clientele
               </button>
-            </li>
+            </li> */}
             <li>
               <button
                 onClick={() => handleNavigation("/blogs")}
-                className="text-gray-300 hover:text-[#4682B4] transition"
+                className="text-gray-300 hover:text-[#e98948] transition"
               >
                 Blog
               </button>
@@ -137,7 +140,7 @@ const Footer = () => {
             <li>
               <button
                 onClick={() => handleNavigation("/contact")}
-                className="text-gray-300 hover:text-[#4682B4] transition"
+                className="text-gray-300 hover:text-[#e98948] transition"
               >
                 Contact Us
               </button>
@@ -173,11 +176,19 @@ const Footer = () => {
         <div className="flex justify-center space-x-6">
           <a
             href="https://www.linkedin.com/company/msgmp-gxpro-pharma-project-consultant/?originalSubdomain=in"
+            className="text-gray-300 hover:text-pink-600 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="text-3xl" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/msgmp-gxpro-pharma-project-consultant/?originalSubdomain=in"
             className="text-gray-300 hover:text-blue-600 transition"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin className="text-3xl" />
+            <FaFacebook className="text-3xl" />
           </a>
 
           <a
@@ -197,7 +208,8 @@ const Footer = () => {
           </a>
         </div>
         <p className="mt-4 text-gray-300 lg:text-sm text-xs">
-          &copy; {new Date().getFullYear()} MSGMP Compliance Services. All
+          &copy; {new Date().getFullYear()} Namdev Narmadeshwar Shivling Arts
+. All
           Rights Reserved.
         </p>
       </div>

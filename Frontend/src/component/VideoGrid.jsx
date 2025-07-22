@@ -112,21 +112,24 @@ const VideoGrid = () => {
         <div className="absolute inset-0 bg-black opacity-30"></div>
         <div className="relative z-10 text-white p-4">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-4 animate-bounce flex items-center">
-            <span className="lg:ml-20 ml-15 lg:mr-2 mr-1">Welcome to</span>
+            <span className="lg:ml-20 ml-15 lg:mr-2 mr-1">Namdev Narmadeshwar Shivling Arts</span>
             {/* <span className="text-[#E03121]">MS</span>
             <span className="text-[#7BC3DF]">GMP</span> */}
             {/* <span className="border-l-3 border-gray-600 h-9 mt-2 mx-2"></span> */}
-            <span className="text-[#E3010F]">Gx</span>
-            <span className="text-[#163E93]">Pro</span>
+            {/* <span className="text-[#E3010F]">Gx</span>
+            <span className="text-[#163E93]">Pro</span> */}
+            
+           
           </h1>
           <p className="text-sm sm:text-lg opacity-90 animate-fadeIn">
-            A Complete Design-Build Solution for Pharmaceutical & Industrial
-            Projects
+           “ॐ नमः शिवाय” — The divine spirit in every sculpture.
+
+
           </p>
 
           <Link
             to="/about"
-            className="lg:mt-12 mt-3 shadow-lg relative inline-block lg:px-6 px-4 py-2 lg:text-lg text-sm text-blue-900 font-semibold bg-white border-1 border-blue-900 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-[#E03121] hover:text-white hover:border-[#f0f7fd]"
+            className="lg:mt-12 mt-3 shadow-lg relative inline-block lg:px-6 px-4 py-2 lg:text-lg text-sm text-[#4f342f] font-semibold bg-white border-1 border-[#4f342f] rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-[#e98948] hover:text-white hover:border-[#f0f7fd]"
             data-aos="zoom-in"
           >
             <span className="relative z-10">Read More</span>

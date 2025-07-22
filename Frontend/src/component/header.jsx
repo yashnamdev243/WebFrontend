@@ -59,28 +59,28 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-0 h-15 md:h-auto md:w-4/5 md:rounded-lg   w-full lg:top-3 mx-auto right-0 flex justify-between items-center z-150 transition-all border-b-2 border-blue-900 duration-300 bg-white shadow-2xl 
+      className={`fixed left-0 h-15 md:h-auto md:w-4/5 md:rounded-lg   w-full lg:top-3 mx-auto right-0 flex justify-between items-center z-150 transition-all border-b-2 border-[#e98948] duration-300 bg-white shadow-2xl 
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center ">
         <Link to="/" className="flex items-center">
           <img
-            src="/MSGMP/GXPROLogo.png"
+            src="/logo2.png"
             alt="Company Logo"
-            className="md:w-60 w-40 "
+            className="md:w-20 w-14"
              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           />
         </Link>
 
-        <nav className="hidden md:flex space-x-6 a  items-center  text-black">
+        <nav className="hidden md:flex space-x-6 a  items-center  text-[#4f342f]">
           <NavLink
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900 
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
+        hover:scale-110 hover:text-[#e98948] 
+        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#e98948] after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
+        ${isActive ? "text-[#e98948] after:scale-x-100" : ""}`
             }
           >
             Home
@@ -91,50 +91,50 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900 
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
+        hover:scale-110 hover:text-[#e98948] 
+        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#e98948] after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
+        ${isActive ? "text-[#e98948] after:scale-x-100" : ""}`
             }
           >
             About Us
           </NavLink>
 
-          <ServiceDropdown />
+          {/* <ServiceDropdown /> */}
 
           <NavLink
             to="/gallery"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
+        hover:scale-110 hover:text-[#e98948]
+        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#e98948] after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
+        ${isActive ? "text-[#e98948] after:scale-x-100" : ""}`
             }
           >
             Gallery
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/clientele"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900 
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
+        hover:scale-110 hover:text-[#e98948] 
+        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#e98948] after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
+        ${isActive ? "text-[#e98948] after:scale-x-100" : ""}`
             }
           >
             Clientele{" "}
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/blogs"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
+        hover:scale-110 hover:text-[#e98948]
+        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#e98948] after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
+        ${isActive ? "text-[#e98948] after:scale-x-100" : ""}`
             }
           >
             Blog{" "}
@@ -145,26 +145,14 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
+        hover:scale-110 hover:text-[#e98948]
+        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-[#e98948] after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
+        ${isActive ? "text-[#e98948] after:scale-x-100" : ""}`
             }
           >
             Contact Us
           </NavLink>
-          {/* 
-          <NavLink
-            to="/career"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className={({ isActive }) =>
-              `relative text-lg font-semibold transition-all duration-300 ease-in-out flex items-center gap-2 
-        hover:scale-110 hover:text-blue-900
-        after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-900 after:left-0 after:bottom-0 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100
-        ${isActive ? "text-blue-900 after:scale-x-100" : ""}`
-            }
-          >
-            Career{" "}
-          </NavLink> */}
+        
         </nav>
 
         <button
@@ -189,7 +177,7 @@ const Header = () => {
         >
           <div className="w-72 bg-white h-full shadow-lg p-6 flex flex-col">
             <button onClick={toggleDrawer} className="self-end mb-4">
-              <X className="h-6 w-8 border-1 bg- rounded-sm  text-black" />
+              <X className="h-6 w-8 border-1 bg- rounded-sm  text-[#4f342f]" />
             </button>
             <Link
               to="/"
@@ -197,7 +185,7 @@ const Header = () => {
                 toggleDrawer();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className=" flex items-center gap-3 py-2 text-gray-900 text-lg  font-semibold hover:bg-gray-200 hover:text-blue-600 rounded"
+              className=" flex items-center gap-3 py-2 text-[#4f342f] text-lg  font-semibold hover:bg-gray-200 hover:text-#e98948-600 rounded"
             >
               <AiFillHome className="text-xl" />
               Home
@@ -209,23 +197,23 @@ const Header = () => {
                 toggleDrawer();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className=" flex items-center gap-2 py-2 text-gray-900 text-lg  font-semibold hover:bg-gray-200 hover:text-blue-600 rounded"
+              className=" flex items-center gap-2 py-2 text-[#4f342f] text-lg  font-semibold hover:bg-gray-200 hover:text-#e98948-600 rounded"
             >
               {" "}
               <MdGroups className="text-2xl" />
               About Us
             </Link>
 
-            <div
+            {/* <div
               ref={dropdownRef}
-              className="py-2 text-gray-900 text-lg  font-semibold hover:bg-gray-200 rounded hover:text-blue-600"
+              className="py-2 text-[#4f342f] text-lg  font-semibold hover:bg-gray-200 rounded hover:text-#e98948-600"
               onClick={(e) => {
                 e.stopPropagation();
                 toggleDropdown("service");
               }}
             >
               <ServiceDropdown toggleDrawer={toggleDrawer} />
-            </div>
+            </div> */}
 
             <Link
               to="/gallery"
@@ -233,31 +221,31 @@ const Header = () => {
                 toggleDrawer();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className=" flex items-center gap-2 py-2 text-gray-900 text-lg  font-semibold hover:bg-gray-200 rounded hover:text-blue-600"
+              className=" flex items-center gap-2 py-2 text-[#4f342f] text-lg  font-semibold hover:bg-gray-200 rounded hover:text-#e98948-600"
             >
               {" "}
               <MdPhotoLibrary className="text-xl" />
               Gallery
             </Link>
-            <Link
+            {/* <Link
               to="/clientele"
               onClick={() => {
                 toggleDrawer();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className=" flex items-center gap-2 py-2 text-gray-900 text-lg  font-semibold hover:bg-gray-200 rounded hover:text-blue-600"
+              className=" flex items-center gap-2 py-2 text-[#4f342f] text-lg  font-semibold hover:bg-gray-200 rounded hover:text-#e98948-600"
             >
               {" "}
               <FaHandshake className="text-xl" />
               Clientele
-            </Link>
+            </Link> */}
             <Link
               to="/blogs"
               onClick={() => {
                 toggleDrawer();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className=" flex items-center gap-2 py-2 text-gray-900 text-lg   font-semibold hover:bg-gray-200 rounded hover:text-blue-600"
+              className=" flex items-center gap-2 py-2 text-[#4f342f] text-lg   font-semibold hover:bg-gray-200 rounded hover:text-#e98948-600"
             >
               {" "}
               <FaBlog className="text-xl" />
@@ -269,22 +257,13 @@ const Header = () => {
                 toggleDrawer();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className=" flex items-center gap-2 py-2 text-gray-900 text-lg  font-semibold hover:bg-gray-200 rounded hover:text-blue-600"
+              className=" flex items-center gap-2 py-2 text-[#4f342f] text-lg  font-semibold hover:bg-gray-200 rounded hover:text-#e98948-600"
             >
               {" "}
               <MdContactMail className="text-xl" />
               Contact Us
             </Link>
-            {/* <Link
-              to="/career"
-              onClick={() => {
-                toggleDrawer();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-                            className="py-2 text-gray-700  font-semibold hover:bg-gray-200 rounded hover:text-blue-600"
-            >
-              Career 
-            </Link> */}
+          
           </div>
         </motion.div>
       )}

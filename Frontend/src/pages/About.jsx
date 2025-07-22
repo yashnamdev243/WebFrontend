@@ -58,7 +58,7 @@ const About = () => {
       Ww
     >
       <section
-        className=" lg:w-full w-full min-h-screen   lg:min-h-screen   text-center  bg-gradient-to-r from-[#4682B4] to-[#04080B]  "
+        className=" lg:w-full w-full min-h-screen   lg:min-h-screen   text-center  bg-gradient-to-r from-[#e98948] to-[#4f342f]  "
         data-aos="fade-down"
       >
         {" "}

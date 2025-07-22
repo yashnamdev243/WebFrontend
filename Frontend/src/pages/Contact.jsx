@@ -333,7 +333,7 @@ function Contact() {
         <div className="min-h-screen flex flex-col items-center justify-center">
           <ToastContainer autoClose={3000} />
           <section
-            className="lg:w-full w-full lg:px-2 px-4 bg-gradient-to-b from-gray-100 to-blue-100 grid lg:grid-cols-2 bg-cover lg:h-screen mx-auto text-white py-10 pt-20 lg:py-25 lg:pt-35 text-center"
+            className="lg:w-full w-full lg:px-2 px-4 bg-gradient-to-tr from-[#fefce8] to-[#ffedd5]  grid lg:grid-cols-2 bg-cover lg:h-screen mx-auto text-white py-10 pt-20 lg:py-25 lg:pt-35 text-center"
             data-aos="fade-down"
           >
             <div className="lg:w-130 mx-auto h-fit relative flex justify-center items-center overflow-hidden">
@@ -345,7 +345,7 @@ function Contact() {
             </div>
             <div className="flex flex-col mt-10 lg:items-end lg:pr-5 justify-center">
               <div
-                className="border-b-8 shadow-2xl border-white bg-gradient-to-r from-[#4682B4] to-[#04080B] transition-all duration-300 ease-in-out lg:p-4 p-4 text-white"
+                className="border-b-8 shadow-2xl border-white bg-gradient-to-r from-[#e98948] to-[#4f342f] transition-all duration-300 ease-in-out lg:p-4 p-4 text-white"
                 style={{ borderRadius: "15px 50px" }}
               >
                 <h2 className="lg:text-5xl text-3xl lg:mt-6 mt-4 font-bold  lg:mr-[15%]">
