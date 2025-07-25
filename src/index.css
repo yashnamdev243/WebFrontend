@@ -1,0 +1,140 @@
+@import "tailwindcss";
+*{
+  font-family: 'Poppins';
+}
+/* Timeline Container */
+.timeline-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Center alignment */
+
+  }
+  
+  .timeline-custom .ant-timeline-item-tail {
+    width: 1px !important;  
+    background-color: #868282 !important;
+    left: 49.5% !important; /* Center alignment */
+    transform: translateX(-50%); /* Perfectly center */
+  }
+  .ant-timeline .ant-timeline-item-tail{
+    border-inline-start: 4px solid rgba(5, 5, 5, 0.06);
+  }
+  .ant-timeline .ant-timeline-item-head {
+    width:13px;
+    height:13px;
+    border-radius: 50%;
+    border:3px solid #1F84A6;
+  }
+  
+  .timeline-custom .ant-timeline-item-head {
+    width: 24px !important;
+    height: 24px !important;
+    left: 50% !important; /* Center alignment */
+    transform: translateX(-50%); /* Properly centered */
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .timeline-custom .ant-timeline-item-head-custom {
+    font-size: 36px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+  
+  .timeline-custom .ant-timeline-item {
+    padding-bottom: 40px !important;
+  }
+  
+  .timeline-custom .ant-timeline-item-label {
+    text-align: center !important;
+    max-width: 700px;
+    margin: auto; 
+  }
+  
+  .timeline-custom .timeline-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+  }
+
+
+.ant-select-selector {
+  background-color: #1f2937 !important; /* Dark input background */
+  color: white !important; /* Text color */
+  border: 1px solid #4b5563 !important; /* Border color */
+}
+
+.ant-select-arrow {
+  color: white !important; /* Dropdown arrow color */
+}
+/* Default option styles */
+.custom-dropdown .ant-select-item {
+  color: white !important; /* Default text color white */
+  background: #1f2937 !important; /* Dark background */
+  transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect */
+.custom-dropdown .ant-select-item:hover {
+  background: transparent !important; /* Light gray background */
+  color: black !important; /* Text turns black */
+  border: 1px solid #c2c6cb !important;
+}
+
+/* Selected option styling */
+.custom-dropdown .ant-select-item-option-selected {
+  background: #9499a0 !important; /* Green background for selected item */
+  color: rgb(0, 0, 0) !important; /* White text for selected */
+}
+
+/* Keep selected text white */
+.custom-dropdown .ant-select-item-option-selected .ant-select-item-option-content {
+  color: white !important;
+}
+
+
+/*  Animation CSS */
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+}
+
+.animate-floating {
+  animation: floating ease-in-out infinite alternate;
+}
+
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+.fira-sans {
+  font-family: 'Fira Sans';
+}
+.fira-bold {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+}
+
+.ant-card .ant-card-body{
+  padding:0px;
+}
