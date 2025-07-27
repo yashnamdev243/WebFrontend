@@ -4,7 +4,7 @@ import { RiPinDistanceLine } from "react-icons/ri";
 
 const HeroSection = () => {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/919696187592", "_blank");
+    window.open("https://wa.me/919691089549", "_blank");
   };
 
   return (
@@ -19,8 +19,8 @@ const HeroSection = () => {
         transition={{ duration: 1.5 }}
         className="relative z-10 max-w-4xl px-4"
       >
-        <h1 className="text-3xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-wide w-[90%] sm:w-[80%] md:w-[70%] mx-auto leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
-          India’s First Panch Kailash Yatra Agency
+        <h1 className="text-[22px] sm:text-2xl md:text-4xl lg:text-4xl font-extrabold tracking-wide w-[90%] sm:w-[80%] md:w-[70%] mx-auto leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
+          Welcome to Namdev Narmadeshwar Shivling Arts 
         </h1>
 
         <motion.p
@@ -29,21 +29,22 @@ const HeroSection = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mt-4 text-md sm:text-sm md:text-lg lg:text-xl font-medium text-gray-200 [text-shadow:_0_5px_4px_rgb(0_0_0_/_0.8)]"
         >
-          Himalayan Treks | Backpacking Trips | CharDham
+          Authentic Shivlings | Spiritual Home Decor | Sacred Stone Idols
         </motion.p>
 
         {/* CTA Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row gap-5 sm:gap-10 justify-center items-center">
           {/* Plan Journey Button */}
-          <button className="flex items-center gap-2 border-1 border-[#16787a] backdrop-blur-xs active:bg-gradient-to-r hover:bg-gradient-to-r from-[#2592b7] to-[#16787a] text-xs sm:text-sm md:text-lg text-white px-4 sm:px-5 py-3 sm:py-3 rounded-xl font-semibold cursor-pointer">
+          <button className="flex items-center gap-2 border-1 border-[#ffcc70] backdrop-blur-xs active:bg-gradient-to-r hover:bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] text-xs sm:text-sm md:text-lg text-white px-4 sm:px-5 py-3 sm:py-3 rounded-xl font-semibold cursor-pointer">
             <RiPinDistanceLine className="h-4 w-4 sm:h-5 sm:w-5" />
-            Plan Your Journey
+            Visit Our Location
+
           </button>
 
           {/* WhatsApp Button */}
           <button
             onClick={handleWhatsAppClick}
-            className="flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3 rounded-xl text-xs sm:text-sm md:text-lg text-white bg-gradient-to-r from-[#2592b7] to-[#16787a] backdrop-blur-md shadow-lg transition-all duration-300 hover:scale-105  cursor-pointer"
+            className="flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3 rounded-xl text-xs sm:text-sm md:text-lg text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] backdrop-blur-md shadow-lg transition-all duration-300 hover:scale-105  cursor-pointer"
           >
             <FaWhatsapp className="h-4 w-4 sm:h-5 sm:w-5" />
             WhatsApp

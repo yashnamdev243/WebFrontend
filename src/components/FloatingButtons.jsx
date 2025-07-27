@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FaWhatsapp, FaArrowUp } from "react-icons/fa";
 
 const FloatingButtons = () => {
-  const phoneNumber = "+919696187592"; // Replace with your number
+  const phoneNumber = "+919691089549"; // Replace with your number
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const FloatingButtons = () => {
           href={`https://wa.me/${phoneNumber}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition cursor-pointer"
+          className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition cursor-pointer"
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -41,17 +41,12 @@ const FloatingButtons = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-  //         className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full shadow-lg transition cursor-pointer"
-  // style={{
-  //   backgroundImage: "url('/phone_icon.jpg')",
-  //   backgroundSize: "cover",
-  //   backgroundPosition: "center",
-  // }}
-            className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-[#2592b7] to-[#16787a]  rounded-full shadow-lg hover:bg-[#5e4cb0] transition cursor-pointer"
+
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] rounded-full shadow-lg  transition cursor-pointer"
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FaArrowUp className="text-white text-2xl md:text-3xl" />
+          <FaArrowUp className="text-white text-xl md:text-2xl" />
         </motion.button>
       )}
     </div>

@@ -51,12 +51,12 @@ const reviews = [
 
 const ReviewSection = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-10">
-      <h2 className="lg:text-4xl text-xl font-bold text-center mb-10 text-[#1f84a6] [text-shadow:_0_4px_4px_rgb(255_255_255_/_0.8)]">
-        {" "}
-        What Our Clients Say
+    <div className="py-10 lg:px-8 ">
+   
+<h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">
+ Blessings & Feedback
       </h2>
-
+      <div className="w-full max-w-7xl mx-auto  ">
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
@@ -79,13 +79,13 @@ const ReviewSection = () => {
       >
         {reviews.map((review) => (
           <SwiperSlide key={review.id}>
-            <div className=" bg-white mb-8 p-6 shadow-md rounded-lg flex flex-col items-center text-center transition-transform transform hover:scale-105">
+            <div className="group bg-white mb-8 p-6 shadow-md rounded-lg flex flex-col items-center text-center  hover:shadow-2xl transition-all duration-300   border border-[#ffe3c4]">
               <img
                 src={review.image}
                 alt={review.name}
-                className="w-24 h-24 rounded-full border-4 border-[#1b7391] shadow-lg mb-4"
+                className="w-24 h-24 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300"
               />
-              <h3 className="lg:text-xl text-lg font-semibold text-gray-800">
+              <h3 className="lg:text-xl text-lg font-semibold text-gray-600">
                 {review.name}
               </h3>
               <div className="flex justify-center mt-2">
@@ -102,6 +102,7 @@ const ReviewSection = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      </div>
     </div>
   );
 };

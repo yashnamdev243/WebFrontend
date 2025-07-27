@@ -20,6 +20,8 @@ import MansarovarKailash from "./Blog/mansarovar-kailash";
 import CharDhamYatra from "./Blog/chardham-yatra";
 import UjjainMahakaleshwar from "./Blog/ujjain-mahakaleshwar";
 import ScrollToTop from "./components/ScrollToTop";
+import Products from "./pages/Products";
+import ProductCategory from "./pages/ProductCategory";
 
 const App = () => {
   return (
@@ -40,6 +42,7 @@ const App = () => {
           {/* <Route path="/blog/:route" element={<BlogDetail />} /> */}
 
           <Route path="/content" element={<Content />} />
+          
           <Route path="/tour/:id" element={<TourDetails />} />
           {/* <Route path="/blog/:id" element={<BlogDetails />} /> */}
 
@@ -63,6 +66,8 @@ const App = () => {
             path="/blog/ujjain-mahakaleshwar"
             element={<UjjainMahakaleshwar />}
           />
+                    <Route path="/products" element={<Products />} />
+          <Route path="/products/:category" element={<ProductCategory />} />
         </Routes>
       </Layout>
     </Router>

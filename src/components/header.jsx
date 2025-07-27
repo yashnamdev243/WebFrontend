@@ -25,19 +25,20 @@ const Header = () => {
     <>
       {" "}
       <header
-        className={`fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4 ${
-          isScrolled
-          // ? "bg-gradient-to-r from-[#105859] via-[#116869] to-[#116869] text-white bg-opacity-80 backdrop-blur-md shadow-lg"
-          // : "bg-transparent"
-          // isScrolled
-          //   ? "bg-gradient-to-r from-[#188687] via-[#188687] to-[#2592b7] text-white bg-opacity-80 backdrop-blur-md shadow-lg"
-          //   : "bg-transparent"
-        }`}
-        style={{
-          backgroundImage: isScrolled ? "url('/headerbg11.jpg')" : "none",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        // className={`fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4 ${
+        //   isScrolled
+        //   // ? "bg-gradient-to-r from-[#105859] via-[#116869] to-[#116869] text-white bg-opacity-80 backdrop-blur-md shadow-lg"
+        //   // : "bg-transparent"
+        //   // isScrolled
+        //   //   ? "bg-gradient-to-r from-[#188687] via-[#188687] to-[#2592b7] text-white bg-opacity-80 backdrop-blur-md shadow-lg"
+        //   //   : "bg-transparent"
+        // }`}
+        // style={{
+        //   backgroundImage: isScrolled ? "url('/image.avif')" : "none",
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        // }}
+        className="fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4  bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70]"
       >
         {/* Logo */}
         <div className="flex items-center">
@@ -45,7 +46,7 @@ const Header = () => {
         </div>
 
         {/* Phone Icon */}
-        <div className="ml-32">
+        <div className="lg:mr-100 ">
           <PhoneIcon />
         </div>
 
@@ -75,10 +76,10 @@ const Header = () => {
             About Us
           </NavLink>
 
-          <TourDropdown setIsOpen={setIsOpen} />
+          {/* <TourDropdown setIsOpen={setIsOpen} /> */}
 
           <NavLink
-            to="/blog"
+            to="/products"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={({ isActive }) =>
               `text-xl font-italic text-white transition relative inline-block  font-semibold  before:absolute before:-bottom-[2px] before:left-1/2 before:h-[2px] before:w-0 before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 ${
@@ -86,7 +87,7 @@ const Header = () => {
               }`
             }
           >
-            Blogs
+            Products
           </NavLink>
           <NavLink
             to="/contact"

@@ -46,11 +46,14 @@ const About = () => {
 
   const [text, setText] = useState("");
 
-  const words = [
-    "Plan a Trek!",
-    "Explore the Himalayas!",
-    "Find Your Spiritual Path!",
-  ];
+const words = [
+  "Buy Narmadeshwar Shivlings!",
+  "Handcrafted Shivlings for Your Temple!",
+  "Authentic Narmada Shivling Online!",
+  "Bring Divine Energy Home!",
+  "Shop Spiritual Shivling Collections!",
+];
+
   let index = 0;
 
   // Typing Effect for Headline
@@ -76,12 +79,12 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-gray-900/30 "></div>
 
         <div className="relative pb-6 z-10 animate-fadeIn">
-          <h1 className="text-2xl mt-10 pb-2 font-bold md:text-5xl text-white drop-shadow-lg animate-glow">
-            About <span className="text-[#2592b7] ">Spiritual Hikes</span>
+          <h1 className="text-2xl lg:mt-10 mt-20 pb-2 font-bold md:text-5xl text-[#ffcc70] drop-shadow-lg animate-glow">
+      Namdev Narmadeshwar Shivling Arts
           </h1>
 
           <p className="lg:mt-2 text-xs lg:text-lg max-w-2xl pb-2 mx-auto text-gray-200 animate-flicker">
-            Experience the Spiritual, Embrace the Adventure!
+    Discover the Power of Narmadeshwar Shivlings <br /> – Handcrafted for Your Spiritual Journey.
           </p>
 
           <p className="lg:text-lg text-xs text-gray-300 text-center max-w-lg mx-auto italic animate-slideUp transition-all duration-500">
@@ -95,18 +98,34 @@ const About = () => {
 
       <section className="relative pt-14 md:pb-6 px-6 md:px-20 bg-gradient-to-b from-blue-100 to-gray-100">
         {/* Section Heading */}
-        <h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e]  animate-fadeIn">
+        {/* <h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e]  animate-fadeIn">
           Who <span className="text-[#2592b7]">We Are</span>
         </h2>
         <p className="mt-4 md:my-10 lg:text-lg text-sm text-gray-700 text-center max-w-3xl mx-auto fira-sans">
           Welcome to{" "}
-          <span className="font-semibold text-[#0c95c3]">Spiritual Hikes</span>,
+          <span className="font-semibold text-[#0c95c3]">Namdev Narmadeshwar Shivling Arts</span>,
           your trusted companion for divine journeys and high-altitude
           adventures. With over{" "}
           <span className="font-bold text-[#0c95c3]">50+ successful treks</span>
           , we specialize in guiding spiritual seekers and thrill lovers through
           the Himalayas.
-        </p>
+        </p> */}
+
+<h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e] animate-fadeIn">
+  Who <span className="text-[#2592b7]">We Are</span>
+</h2>
+<p className="mt-4 md:my-10 lg:text-lg text-sm text-gray-700 text-center max-w-3xl mx-auto fira-sans">
+  Welcome to{" "}
+  <span className="font-semibold text-[#0c95c3]">Namdev Narmadeshwar Shivling Arts</span>,
+  proudly serving the spiritual community since{" "}
+  <span className="font-bold text-[#0c95c3]">1945</span>. With over{" "}
+  <span className="font-bold text-[#0c95c3]">80 years</span> of legacy, we craft and supply
+  authentic and handcrafted religious items such as{" "}
+  <span className="font-semibold">Narmadeshwar Shivling, Jaldhara, Nandi Ji, Tortoise, Lord Ganesha, Parvati Ji, Kartik Ji, Lord Shiva, Lord Dattatreya</span>,
+  and sacred symbols including{" "}
+  <span className="font-semibold">Brass & Copper Snakes, Trishul, Jalpatra, and Shiv Parivar sets</span>.
+  Rooted in devotion, we are committed to delivering purity, tradition, and spiritual authenticity to homes and temples across India.
+</p>
 
         {/* Content Grid */}
         <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
@@ -251,19 +270,22 @@ const About = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-10 md:py-18  bg-gradient-to-r from-[#0e5871]  to-[#098e9a]   text-white text-center">
+      <section className="py-10 md:py-18  bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70]   text-white text-center">
         <h2 className="lg:text-4xl text-xl font-bold text-center mx-3">
-          Start Your Spiritual Journey Today!
+          Start Your Spiritual Journey with Namdev Narmadeshwar Shivling Arts
+
+
         </h2>
         <p className="py-6 lg:text-lg text-sm max-w-3xl md:mx-auto mx-5 fira-sans">
-          Let your next adventure be a life-changing spiritual experience.
+Bring divine energy into your life with our handcrafted Narmadeshwar Shivlings and sacred stone idols.
+
         </p>
         <button
           type="button"
           onClick={() => {
             navigate("/contact");
           }}
-          className="mt-4 bg-transparent border-1 border-[#0E9DAB] text-white px-4   text-xs md:text-lg py-2 rounded-full  shadow-md hover:bg-[#0E9DAB] active:bg-[#0E9DAB] hover:text-white transition cursor-pointer fira-sans"
+          className="mt-4 bg-transparent border-1 border-[#ffcc70] text-white px-4   text-xs md:text-lg py-2 rounded-full  shadow-md hover:bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] hover:text-white transition cursor-pointer fira-sans"
         >
           Contact Us Now
         </button>

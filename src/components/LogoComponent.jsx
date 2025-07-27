@@ -1,6 +1,6 @@
 
 
-import Logo from "/Logo.png";
+import Logo from "/Namdevlogo.png";
 import { Link } from "react-router-dom";
 
 function LogoComponent() {
@@ -10,7 +10,7 @@ function LogoComponent() {
         <img 
           src={Logo} 
           alt="Company official logo" 
-          className="w-20 sm:w-24 md:w-30 h-auto object-contain"
+          className="w-16 sm:w-24 md:w-24 h-auto object-contain"
         />
       </Link>
     </div>

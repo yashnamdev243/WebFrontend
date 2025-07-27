@@ -11,6 +11,7 @@ import {
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 import TourDropdown from "../pages/TourDropdown";
+import { FaPeopleCarryBox } from "react-icons/fa6";
 
 const Moblie_Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ const Moblie_Navbar = () => {
         className="md:hidden text-white text-3xl focus:outline-none fixed top-4 right-5 z-30"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <RxCross1 color="black" size={20}/> : <CiMenuFries />}
+        {isOpen ? <RxCross1 color="black" size={20} /> : <CiMenuFries />}
       </button>
 
       {/* Mobile Navigation Menu */}
@@ -62,14 +63,14 @@ const Moblie_Navbar = () => {
             <FaInfoCircle /> About Us
           </Link>
 
-          <TourDropdown setIsOpen={setIsOpen} />
+          {/* <TourDropdown setIsOpen={setIsOpen} /> */}
 
           <Link
-            to="/blog"
+            to="/products"
             className="flex items-center gap-2 text-lg font-semibold text-gray-800 hover:text-blue-500 transition"
             onClick={() => setIsOpen(false)}
           >
-            <FaBlog /> Blogs
+            <FaPeopleCarryBox /> Products
           </Link>
 
           <Link

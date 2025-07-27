@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const WhatsAppIcon = () => {
-  const phoneNumber = "919696187592"; // Replace with your number
+  const phoneNumber = "919691089549";
 
   return (
     <div className="fixed bottom-6 right-4 md:bottom-8 md:right-6 lg:right-8 flex flex-col p-2 z-50">
