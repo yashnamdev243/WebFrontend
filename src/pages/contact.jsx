@@ -74,7 +74,7 @@ const Contact = () => {
             Your source for Narmadeshwar Shivlings and spiritual art.
           </p>
           <img
-            src="/contact.png"
+            src="/contacf.png"
             alt="Top Decoration"
             className="w-30 lg:w-48 opacity-80 animate-pulse"
           />

@@ -112,14 +112,14 @@ const words = [
         </p> */}
 
 <h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e] animate-fadeIn">
-  Who <span className="text-[#2592b7]">We Are</span>
+  Who <span className="text-[#ffcc70]">We Are</span>
 </h2>
 <p className="mt-4 md:my-10 lg:text-lg text-sm text-gray-700 text-center max-w-3xl mx-auto fira-sans">
   Welcome to{" "}
-  <span className="font-semibold text-[#0c95c3]">Namdev Narmadeshwar Shivling Arts</span>,
+  <span className="font-semibold text-[#ffcc70]">Namdev Narmadeshwar Shivling Arts</span>,
   proudly serving the spiritual community since{" "}
-  <span className="font-bold text-[#0c95c3]">1945</span>. With over{" "}
-  <span className="font-bold text-[#0c95c3]">80 years</span> of legacy, we craft and supply
+  <span className="font-bold text-[#ffcc70]">1945</span>. With over{" "}
+  <span className="font-bold text-[#ffcc70]">80 years</span> of legacy, we craft and supply
   authentic and handcrafted religious items such as{" "}
   <span className="font-semibold">Narmadeshwar Shivling, Jaldhara, Nandi Ji, Tortoise, Lord Ganesha, Parvati Ji, Kartik Ji, Lord Shiva, Lord Dattatreya</span>,
   and sacred symbols including{" "}

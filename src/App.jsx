@@ -22,6 +22,7 @@ import UjjainMahakaleshwar from "./Blog/ujjain-mahakaleshwar";
 import ScrollToTop from "./components/ScrollToTop";
 import Products from "./pages/Products";
 import ProductCategory from "./pages/ProductCategory";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -34,7 +35,7 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          {/* <Route path="/about" element={<About />} /> */}
           {/* <Route path="/booknow" element={<BookNow />} /> */}
 
           <Route path="/contact" element={<Contact />} />
@@ -66,6 +67,8 @@ const App = () => {
             path="/blog/ujjain-mahakaleshwar"
             element={<UjjainMahakaleshwar />}
           />
+                    <Route path="*" element={<NotFound />} />
+
                     <Route path="/products" element={<Products />} />
           <Route path="/products/:category" element={<ProductCategory />} />
         </Routes>
