@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import TourDropdown from "../pages/TourDropdown";
 import LogoComponent from "./LogoComponent";
 import PhoneIcon from "./PhoneIcon";
 import { NavLink } from "react-router-dom";
@@ -76,7 +75,6 @@ const Header = () => {
             About Us
           </NavLink>
 
-          {/* <TourDropdown setIsOpen={setIsOpen} /> */}
 
           <NavLink
             to="/products"

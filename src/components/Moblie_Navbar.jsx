@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
-import TourDropdown from "../pages/TourDropdown";
 import { FaPeopleCarryBox } from "react-icons/fa6";
 
 const Moblie_Navbar = () => {
@@ -63,7 +62,6 @@ const Moblie_Navbar = () => {
             <FaInfoCircle /> About Us
           </Link>
 
-          {/* <TourDropdown setIsOpen={setIsOpen} /> */}
 
           <Link
             to="/products"
