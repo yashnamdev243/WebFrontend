@@ -51,18 +51,32 @@ const Footer = () => {
               Handcrafted Narmadeshwar Shivlings & Sacred Art for Peaceful Spaces
               </p>
             </div> */}
-            <div className="flex justify-center md:justify-center mt-2">
+            {/* <div className="flex justify-center md:justify-center mt-2">
               <a
                 href="mailto:arvindnamdev62@gmail.com"
                 className="flex items-center space-x-2 text-lg hover:text-[#ffcc70] transition"
               >
-                <FaMapMarkerAlt className="text-[#ffcc70] lg:text-xl text-sm lg:mb-7 mb-8" />
+                <FaMapMarkerAlt className="text-[#ffcc70] lg:text-xl text-sm lg:mb-9 mb-8" />
                 <span className="lg:text-lg text-sm">
-                  Bakawan , post - Mardana , Teh -Barwaha , <br /> Dist
+                  Bakawan , post - Mardana ,<br /> Teh -Barwaha , <br /> Dist
                   -Khargone (M.P) 451113
                 </span>
               </a>
-            </div>
+            </div> */}
+            <div className="flex justify-center mt-2 px-4">
+  <a
+    href="mailto:arvindnamdev62@gmail.com"
+    className="flex items-start gap-3 text-sm md:text-base lg:text-lg  hover:text-[#ffcc70] transition"
+  >
+    <FaMapMarkerAlt className="text-[#ffcc70] text-base md:text-lg lg:text-xl mt-1" />
+    <span className="leading-relaxed">
+      Bakawan, Post - Mardana,<br />
+      Teh - Barwaha,<br />
+      Dist - Khargone (M.P.) 451113
+    </span>
+  </a>
+</div>
+
           </div>
           {/* <div>
             <h3 className="lg:text-2xl text-xl font-bold text-[#ffcc70]">
