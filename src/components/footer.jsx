@@ -65,7 +65,7 @@ const Footer = () => {
             </div> */}
             <div className="flex justify-center mt-2 px-4">
   <a
-    href="mailto:arvindnamdev62@gmail.com"
+    href="https://maps.app.goo.gl/znzwKS4GrVBksKgh9"
     className="flex items-start gap-3 text-sm md:text-base lg:text-lg  hover:text-[#ffcc70] transition"
   >
     <FaMapMarkerAlt className="text-[#ffcc70] text-base md:text-lg lg:text-xl mt-1" />
