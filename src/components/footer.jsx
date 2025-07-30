@@ -56,7 +56,7 @@ const Footer = () => {
                 href="mailto:arvindnamdev62@gmail.com"
                 className="flex items-center space-x-2 text-lg hover:text-[#ffcc70] transition"
               >
-                <FaMapMarkerAlt className="text-[#ffcc70] lg:text-xl text-sm lg:mb-7 mb-5" />
+                <FaMapMarkerAlt className="text-[#ffcc70] lg:text-xl text-sm lg:mb-7 mb-8" />
                 <span className="lg:text-lg text-sm">
                   Bakawan , post - Mardana , Teh -Barwaha , <br /> Dist
                   -Khargone (M.P) 451113
