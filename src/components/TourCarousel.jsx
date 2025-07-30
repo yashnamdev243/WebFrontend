@@ -7,11 +7,17 @@ import "swiper/css/pagination";
 import HeroSection from "./HeroSection";
 
 const tourImages = [
-  { src: "/Slider_11.jpg" },
-  { src: "/Slider_21.jpg" },
-  { src: "/Slider_31.jpg" },
-  { src: "/Slider_41.jpg" },
-  { src: "/Slider_51.jpg" },
+  { src: "/slide1.jpg" },
+  { src: "/slide2.jpg" },
+  { src: "/slide3.jpg" },
+  { src: "/slide4.jpg" },
+  { src: "/slide5.jpg" },
+  { src: "/slide6.jpg" },
+  { src: "/slide7.jpg" },
+  { src: "/slide8.jpg" },
+  { src: "/slide9.jpg" },
+
+
 ];
 
 const TourCarousel = () => {
