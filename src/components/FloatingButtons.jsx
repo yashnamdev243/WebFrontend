@@ -33,7 +33,7 @@ const FloatingButtons = () => {
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FaWhatsapp className="text-white text-2xl md:text-3xl" />
+          <FaWhatsapp className="text-white text-2xl md:text-4xl" />
         </motion.a>
       )}
 

@@ -64,19 +64,20 @@ const Footer = () => {
               </a>
             </div> */}
             <div className="flex justify-center mt-2 px-4">
-  <a
-    href="https://maps.app.goo.gl/znzwKS4GrVBksKgh9"
-    className="flex items-start gap-3 text-sm md:text-base lg:text-lg  hover:text-[#ffcc70] transition"
-  >
-    <FaMapMarkerAlt className="text-[#ffcc70] text-base md:text-lg lg:text-xl mt-1" />
-    <span className="leading-relaxed">
-      Bakawan, Post - Mardana,<br />
-      Teh - Barwaha,<br />
-      Dist - Khargone (M.P.) 451113
-    </span>
-  </a>
-</div>
-
+              <a
+                href="https://maps.app.goo.gl/znzwKS4GrVBksKgh9"
+                className="flex items-start gap-3 text-sm md:text-base lg:text-lg  hover:text-[#ffcc70] transition"
+              >
+                <FaMapMarkerAlt className="text-[#ffcc70] text-base md:text-lg lg:text-xl mt-1" />
+                <span className="leading-relaxed">
+                  Bakawan, Post - Mardana,
+                  <br />
+                  Teh - Barwaha,
+                  <br />
+                  Dist - Khargone (M.P.) 451113
+                </span>
+              </a>
+            </div>
           </div>
           {/* <div>
             <h3 className="lg:text-2xl text-xl font-bold text-[#ffcc70]">
@@ -171,23 +172,21 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FacebookOutlined className="!text-blue-500 lg:text-3xl text-xl cursor-pointer transition animate-pulse" />
+            <FacebookOutlined
+              className=" text-white rounded-full p-2 lg:text-3xl text-xl cursor-pointer transition animate-pulse"
+              style={{ backgroundColor: "#1877F2" }}
+            />
           </a>
           {/* <FaTwitter className="text-gray-400 hover:text-blue-400 text-3xl cursor-pointer transition" /> */}
-          <a
-                  href="tel:+919691089549"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <PhoneOutlined className="!text-red-500 lg:text-3xl text-xl cursor-pointer transition animate-pulse" />
+          <a href="tel:+919691089549" target="_blank" rel="noopener noreferrer">
+            <PhoneOutlined className="!bg-red-500 lg:text-3xl text-xl text-white rounded-full p-2 cursor-pointer transition animate-pulse" />
           </a>
           <a
-          href="https://wa.me/919691089549"
-
+            href="https://wa.me/919691089549"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <WhatsAppOutlined className="!text-green-500 lg:text-3xl text-xl cursor-pointer transition animate-pulse" />
+            <WhatsAppOutlined className="!bg-green-500 lg:text-3xl text-xl text-white rounded-full p-2 cursor-pointer transition animate-pulse" />
           </a>
 
           {/* <FaInstagram className="text-gray-400 hover:text-pink-500 text-3xl cursor-pointer transition" /> */}
@@ -197,7 +196,13 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <InstagramOutlined className="!text-pink-500 lg:text-3xl text-xl cursor-pointer transition animate-pulse" />
+              <InstagramOutlined
+                className=" lg:text-3xl text-xl text-white rounded-full p-2 cursor-pointer transition animate-pulse"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                }}
+              />
             </a>
 
             {/* <span className="absolute -top-3 -right-5 text-xs bg-pink-500 text-white px-1.5 py-0.5 rounded-full animate-pulse font-semibold shadow-sm">
