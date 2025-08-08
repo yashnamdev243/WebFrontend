@@ -17,33 +17,51 @@ const [isModalVisible, setIsModalVisible] = useState(false);
       reader.onload = () => resolve(reader.result);
       reader.onerror = reject;
     });
+     const handleImageUpload = async (file) => {
+    const base64 = await getBase64(file);
+    setPreviewImage(base64);
+    return false; // prevent Upload from uploading automatically
+  };
+
 
   const handleSubmit = async (values) => {
     const newReview = {
       name: values.name,
       review: values.review,
       rating: values.rating || 5,
-      image: values.image || "/default-avatar.jpg",
+      image: previewImage || "/default-avatar.jpg",
     };
-
+try {
     const stored = localStorage.getItem(LOCAL_KEY);
     const existing = stored ? JSON.parse(stored) : [];
-    const updated = [newReview, ...existing];
+  //  const updated = [newReview, ...existing];
+      const trimmed = [newReview, ...existing].slice(0, 20);
 
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(updated));
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(trimmed));
 
     message.success("Review submitted successfully!");
     form.resetFields();
     setPreviewImage("");
     onSubmit(); // trigger parent update
     onClose(); // close modal
-  };
+  }
+  catch (e) {
+      console.error(e);
+      message.error("Unable to save review. Storage full or corrupted.");
+    }
+      };
+
 
   return (
     <Modal
       open={open}
       title="📝 Share Your Experience"
-      onCancel={onClose}
+    //  onCancel={onClose}
+    onCancel={() => {
+        form.resetFields();
+        setPreviewImage("");
+        onClose();
+      }}
       footer={null}
       centered
       
@@ -75,14 +93,18 @@ const [isModalVisible, setIsModalVisible] = useState(false);
 
         <Form.Item name="image" label="Upload Image">
           <Upload
-            accept="image/*"
+            // accept="image/*"
+            // showUploadList={false}
+            // beforeUpload={async (file) => {
+            //   const base64 = await getBase64(file);
+            //   form.setFieldValue("image", base64);
+            //   setPreviewImage(base64);
+            //   return false;
+            // }}
+             maxCount={1}
+            beforeUpload={handleImageUpload}
             showUploadList={false}
-            beforeUpload={async (file) => {
-              const base64 = await getBase64(file);
-              form.setFieldValue("image", base64);
-              setPreviewImage(base64);
-              return false;
-            }}
+            accept="image/*"
           >
             <Button icon={<UploadOutlined />}>Upload</Button>
           </Upload>
