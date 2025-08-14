@@ -93,6 +93,12 @@ const ProductCard = ({ product }) => {
   const handleClick = () => {
     navigate(`/products/${product.category}`);
   };
+  const formatCategoryTitle = (slug) => {
+    return slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
 
   return (
     <div
@@ -101,7 +107,7 @@ const ProductCard = ({ product }) => {
     >
       <img
         src={product.image}
-        alt={product.title}
+        alt={product.name}
         className="w-full h-full object-cover"
       />
       <div className="h-full absolute inset-0 bg-black/35 backdrop-blur-[2.5px] p-4 text-left mt-85 
@@ -114,7 +120,8 @@ const ProductCard = ({ product }) => {
             before:absolute before:-bottom-[1px] before:left-0 before:h-[1px] md:before:w-0 before:bg-white 
             before:transition-all before:duration-500 before:w-full md:group-hover:before:w-full"
         >
-          {product.title}
+          {formatCategoryTitle(product.name)} Products
+
         </h3>
       </div>
 

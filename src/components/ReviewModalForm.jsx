@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { Modal, Form, Input, Rate, Upload, Button, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-
-const LOCAL_KEY = "user_reviews";
+import { collection, addDoc } from "firebase/firestore"; // ⬅️ added
+import { db } from "../firebase"; // ⬅️ your firebase config
+//const LOCAL_KEY = "user_reviews";
 
 const ReviewModalForm = ({ open, onClose, onSubmit }) => {
   const [form] = Form.useForm();
@@ -30,14 +31,17 @@ const [isModalVisible, setIsModalVisible] = useState(false);
       review: values.review,
       rating: values.rating || 5,
       image: previewImage || "/default-avatar.jpg",
+      createdAt: new Date()
+
     };
 try {
-    const stored = localStorage.getItem(LOCAL_KEY);
-    const existing = stored ? JSON.parse(stored) : [];
+  //  const stored = localStorage.getItem(LOCAL_KEY);
+  //  const existing = stored ? JSON.parse(stored) : [];
   //  const updated = [newReview, ...existing];
-      const trimmed = [newReview, ...existing].slice(0, 20);
+    //  const trimmed = [newReview, ...existing].slice(0, 20);
 
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(trimmed));
+   // localStorage.setItem(LOCAL_KEY, JSON.stringify(trimmed));
+      await addDoc(collection(db, "reviews"), newReview);
 
     message.success("Review submitted successfully!");
     form.resetFields();
@@ -47,7 +51,7 @@ try {
   }
   catch (e) {
       console.error(e);
-      message.error("Unable to save review. Storage full or corrupted.");
+      message.error("Unable to save review at this time. Please try again later.");
     }
       };
 

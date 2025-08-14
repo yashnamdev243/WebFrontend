@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import ReviewSection from "../components/ReviewSection";
 import TourCarousel from "../components/TourCarousel";
-import products from "../Data/products";
+//import products from "../Data/products";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase"; // your firebase config
+
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
+   const [products, setProducts] = useState([]);
+   useEffect(() => {
+      const fetchProducts = async () => {
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const productsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setProducts(productsData);
+      };
+  
+      fetchProducts();
+    }, []);
   return (
     <div className="bg-gray-100 ">
       <section className="flex flex-col items-center justify-center text-center md:px-0">

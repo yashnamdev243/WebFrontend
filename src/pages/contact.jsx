@@ -1,9 +1,11 @@
-import { useState } from "react";
 import { FaUser, FaEnvelope, FaPhone, FaPaperPlane } from "react-icons/fa";
 import emailjs from "emailjs-com";
 import { toast, Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { Select } from "antd";
+import React, { useState } from "react";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
 import {
   PhoneOutlined,
   MailOutlined,
@@ -40,7 +42,27 @@ const Contact = () => {
     tour: "",
     message: "",
   });
+ const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...form,
+        createdAt: serverTimestamp(),
+      });
+      toast.success("Message sent successfully!");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Error adding document:", err);
+      toast.error("Failed to send message. Check console.");
+    }
+  };
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -49,9 +71,7 @@ const Contact = () => {
         toast.success("Message sent successfully!");
         setFormData({
           name: "",
-          email: "",
           contact: "",
-          tour: "",
           message: "",
         });
         e.target.reset();
@@ -83,7 +103,7 @@ const Contact = () => {
         {/* Right Side (Contact Form) */}
         <div className="flex justify-center">
           <form
-            onSubmit={sendEmail}
+            onSubmit={handleSubmit}
             className="bg-gray-200 p-8 rounded-2xl  shadow-xl bg-opacity-80 backdrop-blur-lg max-w-xl w-full space-y-6"
           >
             {/* Name Field */}
@@ -100,10 +120,9 @@ const Contact = () => {
                 name="name"
                 placeholder="Enter Your Name"
                 required
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                value={form.name}
+               onChange={handleChange} 
+                
                 className="w-full pl-10 p-3 lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
               />
             </div>
@@ -117,8 +136,8 @@ const Contact = () => {
               name="email"
               placeholder="Enter Your Email"
               required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              value={form.email}
+            onChange={handleChange}
               className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
             />
           </div> */}
@@ -132,10 +151,9 @@ const Contact = () => {
                 name="contact"
                 placeholder="Enter Your Contact"
                 required
-                value={formData.contact}
-                onChange={(e) =>
-                  setFormData({ ...formData, contact: e.target.value })
-                }
+                value={form.contact}
+                onChange={handleChange}
+                
                 className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
               />
             </div>
@@ -149,10 +167,8 @@ const Contact = () => {
                 name="message"
                 placeholder="Enter your message here..."
                 required
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                value={form.message}
+               onChange={handleChange}
                 className="w-full p-3  lg:text-lg text-sm  rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all h-20"
               />
             </div>
@@ -272,3 +288,41 @@ const Contact = () => {
 };
 
 export default Contact;
+
+// import React, { useState } from "react";
+// import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+// import { db } from "../firebase"; // adjust path as needed
+
+// export default function Contact() {
+//   const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+//   const handleChange = (e) => {
+//     setForm({ ...form, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       await addDoc(collection(db, "contacts"), {
+//         ...form,
+//         createdAt: serverTimestamp(),
+//       });
+//       alert("Message sent successfully!");
+//       setForm({ name: "", email: "", message: "" });
+//     } catch (err) {
+//       console.error("Error adding document:", err);
+//       alert("Failed to send message. Check console.");
+//     }
+//   };
+
+//   return (<div className="my-50"> 
+//     <form onSubmit={handleSubmit}>
+//       <input name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
+//       <input name="email" value={form.email} onChange={handleChange} placeholder="Email" required />
+//       <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" required />
+//       <button type="submit">Send</button>
+//     </form>
+//     </div>
+//   );
+// }

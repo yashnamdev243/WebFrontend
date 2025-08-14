@@ -21,7 +21,13 @@ const AppWrapper = () => {
   return (
     <>
       <ScrollToTop />
+            <Routes>
+
             {!isAdminPath && (
+                        <Route
+                         path="*"
+            element={
+
 
       <Layout>
         <div className="w-full flex justify-end sm:p-4 md:p-6 lg:p-0">
@@ -37,19 +43,25 @@ const AppWrapper = () => {
           <Route path="*" element={<NotFound />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:category" element={<ProductCategory />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
+         
+        </Routes>
+         </Layout>
+   }
+          />
+              )}
+               <Route path="/admin-login" element={<AdminLogin />} />
           <Route
-            path="/admin"
+            path="/admin/*"
             element={
               <ProtectedRoute>
                 <AdminDashboard />
               </ProtectedRoute>
+              
             }
           />
-        </Routes>
-         </Layout>
+          
+                </Routes>
 
-              )}
     </>
   );
 };

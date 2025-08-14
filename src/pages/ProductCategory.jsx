@@ -34,15 +34,25 @@
 // export default ProductCategory;
 
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "../Data/products";
+//import products from "../Data/products";
 import ProductCard from "../components/ProductCard";
 import { Helmet } from "react-helmet";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const ProductCategory = () => {
   const { category } = useParams();
+  const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const snap = await getDocs(collection(db, "products"));
+      setProducts(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    };
+    fetchProducts();
+  }, []);
   const formatCategoryTitle = (slug) => {
     return slug
       .split("-")

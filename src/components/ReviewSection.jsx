@@ -7,22 +7,45 @@ import "swiper/css";
 import "swiper/css/pagination";
 import ReviewModalForm from "./ReviewModalForm";
 import { MessageCircleHeart, UsersRound } from "lucide-react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase"; 
+import { Spin } from "antd";
 
-const LOCAL_KEY = "user_reviews";
+//const LOCAL_KEY = "user_reviews";
 
 const ReviewSection = () => {
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  // Fetch reviews from Firestore
+  const fetchReviews = async () => {
+    try {
+      setLoading(true);
+      const querySnapshot = await getDocs(collection(db, "reviews"));
+      const fetched = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setReviews(fetched);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // useEffect(() => {
+  //   const stored = localStorage.getItem(LOCAL_KEY);
+  //   setReviews(stored ? JSON.parse(stored) : []);
+  // }, []);
   useEffect(() => {
-    const stored = localStorage.getItem(LOCAL_KEY);
-    setReviews(stored ? JSON.parse(stored) : []);
+    fetchReviews();
   }, []);
 
-  const refreshReviews = () => {
-    const stored = localStorage.getItem(LOCAL_KEY);
-    setReviews(stored ? JSON.parse(stored) : []);
-  };
+  // const refreshReviews = () => {
+  //   const stored = localStorage.getItem(LOCAL_KEY);
+  //   setReviews(stored ? JSON.parse(stored) : []);
+  // };
 
   return (
     <>
@@ -35,7 +58,7 @@ const ReviewSection = () => {
      
 
       {/* Modal Form Component */}
-      <ReviewModalForm open={open} onClose={() => setOpen(false)} onSubmit={refreshReviews} />
+      <ReviewModalForm open={open} onClose={() => setOpen(false)} onSubmit={fetchReviews} />
 
       {/* Swiper: no change needed */}
       <div className="w-full max-w-7xl mx-auto px-4 py-6">
