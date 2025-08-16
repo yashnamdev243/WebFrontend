@@ -67,7 +67,7 @@ const ProductCategory = () => {
   return (
     <section className="py-12 px-4 lg:px-20 min-h-screen lg:mt-24 mt-10">
       <Helmet>
-        <title>{formatCategoryTitle(category)} | Namdev Shivling Arts</title>
+        <title>{formatCategoryTitle(category)} | Namdev Narmadeshwar Shivling Arts</title>
         <meta
           name="description"
           content={`Explore our collection of ${formatCategoryTitle(
