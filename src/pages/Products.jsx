@@ -65,7 +65,7 @@ export default function Products() {
   }, []);
 
   return (
-   <section className=" py-12 lg:mt-26 mt-12">
+   <section className=" py-12 lg:mt-26 mt-12  bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0]">
     <div className="px-4 lg:px-19">
 
      <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">Our Products</h2>

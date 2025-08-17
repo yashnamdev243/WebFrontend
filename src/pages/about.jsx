@@ -1,304 +1,7 @@
-// import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import {
-//   FaMountain,
-//   FaRoute,
-//   FaCampground,
-//   FaGlobe,
-//   FaPlaceOfWorship,
-//   FaHiking,
-//   FaMapMarkedAlt,
-//   FaShieldAlt,
-//   FaHotel,
-//   FaPrayingHands,
-// } from "react-icons/fa";
-// import { GiTempleGate } from "react-icons/gi";
 
-// const About = () => {
-//   const features = [
-//     {
-//       title: "Expert Guides",
-//       desc: "Trained professionals with deep knowledge of Himalayan terrain.",
-//       icon: <FaHiking />,
-//     },
-//     {
-//       title: "Personalized Experience",
-//       desc: "Customized tours to meet your needs and preferences.",
-//       icon: <FaMapMarkedAlt />,
-//     },
-//     {
-//       title: "Safety First",
-//       desc: "Planned itineraries, acclimatization, and emergency support.",
-//       icon: <FaShieldAlt />,
-//     },
-//   ];
-//   const destinations = [
-//     { name: "Char Dham Yatra", icon: <FaPlaceOfWorship />, id: 7 },
-//     { name: "Manimahesh Kailash Yatra", icon: <FaMountain />,id: 1 },
-//     { name: "Shrikhand Mahadev Trek", icon: <FaHiking />,id: 2 },
-//     { name: "Kinnaur Kailash Trek", icon: <FaMapMarkedAlt />,id: 3 },
-//     { name: "Adi Kailash Trek ", icon: <FaGlobe />,id: 4 },
-//     { name: "Mansarovar Kailash Yatra", icon: <FaCampground />,id: 5 },
-//     { name: "Kedarnath Dham", icon: <GiTempleGate />,id: 6 },
-//     // { name: "Ujjain Mahakaleshwar", icon: <FaPlaceOfWorship />, },
-//   ];
-//   const navigate = useNavigate();
-
-//   const [text, setText] = useState("");
-
-// const words = [
-//   "Buy Narmadeshwar Shivlings!",
-//   "Handcrafted Shivlings for Your Temple!",
-//   "Authentic Narmada Shivling Online!",
-//   "Bring Divine Energy Home!",
-//   "Shop Spiritual Shivling Collections!",
-// ];
-
-//   let index = 0;
-
-//   // Typing Effect for Headline
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setText(words[index]);
-//       index = (index + 1) % words.length;
-//     }, 2500);
-//     return () => clearInterval(interval);
-//   }, []);
-
-
-//   const handleNavigate = (id) => {
-//     navigate(`/tour/${id}`);
-//   };
-//   return (
-//     <div className="bg-gray-100 text-gray-900">
-//       {/* Hero Section */}
-//       <div
-//         className="relative lg:h-[70vh] h-55 flex items-center justify-center bg-cover bg-center bg-no-repeat text-white text-center"
-//         style={{ backgroundImage: "url('/about1.png')" }} // Ensure the image is moved here
-//       >
-//         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-gray-900/30 "></div>
-
-//         <div className="relative pb-6 z-10 animate-fadeIn">
-//           <h1 className="text-2xl lg:mt-10 mt-20 pb-2 font-bold md:text-5xl text-[#ffcc70] drop-shadow-lg animate-glow">
-//       Namdev Narmadeshwar Shivling Arts
-//           </h1>
-
-//           <p className="lg:mt-2 text-xs lg:text-lg max-w-2xl pb-2 mx-auto text-gray-200 animate-flicker">
-//     Discover the Power of Narmadeshwar Shivlings <br /> – Handcrafted for Your Spiritual Journey.
-//           </p>
-
-//           <p className="lg:text-lg text-xs text-gray-300 text-center max-w-lg mx-auto italic animate-slideUp transition-all duration-500">
-//             {text}
-//           </p>
-
-//         </div>
-//       </div>
-
-//       {/* Who We Are */}
-
-//       <section className="relative pt-14 md:pb-6 px-6 md:px-20 bg-gradient-to-b from-blue-100 to-gray-100">
-//         {/* Section Heading */}
-//         {/* <h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e]  animate-fadeIn">
-//           Who <span className="text-[#2592b7]">We Are</span>
-//         </h2>
-//         <p className="mt-4 md:my-10 lg:text-lg text-sm text-gray-700 text-center max-w-3xl mx-auto fira-sans">
-//           Welcome to{" "}
-//           <span className="font-semibold text-[#0c95c3]">Namdev Narmadeshwar Shivling Arts</span>,
-//           your trusted companion for divine journeys and high-altitude
-//           adventures. With over{" "}
-//           <span className="font-bold text-[#0c95c3]">50+ successful treks</span>
-//           , we specialize in guiding spiritual seekers and thrill lovers through
-//           the Himalayas.
-//         </p> */}
-
-// <h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e] animate-fadeIn">
-//   Who <span className="text-[#ffcc70]">We Are</span>
-// </h2>
-// <p className="mt-4 md:my-10 lg:text-lg text-sm text-gray-700 text-center max-w-3xl mx-auto fira-sans">
-//   Welcome to{" "}
-//   <span className="font-semibold text-[#ffcc70]">Namdev Narmadeshwar Shivling Arts</span>,
-//   proudly serving the spiritual community since{" "}
-//   <span className="font-bold text-[#ffcc70]">1945</span>. With over{" "}
-//   <span className="font-bold text-[#ffcc70]">80 years</span> of legacy, we craft and supply
-//   authentic and handcrafted religious items such as{" "}
-//   <span className="font-semibold">Narmadeshwar Shivling, Jaldhara, Nandi Ji, Tortoise, Lord Ganesha, Parvati Ji, Kartik Ji, Lord Shiva, Lord Dattatreya</span>,
-//   and sacred symbols including{" "}
-//   <span className="font-semibold">Brass & Copper Snakes, Trishul, Jalpatra, and Shiv Parivar sets</span>.
-//   Rooted in devotion, we are committed to delivering purity, tradition, and spiritual authenticity to homes and temples across India.
-// </p>
-
-//         {/* Content Grid */}
-//         <div className="grid md:grid-cols-2 gap-10 mt-12 items-center">
-//           {/* Image Section */}
-//           <div className="relative group">
-//             <img
-//               src="/Mission&Vision.png"
-//               alt="Trekking Spiritual Hikes"
-//               className="rounded-lg shadow-lg transform group-hover:scale-105 transition duration-500 ease-in-out   lg:w-[600px] lg:h-[400px] object-cover
-// "
-//             />
-
-//             <div className="absolute inset-0  bg-opacity-30 rounded-lg group-hover:bg-opacity-10 transition duration-500"></div>
-//           </div>
-
-//           {/* Text Content */}
-//           <div className="animate-fadeIn">
-//             <h3 className="lg:text-3xl text-xl text-center md:text-left font-semibold text-[#06242e] ">
-//               Our Mission <span className="text-[#0c95c3]"> &</span> Vision
-//             </h3>
-//             <p className="mt-6 text-gray-600 lg:text-lg text-center md:text-left text-sm leading-relaxed fira-sans">
-//               We believe that every journey to the Himalayas is more than just a
-//               trek—it is a
-//               <span className="font-bold text-[#0c95c3]">
-//                 {" "}
-//                 spiritual transformation.
-//               </span>
-//               Our mission is to provide well-organized, safe, and fulfilling
-//               experiences for travelers seeking divine blessings and adventure.
-//             </p>
-
-//             {/* Bullet Points with Icons */}
-//             <ul className="py-8 space-y-3 lg:text-lg text-sm">
-//               <li className="flex items-center gap-3 fira-bold">
-//                 <FaHiking className="text-[#0c95c3] lg:text-xl text-lg" />{" "}
-//                 Expert guidance from trained professionals
-//               </li>
-//               <li className="flex items-center gap-3 fira-bold">
-//                 <FaHotel className="text-[#0c95c3] lg:text-xl text-lg" />{" "}
-//                 Hassle-free accommodations and travel arrangements
-//               </li>
-//               <li className="flex items-center gap-3 fira-bold">
-//                 <FaShieldAlt className="text-[#0c95c3] lg:text-xl text-lg" />{" "}
-//                 Focus on safety with well-planned trekking schedules
-//               </li>
-//               <li className="flex items-center gap-3 fira-bold">
-//                 <FaPrayingHands className="text-[#0c95c3]  lg:text-xl text-lg" />{" "}
-//                 Authentic spiritual and cultural experience
-//               </li>
-//             </ul>
-
-//             {/* Call-to-Action Button */}
-//             {/* <div className="mt-6">
-//               <button className="bg-blue-600 text-white px-5 text-xs md:text-lg py-3 rounded-full font-semibold shadow-lg hover:bg-blue-800 hover:shadow-xl transition duration-300">
-//                 Join Our Journey
-//               </button>
-//             </div> */}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Destinations We Cover */}
-
-//       <section
-//         className="relative py-12 bg-cover bg-center bg-gradient-to-r from-[#0cb4c3] to-[#06242e]  text-white"
-//         // style={{ backgroundImage: "url('\VisionsofGrandeur.jpg')" }}
-//       >
-//         {/* Gradient Overlay */}
-//         <div className="absolute inset-0  bg-opacity-50"></div>
-
-//         <div className="relative z-10 text-center text-white">
-//           <h2 className="lg:text-4xl text-2xl font-bold text-center animate-fadeIn">
-//             Our Destinations
-//           </h2>
-//           <p className="mt-4 lg:text-lg text-sm mx-6 max-w-2xl fira-sans md:mx-auto">
-//             Discover sacred and breathtaking locations with our expert-led
-//             expeditions.
-//           </p>
-
-//           <div className="grid md:grid-cols-4 gap-y-6 md:gap-y-10 gap-x-6 mt-10 px-10">
-//             {destinations.map((destination, index) => (
-//               <div
-//                 key={index}
-//                 className="bg-white text-gray-800 justify-items-center rounded-lg shadow-lg lg:p-6 py-4 text-center hover:shadow-2xl transform hover:scale-105 active:scale-105 transition duration-300 border-b-4 border-[#3992af] cursor-pointer"
-//               >
-//                 <div
-//                   className="flex items-center gap-2"
-//                   onClick={()=>handleNavigate(destination.id)}
-//                 >
-//                   <div className="text-[#0c95c3] lg:text-2xl text-xl">
-//                     {destination.icon}
-//                   </div>
-//                   <h3 className="lg:text-xl text-sm font-semibold">
-//                     {destination.name}
-//                   </h3>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-
-//           {/* <div className="mt-10">
-//             <button className="bg-blue-600 text-white px-5  text-xs md:text-lg py-3 rounded-full font-semibold shadow-lg hover:bg-blue-800 hover:shadow-xl transition duration-300">
-//               Explore More
-//             </button>
-//           </div> */}
-//         </div>
-//       </section>
-
-//       <section className="py-16 px-6 md:px-20 bg-gradient-to-b from-blue-50 to-white">
-//         <h2 className="lg:text-4xl text-2xl font-bold text-center text-[#06242e] mb-4 animate-fadeIn">
-//           Why Choose <span className="text-[#0c95c3]">Spiritual Hikes?</span>
-//         </h2>
-//         <p className="text-center lg:text-lg text-sm text-gray-700 py-4 max-w-3xl mx-auto fira-sans">
-//           Our commitment to safety, spiritual enrichment, and adventure makes us
-//           the ideal choice for your Himalayan journey.
-//         </p>
-
-//         <div className="grid md:grid-cols-3 gap-6 mt-10">
-//           {features.map((feature, index) => (
-//             <div
-//               key={index}
-//               className="bg-white rounded-lg p-6 shadow-md hover:shadow-2xl transform hover:-translate-y-2 active:-translate-y-2 transition duration-300 border-l-4 border-[#3992af]  hover:blue-indigo-700"
-//             >
-//               <div className="text-[#0c95c3] lg:text-4xl text-2xl mb-3">
-//                 {feature.icon}
-//               </div>
-//               <h3 className="lg:text-lg text-sm font-semibold text-[#0c95c3]">
-//                 {feature.title}
-//               </h3>
-//               <p className="mt-2 lg:text-[16px] text-xs text-gray-700">
-//                 {feature.desc}
-//               </p>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* <div className="text-center mt-10">
-//         <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-800 hover:shadow-xl transition duration-300">
-//           Join Us Today
-//         </button>
-//       </div> */}
-//       </section>
-
-//       {/* Call to Action */}
-//       <section className="py-10 md:py-18  bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70]   text-white text-center">
-//         <h2 className="lg:text-4xl text-xl font-bold text-center mx-3">
-//           Start Your Spiritual Journey with Namdev Narmadeshwar Shivling Arts
-
-
-//         </h2>
-//         <p className="py-6 lg:text-lg text-sm max-w-3xl md:mx-auto mx-5 fira-sans">
-// Bring divine energy into your life with our handcrafted Narmadeshwar Shivlings and sacred stone idols.
-
-//         </p>
-//         <button
-//           type="button"
-//           onClick={() => {
-//             navigate("/contact");
-//           }}
-//           className="mt-4 bg-transparent border-1 border-[#ffcc70] text-white px-4   text-xs md:text-lg py-2 rounded-full  shadow-md hover:bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] hover:text-white transition cursor-pointer fira-sans"
-//         >
-//           Contact Us Now
-//         </button>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default About;
-
-
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState ,useEffect} from "react";
 import { Helmet } from "react-helmet";
+
 import { Segmented, Button, Tabs, Timeline, Card, Collapse, Tag, Statistic, Row, Col, Descriptions, Divider, message } from "antd";
 import {
   PhoneOutlined,
@@ -377,6 +80,19 @@ const copy = {
       },
     ],
     orderNow: "अभी ऑर्डर करें",
+        keywords: [
+      "🕉️ नर्मदेश्वर शिवलिंग ऑनलाइन खरीदें ",
+      "🌊 माँ नर्मदा पत्थर शिवलिंग ",
+      "🙏 हस्तनिर्मित शिवलिंग ",
+      "🏠 घर और मंदिर के लिए शिवलिंग ",
+      "🪔 पूजा और ध्यान हेतु शिवलिंग ",
+      "🌍 विश्वभर में डिलीवरी ",
+      "✨ प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग ",
+      "🔱 नंदी, त्रिशूल और जलधारा सहित ",
+      "📿 सकारात्मक ऊर्जा और समृद्धि हेतु शिवलिंग ",
+      "🏔️ खरगोन, मध्यप्रदेश से ओरिजिनल ",
+    ],
+
   },
   en: {
     seoTitle:
@@ -427,6 +143,19 @@ const copy = {
       },
     ],
     orderNow: "Order Now",
+        keywords: [
+      "🕉️ Buy Narmadeshwar Shivling Online ",
+      "🌊 Original Narmada Stone Shivling ",
+      "🙏 Handcrafted Narmadeshwar Shivling Idol ",
+      "🏠 Best Shivling for Home & Temple ",
+      "🪔 Shivling for Puja & Meditation ",
+      "🌍 Narmadeshwar Shivling Export Worldwide ",
+      "✨ Natural Self-Manifested Shivling ",
+      "🔱 Shivling with Trishul, Nandi & Jaladhara ",
+      "📿 Shivling for Spiritual Energy & Prosperity ",
+      "🏔️ Authentic Narmadeshwar Shivling from Khargone, MP ",
+    ],
+
   },
 };
 
@@ -450,7 +179,7 @@ const Section = ({ id, children, className = "" }) => (
 
 // ---------- MAIN COMPONENT ----------
 export default function About() {
-  const [lang, setLang] = useState("hi");
+  const [lang, setLang] = useState("en");
   const t = useMemo(() => copy[lang], [lang]);
 
   const tabs = [
@@ -458,11 +187,12 @@ export default function About() {
       key: "story",
       label: lang === "hi" ? t.storyHead : t.storyHead,
       children: (
-        <Row gutter={[16, 16]}>
+        <Row gutter={[24, 24]} className="rounded-lg shadow-lg border border-slate-100 !bg-gradient-to-br from-white to-yellow-50 !p-6">
           <Col xs={24} md={14}>
             <Fade>
-              <Card bordered className="rounded-2xl shadow-sm">
-                <p className="text-base leading-7 text-slate-700 dark:text-slate-200">{t.story}</p>
+              <Card   bordered={false}
+            className="rounded-2xl shadow-md !p-6 ">
+                <p className="text-base leading-7 text-gray-700 mb-4">{t.story}</p>
                 <Divider />
                 <Timeline
                   items={[
@@ -504,26 +234,26 @@ export default function About() {
           <Col xs={24} md={10}>
             <Fade delay={0.1}>
               <Card
-                bordered
-                className="rounded-2xl shadow-sm relative overflow-hidden"
+                 bordered={false}
+            className="rounded-2xl shadow-md overflow-hidden "
                 cover={
-                  <div className={`h-64 sm:h-80 md:h-96 w-full ${bgGrad} flex items-center justify-center`}>
+              <div className="relative h-64 sm:h-80 md:h-96 w-full">
                     {/* Replace with your image */}
                     <img
-                      src="/images/narmadeshwar-hero.jpg"
+                      src="/slide8.jpg"
                       alt="Narmadeshwar Shivling artisan craft"
-                      className="h-full w-full object-cover mix-blend-multiply"
+                      className="h-full w-full object-cover rounded-t-2xl"
                       onError={(e) => (e.currentTarget.style.display = "none")}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-lg font-semibold">{t.heroTitle}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-t-2xl" />
+                <div className="absolute !bottom-4 left-4 text-white drop-shadow-lg">
+                      <h3 className="text-xl font-semibold">{t.heroTitle}</h3>
                       <p className="text-sm opacity-90 max-w-xs">{t.heroSubtitle}</p>
                     </div>
                   </div>
                 }
               >
-                <Row gutter={16}>
+                <Row gutter={16}className="text-center mb-[-4px] p-2">
                   <Col span={8}>
                     <Statistic title={lang === "hi" ? "पीढ़ियाँ" : "Generations"} value={3} suffix={lang === "hi" ? "+" : "+"} />
                   </Col>
@@ -545,7 +275,7 @@ export default function About() {
       label: lang === "hi" ? "विशेषताएँ" : "Highlights",
       children: (
         <Fade>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[24, 24]} className="!p-6 bg-[#f9fafb] rounded-2xl">
             {[
               { key: "ardhanarishwar", textHi: "अर्धनारीश्वर", textEn: "Ardhanarishwar" },
               { key: "janeu", textHi: "जनेऊ की आकृति", textEn: "Janeu marking" },
@@ -555,14 +285,16 @@ export default function About() {
               { key: "tilak", textHi: "तिलकधारी", textEn: "Tilak marking" },
             ].map((f) => (
               <Col xs={12} md={8} key={f.key}>
-                <Card className="rounded-2xl shadow-sm h-full">
-                  <div className="flex items-center gap-3">
-                    <ThunderboltOutlined />
-                    <h4 className="text-base font-semibold">
+                <Card               bordered={false}
+              className="rounded-2xl !shadow-md h-full bg-white hover:!shadow-lg transition-shadow !p-4"
+>
+                  <div className="flex items-center gap-3 mb-2">
+                <ThunderboltOutlined className="text-[#f59e0b] text-xl" />
+                <h4 className="!text-base font-semibold text-gray-800">
                       {lang === "hi" ? f.textHi : f.textEn}
                     </h4>
                   </div>
-                  <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm">
+              <p className="text-sm text-gray-600">
                     {lang === "hi"
                       ? "कई शिवलिंगों में ये नेचुरल पैटर्न स्वाभाविक रूप से दिखाई देते हैं।"
                       : "These natural patterns are often revealed in the stone itself."}
@@ -572,9 +304,11 @@ export default function About() {
             ))}
           </Row>
           <Divider />
-          <Card className="rounded-2xl shadow-sm">
+      <Card bordered={false} className="rounded-2xl !shadow-md bg-white !p-6">
             <Descriptions
-              title={lang === "hi" ? t.accessoriesHead : t.accessoriesHead}
+              title={     <h3 className="text-lg font-semibold text-gray-800">
+ {lang === "hi" ? t.accessoriesHead : t.accessoriesHead}             </h3>
+              }
               bordered
               column={{ xs: 1, sm: 2, md: 3 }}
               size="middle"
@@ -591,7 +325,7 @@ export default function About() {
                 {lang === "hi" ? "तांबा, पीतल" : "Copper, Brass"}
               </Descriptions.Item>
             </Descriptions>
-            <p className="mt-4 text-slate-700 dark:text-slate-200">{t.exportLine}</p>
+            <p className="!mt-4 text-gray-700 !text-sm">{t.exportLine}</p>
           </Card>
         </Fade>
       ),
@@ -697,8 +431,20 @@ export default function About() {
     ],
   };
 
+
+
+  const [index, setIndex] = useState(0);
+ 
+
+    useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % copy[lang].keywords.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [lang]);
+
   return (
-    <div className="relative min-h-screen bg-white  text-slate-900 ">
+    <div className="relative min-h-screen  bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0]  text-slate-900 ">
       <Helmet>
         <title>{t.seoTitle}</title>
         <meta name="description" content={t.seoDesc} />
@@ -712,64 +458,6 @@ export default function About() {
       </Helmet>
 
       {/* Hero */}
-      {/* <div className={`relative overflow-hidden ${bgGrad}`}>
-        <Section className="pt-16 pb-10 sm:pt-24 sm:pb-16">
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7">
-              <Fade>
-                <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm mb-4">
-                  <span>About • के बारे में</span>
-                </div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
-                  {t.heroTitle}
-                </h1>
-                <p className="mt-3 text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-2xl">
-                  {t.heroSubtitle}
-                </p>
-                <div className="mt-5 flex flex-wrap items-center gap-3">
-                  <Button type="primary" size="large" icon={<PhoneOutlined />} href={`tel:+91${PHONE}`}>
-                    {t.ctas.call}
-                  </Button>
-                  <Button size="large" icon={<WhatsAppOutlined />} href={WHATSAPP_LINK} target="_blank">
-                    {t.ctas.whatsapp}
-                  </Button>
-                  <Button size="large" icon={<EnvironmentOutlined />} href={MAPS_LINK} target="_blank">
-                    {t.ctas.directions}
-                  </Button>
-                </div>
-                <div className="mt-6">
-                  <Segmented
-                    size="large"
-                    value={lang}
-                    onChange={(val) => setLang(val)}
-                    options={[
-                      { label: "हिंदी", value: "hi" },
-                      { label: "English", value: "en" },
-                    ]}
-                  />
-                </div>
-              </Fade>
-            </div>
-
-            <div className="lg:col-span-5">
-              <Fade delay={0.1}>
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
-                  <img
-                    src="/Namdevlogo.png"
-                    alt="Namdev Narmadeshwar Shivling Arts workshop"
-                    className="w-full h-64 sm:h-80 object-cover"
-                    onError={(e) => (e.currentTarget.style.display = "none")}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm sm:text-base">Mardana • Barwaha • Khargone</p>
-                  </div>
-                </div>
-              </Fade>
-            </div>
-          </div>
-        </Section>
-      </div> */}
       <div className={`relative overflow-hidden ${bgGrad}`}>
   <Section className="pt-16 pb-14 sm:pt-24 sm:pb-20">
     <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-14 items-center text-center lg:text-left">
@@ -785,7 +473,7 @@ export default function About() {
           </div> */}
 
           {/* Heading */}
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight text-gray-900 leading-tight">
             {t.heroTitle}
           </h1>
 
@@ -859,20 +547,27 @@ export default function About() {
       </div>
 
       {/* Right Section (Image) */}
-      <div className="lg:col-span-5 w-full flex justify-center">
+      <div className="lg:col-span-5 w-full flex justify-center mt-10">
         <Fade delay={0.1}>
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 max-w-md w-full">
+          <div className="relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/5 max-w-md w-full">
             <img
-              src="/Namdevlogo.png"
+              src="/slide2.jpg"
               alt="Namdev Narmadeshwar Shivling Arts workshop"
               className="w-full h-64 sm:h-80 object-cover"
               onError={(e) => (e.currentTarget.style.display = "none")}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            <div className="absolute bottom-4 left-1/2 lg:left-4 -translate-x-1/2 lg:translate-x-0 text-center lg:text-left text-white">
-              <p className=" lg:text-2xl text-sm font-medium tracking-wide drop-shadow">
-                📍 Mardana • Barwaha • Khargone
-              </p>
+            <div className="absolute bottom-4 text-white px-1">
+               <motion.p
+      key={index}
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -15 }}
+      transition={{ duration: 0.7 }}
+      className="lg:text-lg text-sm font-medium tracking-wide drop-shadow text-center text-gray-200"
+    >
+       {t.keywords[index]}
+    </motion.p>
             </div>
           </div>
         </Fade>
@@ -899,7 +594,7 @@ export default function About() {
         {/* Left Section */}
         <Col xs={24} md={14}>
          <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
- <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 px-10 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">    {t.specsHead}
+ <h2 className="lg:text-3xl text-xl font-bold text-center py-2 px-10 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">    {t.specsHead}
   </h2>
   <p className="text-gray-600 text-lg mb-6">
     {t.addressTitle}
