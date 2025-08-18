@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState ,useEffect} from "react";
+import React, { useMemo, useState ,useEffect, useRef} from "react";
 import { Helmet } from "react-helmet";
 
 import { Segmented, Button, Tabs, Timeline, Card, Collapse, Tag, Statistic, Row, Col, Descriptions, Divider, message } from "antd";
@@ -79,7 +79,7 @@ const copy = {
         a: "हाँ, सुरक्षित पैकेजिंग और लॉजिस्टिक्स के साथ अंतरराष्ट्रीय शिपिंग उपलब्ध है।",
       },
     ],
-    orderNow: "अभी ऑर्डर करें",
+    orderNow: "अभी व्हाट्सएप करें",
         keywords: [
       "🕉️ नर्मदेश्वर शिवलिंग ऑनलाइन खरीदें ",
       "🌊 माँ नर्मदा पत्थर शिवलिंग ",
@@ -142,7 +142,7 @@ const copy = {
         a: "Yes, with secure packaging and logistics support.",
       },
     ],
-    orderNow: "Order Now",
+    orderNow: "WhatsApp Now",
         keywords: [
       "🕉️ Buy Narmadeshwar Shivling Online ",
       "🌊 Original Narmada Stone Shivling ",
@@ -187,12 +187,12 @@ export default function About() {
       key: "story",
       label: lang === "hi" ? t.storyHead : t.storyHead,
       children: (
-        <Row gutter={[24, 24]} className="rounded-lg shadow-lg border border-slate-100 !bg-gradient-to-br from-white to-yellow-50 !p-6">
+        <Row gutter={[24, 24]} className="">
           <Col xs={24} md={14}>
             <Fade>
               <Card   bordered={false}
-            className="rounded-2xl shadow-md !p-6 ">
-                <p className="text-base leading-7 text-gray-700 mb-4">{t.story}</p>
+            className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-yellow-50 ">
+                <p className=" text-sm sm:text-base leading-7 text-gray-700 mb-4">{t.story}</p>
                 <Divider />
                 <Timeline
                   items={[
@@ -247,13 +247,13 @@ export default function About() {
                     />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-t-2xl" />
                 <div className="absolute !bottom-4 left-4 text-white drop-shadow-lg">
-                      <h3 className="text-xl font-semibold">{t.heroTitle}</h3>
-                      <p className="text-sm opacity-90 max-w-xs">{t.heroSubtitle}</p>
+                      <h3 className="sm:text-xl font-semibold">{t.heroTitle}</h3>
+                      <p className="sm:text-sm text-xs opacity-90 max-w-xs">{t.heroSubtitle}</p>
                     </div>
                   </div>
                 }
               >
-                <Row gutter={16}className="text-center mb-[-4px] p-2">
+                <Row gutter={16}className="text-center mb-[-4px] p-2 !bg-gradient-to-br from-white to-yellow-50  ">
                   <Col span={8}>
                     <Statistic title={lang === "hi" ? "पीढ़ियाँ" : "Generations"} value={3} suffix={lang === "hi" ? "+" : "+"} />
                   </Col>
@@ -275,7 +275,7 @@ export default function About() {
       label: lang === "hi" ? "विशेषताएँ" : "Highlights",
       children: (
         <Fade>
-          <Row gutter={[24, 24]} className="!p-6 bg-[#f9fafb] rounded-2xl">
+          <Row gutter={[16, 16]} className="!p-4 sm:!p-6  !bg-gradient-to-br from-white to-yellow-50 rounded-2xl">
             {[
               { key: "ardhanarishwar", textHi: "अर्धनारीश्वर", textEn: "Ardhanarishwar" },
               { key: "janeu", textHi: "जनेऊ की आकृति", textEn: "Janeu marking" },
@@ -284,17 +284,17 @@ export default function About() {
               { key: "ganesha", textHi: "गणेश जी की आकृति", textEn: "Ganesha pattern" },
               { key: "tilak", textHi: "तिलकधारी", textEn: "Tilak marking" },
             ].map((f) => (
-              <Col xs={12} md={8} key={f.key}>
-                <Card               bordered={false}
-              className="rounded-2xl !shadow-md h-full bg-white hover:!shadow-lg transition-shadow !p-4"
->
-                  <div className="flex items-center gap-3 mb-2">
-                <ThunderboltOutlined className="text-[#f59e0b] text-xl" />
-                <h4 className="!text-base font-semibold text-gray-800">
+              <Col xs={24} sm={12} md={8}key={f.key}>
+                <Card             
+  bordered={false}
+              className="rounded-2xl !shadow-md h-full !bg-gradient-to-tl from-white to-yellow-50  hover:!shadow-lg transition-all duration-300 hover:scale-[1.02]  !p-4 sm:!p-5">
+              <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                <ThunderboltOutlined className="!text-yellow-500 text-xl sm:text-2xl" />
+                <h4 className="!text-base font-semibold !text-yellow-800">
                       {lang === "hi" ? f.textHi : f.textEn}
                     </h4>
                   </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-600 leading-6">
                     {lang === "hi"
                       ? "कई शिवलिंगों में ये नेचुरल पैटर्न स्वाभाविक रूप से दिखाई देते हैं।"
                       : "These natural patterns are often revealed in the stone itself."}
@@ -303,15 +303,17 @@ export default function About() {
               </Col>
             ))}
           </Row>
-          <Divider />
-      <Card bordered={false} className="rounded-2xl !shadow-md bg-white !p-6">
+      <Divider className="my-6 sm:my-8" />
+      <Card bordered={false} className="rounded-2xl !shadow-md !bg-gradient-to-br from-white to-yellow-50 !p-4 sm:!p-6">
             <Descriptions
-              title={     <h3 className="text-lg font-semibold text-gray-800">
+              title={     <h3 className="text-base sm:text-lg font-semibold text-yellow-700">
  {lang === "hi" ? t.accessoriesHead : t.accessoriesHead}             </h3>
               }
               bordered
               column={{ xs: 1, sm: 2, md: 3 }}
               size="middle"
+                        labelStyle={{ fontWeight: 600, color: "#374151" }}
+
             >
               <Descriptions.Item label={lang === "hi" ? "देव प्रतिमाएँ" : "Deities"}>
                 {lang === "hi"
@@ -325,7 +327,8 @@ export default function About() {
                 {lang === "hi" ? "तांबा, पीतल" : "Copper, Brass"}
               </Descriptions.Item>
             </Descriptions>
-            <p className="!mt-4 text-gray-700 !text-sm">{t.exportLine}</p>
+            <p className="mt-4 sm:mt-5 text-yellow-700 text-xs sm:text-sm italic border-t pt-3 sm:pt-4">
+              {t.exportLine}</p>
           </Card>
         </Fade>
       ),
@@ -336,53 +339,59 @@ export default function About() {
       children: (
         <Fade>
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={14}>
-              <Card className="rounded-2xl shadow-sm">
-                <p className="text-base leading-7 text-slate-700 dark:text-slate-200">{t.sizes}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
+        <Col xs={24} sm={24} md={14}>
+              <Card className=" rounded-2xl shadow-md !p-4 sm:!p-6 !bg-gradient-to-br from-white to-yellow-50 
+">
+                <p className="text-sm sm:text-base leading-7 text-gray-700 mb-3 sm:mb-4">{t.sizes}</p>
+            <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                   {["1\"", "3\"", "6\"", "9\"", "12\"", "18\"", "24\"", "3ft", "6ft", "12ft", "24ft"].map((s) => (
-                    <Tag key={s} color="geekblue" className="px-3 py-1 rounded-full text-sm">{s}</Tag>
+                    <Tag key={s} color="geekblue" className="px-3 py-1 rounded-full  text-xs sm:text-sm font-medium !bg-yellow-100 !text-yellow-700">{s}</Tag>
                   ))}
                 </div>
-                <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
                   <Button
                     type="primary"
-                    icon={<ShoppingCartOutlined />}
+                    icon={<WhatsAppOutlined  className="text-lg sm:text-xl mt-0.5"/>}
                     size="large"
+                    className="!bg-green-600 hover:!bg-green-700 rounded-xl  w-full sm:w-auto"
                     onClick={() => message.success(lang === "hi" ? "ऑर्डर सहायता खोली गई" : "Order assistance opened")}
                     href={WHATSAPP_LINK}
                     target="_blank"
                   >
                     {t.orderNow}
                   </Button>
-                  <Button icon={<PhoneOutlined />} href={`tel:+91${PHONE}`} size="large">
+                  <Button icon={<PhoneOutlined />} href={`tel:+91${PHONE}`} size="large"                              className="rounded-xl w-full sm:w-auto"
+
+>
                     {t.ctas.call}
                   </Button>
-                  <Button icon={<EnvironmentOutlined />} href={MAPS_LINK} target="_blank" size="large">
+                  <Button icon={<EnvironmentOutlined />} href={MAPS_LINK} target="_blank" size="large"                                className="rounded-xl w-full sm:w-auto"
+
+>
                     {t.ctas.directions}
                   </Button>
                 </div>
               </Card>
             </Col>
-            <Col xs={24} md={10}>
+        <Col xs={24} sm={24} md={10}>
               <Card className="rounded-2xl shadow-sm overflow-hidden">
-                <div className={`h-64 w-full ${bgGrad} flex items-center justify-center`}> 
+                <div className={"h-52 sm:h-64  w-full !bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center"}> 
                   {/* Replace with a size showcase image */}
                   <img
-                    src="/images/size-showcase.jpg"
+                    src="/narmadeshwar27.jpg"
                     alt="Narmadeshwar Shivling sizes"
                     className="h-full w-full object-cover"
                     onError={(e) => (e.currentTarget.style.display = "none")}
                   />
                 </div>
-                <div className="mt-4 grid grid-cols-2 gap-3">
-                  <Card size="small" className="rounded-xl">
-                    <h5 className="font-semibold text-sm">{lang === "hi" ? "टेंपल ग्रेड फिनिश" : "Temple-grade finish"}</h5>
-                    <p className="text-xs mt-1 text-slate-600 dark:text-slate-300">{lang === "hi" ? "हाथों से पॉलिश व संतुलन" : "Hand-polished and balanced"}</p>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 sm:p-6">
+                  <Card size="small" className="rounded-xl !bg-indigo-50 !p-4">
+                    <h5 className="font-semibold text-sm text-indigo-800">{lang === "hi" ? "टेंपल ग्रेड फिनिश" : "Temple-grade finish"}</h5>
+                    <p className="text-xs mt-1 text-slate-600">{lang === "hi" ? "हाथों से पॉलिश व संतुलन" : "Hand-polished and balanced"}</p>
                   </Card>
-                  <Card size="small" className="rounded-xl">
-                    <h5 className="font-semibold text-sm">{lang === "hi" ? "कस्टम उत्कीर्णन" : "Custom engraving"}</h5>
-                    <p className="text-xs mt-1 text-slate-600 dark:text-slate-300">{lang === "hi" ? "आदेश पर उपलब्ध" : "Available on request"}</p>
+                  <Card size="small" className="rounded-xl !bg-yellow-50 !p-4">
+                    <h5 className="font-semibold text-sm text-yellow-800">{lang === "hi" ? "कस्टम उत्कीर्णन" : "Custom engraving"}</h5>
+                    <p className="text-xs mt-1 text-slate-600">{lang === "hi" ? "आदेश पर उपलब्ध" : "Available on request"}</p>
                   </Card>
                 </div>
               </Card>
@@ -398,8 +407,13 @@ export default function About() {
         <Fade>
           <Collapse
             accordion
-            className="rounded-2xl overflow-hidden shadow-sm"
-            items={t.faqs.map((f, i) => ({ key: `${i}`, label: f.q, children: <p className="leading-7">{f.a}</p> }))}
+              bordered={false}
+            className="rounded-2xl overflow-hidden shadow-sm bg-gradient-to-br from-white to-yellow-50"
+                    expandIconPosition="end"
+
+            items={t.faqs.map((f, i) => ({ key: `${i}`, label:(
+            <span className="sm:text-base font-semibold !text-yellow-600 transition-colors">  {f.q}  </span>
+          ), children: <p className="leading-7 text-yellow-700 p-4 rounded-xl bg-yellow-100">{f.a}</p> }))}
           />
         </Fade>
       ),
@@ -442,6 +456,31 @@ export default function About() {
     }, 3000);
     return () => clearInterval(timer);
   }, [lang]);
+
+    const navRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const activeTab = navRef.current?.querySelector(".ant-tabs-tab-active");
+      if (activeTab) {
+        activeTab.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
+    });
+
+    if (navRef.current) {
+      observer.observe(navRef.current, {
+        attributes: true,
+        subtree: true,
+        attributeFilter: ["class"],
+      });
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="relative min-h-screen  bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0]  text-slate-900 ">
@@ -581,9 +620,20 @@ export default function About() {
       <Section className="pb-16">
         <Tabs
           defaultActiveKey="story"
-          items={tabs.map(({ key, label, children }) => ({ key, label, children }))}
+              className="custom-tabs"
+
+          items={tabs.map(({ key, label, children }) => ({ key, label:  (
+        <span className="px-4 py-2 text-sm md:text-base font-medium whitespace-nowrap  ">{label}</span>
+      ), children }))}
+              renderTabBar={(props, DefaultTabBar) => (
+          <div ref={navRef} className="overflow-x-auto  flex w-full">
+            <DefaultTabBar {...props} className="!flex !w-max space-x-2"  />
+          </div>
+        )}
+
         />
       </Section>
+      
 
       {/* Contact Card */}
     <Section className="py-12 lg:px-8 px-4">
