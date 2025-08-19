@@ -24,7 +24,7 @@ const WHATSAPP_LINK = `https://wa.me/91${PHONE}?text=${encodeURIComponent(
 const MAPS_QUERY = encodeURIComponent(
   "Namdev Narmadeshwar Shivling Arts, Mardana, Barwaha, Khargone, 451113"
 );
-const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+const MAPS_LINK = `https://maps.app.goo.gl/znzwKS4GrVBksKgh9`;
 
 const bgGrad =
   "bg-[radial-gradient(1000px_600px_at_50%_-200px,rgba(99,102,241,0.25),transparent_70%)]";

@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import { collection, getDocs , deleteDoc, doc, updateDoc  } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import {
   Table,
@@ -30,19 +36,25 @@ const { Header, Sider, Content } = Layout;
 function DashboardPage({ contactCount, galleryCount, reviewCount }) {
   return (
     <div>
-      <Title level={3} style={{ textAlign: "center" }}>Dashboard</Title>
-      <Row gutter={16}  justify="center" style={{ marginTop: 20 }}>
-  <Col xs={24} sm={8} md={6} lg={6}>
+      <Title level={3} style={{ textAlign: "center" }}>
+        Dashboard
+      </Title>
+      <Row gutter={16} justify="center" style={{ marginTop: 20 }}>
+        <Col xs={24} sm={8} md={6} lg={6}>
           <Card title="Total Contacts" bordered style={{ textAlign: "center" }}>
-            <h2 >{contactCount}</h2>
+            <h2>{contactCount}</h2>
           </Card>
         </Col>
-  <Col xs={24} sm={8} md={6} lg={6}>
-          <Card title="Total Product Images" bordered style={{ textAlign: "center" }} >
+        <Col xs={24} sm={8} md={6} lg={6}>
+          <Card
+            title="Total Product Images"
+            bordered
+            style={{ textAlign: "center" }}
+          >
             <h2>{galleryCount}</h2>
           </Card>
         </Col>
-  <Col xs={24} sm={8} md={6} lg={6}>
+        <Col xs={24} sm={8} md={6} lg={6}>
           <Card title="Total Reviews" bordered style={{ textAlign: "center" }}>
             <h2>{reviewCount}</h2>
           </Card>
@@ -61,15 +73,48 @@ function ContactsPage({ contacts, loading }) {
   ];
   return (
     <div>
-      <Title level={3} style={{ textAlign: "center" }}>Contact Form Submissions</Title>
+      <Title level={3} style={{ textAlign: "center" }}>
+        Contact Form Submissions
+      </Title>
       <Table
         dataSource={contacts}
         columns={columns}
         loading={loading}
         bordered
-        pagination={{ pageSize: 5 }}
-        scroll={{ x: "max-content" }} // Horizontal scroll for small screens
-
+        scroll={{ x: "max-content" }}
+        pagination={{
+          pageSize: 5,
+          showSizeChanger: false,
+          showTotal: (total) => (
+            <p>
+              Total <span className="font-semibold">{total}</span> Submissions
+            </p>
+          ),
+          className: "mx-4 custom-pagination",
+          responsive: true,
+          onChange: () => {
+            window.scrollTo({ top: 250, behavior: "smooth" });
+          },
+        }}
+        className="custom-table"
+        rowClassName={(_, index) =>
+          index % 2 === 0 ? "custom-odd-row" : "custom-even-row"
+        }
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{
+                  backgroundColor: "#274b6b",
+                  color: "white",
+                  textAlign: "center",
+                  whiteSpace: "nowrap",
+                }}
+              />
+            ),
+          },
+        }}
       />
     </div>
   );
@@ -87,20 +132,52 @@ function ReviewsPage({ reviews, loading }) {
       key: "image",
       render: (text) => text && <Image width={80} src={text} />,
     },
-    
   ];
 
   return (
     <div>
-      <Title level={3} style={{ textAlign: "center", marginBottom: 20 }}>User Reviews</Title>
+      <Title level={3} style={{ textAlign: "center", marginBottom: 20 }}>
+        User Reviews
+      </Title>
       <Table
         dataSource={reviews}
         columns={columns}
         loading={loading}
         bordered
-        
+        pagination={{
+          pageSize: 5,
+          showSizeChanger: false,
+          showTotal: (total) => (
+            <p>
+              Total <span className="font-semibold">{total}</span> Reviews
+            </p>
+          ),
+          className: "mx-4 custom-pagination",
+          responsive: true,
+          onChange: () => {
+            window.scrollTo({ top: 250, behavior: "smooth" });
+          },
+        }}
         scroll={{ x: "max-content" }} // Horizontal scroll for small screens
-
+        className="custom-table"
+        rowClassName={(_, index) =>
+          index % 2 === 0 ? "custom-odd-row" : "custom-even-row"
+        }
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{
+                  backgroundColor: "#274b6b",
+                  color: "white",
+                  textAlign: "center",
+                  whiteSpace: "nowrap",
+                }}
+              />
+            ),
+          },
+        }}
       />
     </div>
   );
@@ -160,7 +237,7 @@ export default function AdminDashboard() {
           contactSnap.docs.map((doc) => ({ key: doc.id, ...doc.data() }))
         );
 
-          await fetchReviews(); 
+        await fetchReviews();
       } catch (err) {
         console.error(err);
         message.error("Failed to load data");
@@ -203,7 +280,7 @@ export default function AdminDashboard() {
         >
           Admin
         </div>
-        
+
         <Menu
           theme="dark"
           mode="inline"
@@ -233,7 +310,6 @@ export default function AdminDashboard() {
             fontSize: "24px",
             fontWeight: "bold",
             textAlign: "center",
-
           }}
         >
           Admin Panel

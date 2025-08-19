@@ -178,3 +178,15 @@
 .custom-tabs .ant-tabs-ink-bar {
   @apply hidden;
 }
+
+.custom-table .custom-odd-row td {
+  background-color: #FFFF !important;
+    border: 0.7px solid rgba(39, 75, 107, 0.2) !important;
+
+}
+
+.custom-table .custom-even-row td {
+  background-color: #d2e1f3 !important;
+    border: 0.7px solid rgba(39, 75, 107, 0.2) !important;
+
+}
