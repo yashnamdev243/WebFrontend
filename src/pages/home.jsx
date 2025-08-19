@@ -7,17 +7,27 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase"; // your firebase config
 
 import ProductCard from "../components/ProductCard";
+import { Spin } from "antd";
 
 const Home = () => {
    const [products, setProducts] = useState([]);
+     const [loading, setLoading] = useState(true);
+
    useEffect(() => {
       const fetchProducts = async () => {
+              try {
+
         const querySnapshot = await getDocs(collection(db, "products"));
         const productsData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
         setProducts(productsData);
+         } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
       };
   
       fetchProducts();
@@ -40,6 +50,11 @@ const Home = () => {
 
       </h2></div>
          <div className="z-10 w-full max-w-[90%] md:max-w-[95%] mx-auto  md:p-4 my-4 ">
+           {loading ? (
+              <div className="flex justify-center items-center py-20">
+                <Spin size="large" tip="Loading products..." />
+              </div>
+            ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:px-6" >
 
           {/* {products.map((product) => (
@@ -51,6 +66,8 @@ const Home = () => {
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+                    )}
+
         </div>
 
 
