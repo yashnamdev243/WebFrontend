@@ -190,3 +190,50 @@
     border: 0.7px solid rgba(39, 75, 107, 0.2) !important;
 
 }
+
+
+/* Pagination styles */
+
+.custom-pagination .ant-pagination {
+  background-color: #f0f0f0;
+  padding: 10px !important;
+  border-radius: 8px;
+  justify-content: center;
+}
+
+/* Style pagination items */
+.custom-pagination .ant-pagination-item {
+  border-radius: 30%;
+  border: 1px solid #274B6B;
+  color: #1890ff;
+  min-width: 30px;
+  height: 30px;
+  line-height: 28px;
+  box-shadow: 0 8px 8px 0 rgba(45, 75, 107, 0.3),
+    0 6px 20px 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+.custom-pagination .ant-pagination-item-active{
+  background-color: #274B6B;
+  color: white !important;
+  border-color: #274B6B;
+}
+.custom-pagination .ant-pagination-item-active a{
+  color: white !important;
+}
+
+/* Hover effect */
+.custom-pagination .ant-pagination-item:hover {
+  border-color: #274B6B;
+  color: #40a9ff;
+}
+
+/* Style next/prev arrows */
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next {
+  color: #1890ff;
+}
+
+.custom-pagination .ant-pagination-options {
+  display: none; /* optional: hide page size selector */
+}

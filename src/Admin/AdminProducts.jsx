@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   Table,
@@ -136,11 +135,12 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
     setIsModalOpen(true);
   };
   const columns = [
-    { title: "Name", dataIndex: "name", key: "name" },
+    { title: "Name", dataIndex: "name", key: "name" ,align: "center",},
     {
       title: "Category",
       dataIndex: "category",
       key: "category",
+      align: "center",
       filters: [
         { text: "Narmadeshwar Shivling", value: "narmadeshwar-shivling" },
         { text: "Jaldhara", value: "jaldhara" },
@@ -162,11 +162,13 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
       title: "Image",
       dataIndex: "image",
       key: "image",
-      render: (text) => <Image width={80} src={text} />,
+      align: "center",
+      render: (text) => <Image width={80} src={text} className="rounded-md" />,
     },
     {
       title: "Actions",
       key: "actions",
+      align: "center",
       render: (_, record) => (
         <Space>
           <Button
@@ -181,6 +183,7 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
             onConfirm={() => handleDeleteProduct(record.id)}
             okText="Yes"
             cancelText="No"
+            okButtonProps={{ danger: true }}
           >
             <Button danger icon={<DeleteOutlined />}>
               Delete
@@ -227,19 +230,22 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
 
   return (
     <div>
-<div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 16,
-      gap: "12px",
-    flexWrap: "wrap",
-  }}
->     
+        <Title level={3} style={{ textAlign: "center", marginBottom: 20 }}>
+        Manage Products
+      </Title>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 16,
+          gap: "12px",
+          flexWrap: "wrap",
+        }}
+      >
         <AutoComplete
           options={options}
-    style={{ flex: 1, minWidth: 200, maxWidth: 300 }}
+          style={{ flex: 1, minWidth: 200, maxWidth: 300 }}
           onSearch={handleSearch}
           onSelect={(value) => setSearchText(value)} // pick suggestion
         >
@@ -248,71 +254,74 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
             allowClear
             enterButton
             onChange={(e) => setSearchText(e.target.value)}
-      style={{ width: "100%" }}
+            style={{ width: "100%" }}
           />
         </AutoComplete>
 
-           <Button
+        <Button
           type="primary"
           icon={<AppstoreAddOutlined />}
-          style={{
-      minWidth: 120,
-            backgroundColor: "#28a745", // green
-            borderColor: "#28a745",
-            color: "#fff",
-            borderRadius: 6,
-            fontWeight: 500,
-                  whiteSpace: "nowrap",
-
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = "#218838")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = "#28a745")
-          }
+          
+          // style={{
+          //   minWidth: 120,
+          //   backgroundColor: "#28a745", // #096dd9
+          //   borderColor: "#28a745",
+          //   color: "#fff",
+          //   borderRadius: 6,
+          //   fontWeight: 500,
+          //   whiteSpace: "nowrap",
+          // }}
+          // onMouseEnter={(e) =>
+          //   (e.currentTarget.style.backgroundColor = "#218838")
+          // }
+          // onMouseLeave={(e) =>
+          //   (e.currentTarget.style.backgroundColor = "#28a745")
+          // }
           onClick={() => setIsModalOpen(true)}
         >
           Add Product
         </Button>
-
-</div>
+      </div>
       <Table
         dataSource={filteredData.map((item) => ({ key: item.id, ...item }))}
         columns={columns}
         scroll={{ x: "max-content" }}
- pagination={{
-                    pageSize: 5,
-                    showSizeChanger: false,
-                    showTotal: (total) => <p>Total <span className="font-semibold">{total}</span> Products</p>,
-                    className: "mx-4 custom-pagination",
-                    responsive: true,
-                    onChange: () => {
-                      window.scrollTo({ top: 250, behavior: "smooth" });
-                    },
-                  }}        onChange={(pagination, filters, sorter) => {
+        pagination={{
+          pageSize: 5,
+          showSizeChanger: false,
+          showTotal: (total) => (
+            <p>
+              Total <span className="font-semibold">{total}</span> Products
+            </p>
+          ),
+          className: "mx-4 custom-pagination",
+          responsive: true,
+          onChange: () => {
+            window.scrollTo({ top: 250, behavior: "smooth" });
+          },
+        }}
+        onChange={(pagination, filters, sorter) => {
           console.log("Filters applied:", filters);
         }} // Horizontal scroll for small screens
-          className="custom-table"
-          rowClassName={(_, index) =>
-                    index % 2 === 0 ? "custom-odd-row" : "custom-even-row"
-                  }
-         components={{
-                    header: {
-                      cell: (props) => (
-                        <th
-                          {...props}
-                          style={{
-                            backgroundColor: "#274b6b",
-                            color: "white",
-                            textAlign: "center",
-                            whiteSpace: "nowrap",
-                          }}
-                        />
-                      ),
-                    },
-                   
-                  }}
+        className="custom-table"
+        rowClassName={(_, index) =>
+          index % 2 === 0 ? "custom-odd-row" : "custom-even-row"
+        }
+        components={{
+          header: {
+            cell: (props) => (
+              <th
+                {...props}
+                style={{
+                  backgroundColor: "#274b6b",
+                  color: "white",
+                  textAlign: "center",
+                  whiteSpace: "nowrap",
+                }}
+              />
+            ),
+          },
+        }}
       />
 
       <Modal
@@ -322,7 +331,7 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
             style={{
               margin: 12,
               textAlign: "center",
-              backgroundColor: "green",
+              backgroundColor: "#096dd9",
               color: "#ffff",
               borderRadius: 6,
               padding: 4,
@@ -344,8 +353,8 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
         okText={editingProduct ? "Update" : "Create"}
         okButtonProps={{
           style: {
-            backgroundColor: "green",
-            borderColor: "green",
+            backgroundColor: "#096dd9",
+            borderColor: "#096dd9",
             color: "#fff",
           },
         }}
@@ -370,8 +379,8 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
             <Button
               type="primary"
               style={{
-                backgroundColor: "green",
-                borderColor: "green",
+                backgroundColor: "#096dd9",
+                borderColor: "#096dd9",
                 marginLeft: 8,
                 color: "#ffff",
               }}
