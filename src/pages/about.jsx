@@ -360,12 +360,12 @@ export default function About() {
                   >
                     {t.orderNow}
                   </Button>
-                  <Button icon={<PhoneOutlined />} href={`tel:+91${PHONE}`} size="large"                              className="rounded-xl w-full sm:w-auto"
+                  <Button  type="primary" icon={<PhoneOutlined  className="text-lg sm:text-xl mt-0.5" />} href={`tel:+91${PHONE}`} size="large"                              className="!bg-blue-600 hover:!bg-blue-700 rounded-xl w-full sm:w-auto"
 
 >
                     {t.ctas.call}
                   </Button>
-                  <Button icon={<EnvironmentOutlined />} href={MAPS_LINK} target="_blank" size="large"                                className="rounded-xl w-full sm:w-auto"
+                  <Button  type="primary" icon={<EnvironmentOutlined  className="text-lg sm:text-xl mt-0.5"/>} href={MAPS_LINK} target="_blank" size="large"                                className="!bg-red-600 hover:!bg-red-700 rounded-xl w-full sm:w-auto"
 
 >
                     {t.ctas.directions}
@@ -378,7 +378,7 @@ export default function About() {
                 <div className={"h-52 sm:h-64  w-full !bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center"}> 
                   {/* Replace with a size showcase image */}
                   <img
-                    src="/narmadeshwar27.jpg"
+                    src="/slide8.jpg"
                     alt="Narmadeshwar Shivling sizes"
                     className="h-full w-full object-cover"
                     onError={(e) => (e.currentTarget.style.display = "none")}

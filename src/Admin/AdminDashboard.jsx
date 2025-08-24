@@ -19,6 +19,10 @@ import {
   Menu,
   Image,
   Input,
+  Button,
+  Popconfirm,
+  Modal,
+  Space,
 } from "antd";
 import {
   MailOutlined,
@@ -29,6 +33,11 @@ import {
   ContactsOutlined,
   UserAddOutlined,
   FileImageOutlined,
+  EyeOutlined,
+  UserOutlined,
+  PhoneOutlined,
+  MessageOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import AdminProducts from "./AdminProducts";
 import AdminSlides from "./AdminSlides";
@@ -116,8 +125,12 @@ function DashboardPage({
 }
 
 // Contacts Page
-function ContactsPage({ contacts, loading }) {
+function ContactsPage({ contacts, loading ,onDelete}) {
   const [searchText, setSearchText] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+      const [selectedContact, setSelectedContact] = useState(null);
+
+
   // Filter contacts based on search
   const filteredContacts = contacts.filter((contact) =>
     Object.values(contact)
@@ -137,6 +150,40 @@ function ContactsPage({ contacts, loading }) {
     { title: "Name", dataIndex: "name", key: "name", align: "center" },
     { title: "Contact", dataIndex: "contact", key: "contact", align: "center" },
     { title: "Message", dataIndex: "message", key: "message", align: "center" },
+        // ✅ Action Column
+    {
+      title: "Actions",
+      key: "actions",
+      align: "center",
+      render: (_, record) => (
+          <div className="flex gap-2 justify-center">
+          <Button
+            type="primary"
+            icon={<EyeOutlined />}
+            onClick={() => {
+              setSelectedContact(record);
+              setIsModalOpen(true);
+            }}
+          >
+            View
+          </Button>
+
+          <Popconfirm
+            title="Are you sure you want to delete this submission?"
+            onConfirm={() => onDelete(record.key)}   
+            okText="Yes"
+            cancelText="No"
+            okButtonProps={{ danger: true }}
+
+          >
+            <Button type="primary" danger className="!bg-red-600 hover:!bg-red-500">
+              Delete
+            </Button>
+          </Popconfirm>
+        </div>
+      ),
+    },
+
   ];
   return (
     <div>
@@ -157,7 +204,7 @@ function ContactsPage({ contacts, loading }) {
       <Table
         dataSource={filteredContacts}
         columns={columns}
-        rowKey="id"
+        rowKey="key"
         loading={loading}
         bordered
         scroll={{ x: "max-content" }}
@@ -195,6 +242,83 @@ function ContactsPage({ contacts, loading }) {
           },
         }}
       />
+            {/* View Modal */}
+      {/* <Modal
+        title="Contact Details"
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={null}
+      >
+        {selectedContact && (
+          <div className="space-y-2">
+            <p>
+              <strong>Name:</strong> {selectedContact.name}
+            </p>
+            <p>
+              <strong>Contact:</strong> {selectedContact.contact}
+            </p>
+            <p>
+              <strong>Message:</strong> {selectedContact.message}
+            </p>
+          </div>
+        )}
+      </Modal> */}
+
+
+{/* View Modal */}
+<Modal
+  title={null}
+  open={isModalOpen}
+  footer={null}
+  centered
+  closable={false} // hide default X
+  bodyStyle={{
+    padding: 0,
+    borderRadius: "12px",
+    background: "#f9fafb",
+  }}
+  onCancel={() => setIsModalOpen(false)}
+>
+  {selectedContact && (
+    <div className="overflow-hidden rounded-xl shadow-lg">
+      {/* Custom Header */}
+      <div className="bg-[#274b6b] text-white py-4 px-6 flex items-center justify-between">
+        <h2 className="text-lg font-semibold tracking-wide m-0">
+          Contact Details
+        </h2>
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="text-white hover:text-red-400 rounded-full p-1 transition"
+        >
+          <CloseOutlined className="text-lg" />
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="bg-white p-6 space-y-4">
+        <p className="flex items-center text-base text-gray-800">
+          <UserOutlined className="text-blue-600 mr-2 text-lg" />
+          <span className="font-medium text-gray-600 mr-1">Name:</span>
+          {selectedContact.name}
+        </p>
+
+        <p className="flex items-center text-base text-gray-800">
+          <PhoneOutlined className="text-green-600 mr-2 text-lg" />
+          <span className="font-medium text-gray-600 mr-1">Contact:</span>
+          {selectedContact.contact}
+        </p>
+
+        <p className="flex items-start text-base text-gray-800">
+          <MessageOutlined className="text-purple-600 mr-2 text-lg mt-0.5" />
+          <span className="font-medium text-gray-600 mr-1">Message:</span>
+          <span>{selectedContact.message}</span>
+        </p>
+      </div>
+    </div>
+  )}
+</Modal>
+
+
     </div>
   );
 }
@@ -213,6 +337,7 @@ function ReviewsPage({ reviews, loading }) {
       render: (text) =>
         text && <Image width={80} src={text} className="rounded-md" />,
     },
+    
   ];
 
   return (
@@ -354,6 +479,16 @@ export default function AdminDashboard() {
       message.error("Failed to load slides");
     }
   };
+const handleDeleteContact = async (id) => {
+  try {
+    await deleteDoc(doc(db, "contacts", id)); // delete from Firestore
+    setContacts((prev) => prev.filter((c) => c.key !== id)); // ✅ remove by key
+    message.success("Contact deleted successfully");
+  } catch (err) {
+    console.error(err);
+    message.error("Failed to delete contact");
+  }
+};
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -500,7 +635,7 @@ export default function AdminDashboard() {
               />
               <Route
                 path="/contacts"
-                element={<ContactsPage contacts={contacts} loading={loading} />}
+                element={<ContactsPage contacts={contacts} loading={loading}onDelete={handleDeleteContact}    />}
               />
               <Route
                 path="/products"
