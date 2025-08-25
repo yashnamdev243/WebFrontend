@@ -237,3 +237,32 @@
 .custom-pagination .ant-pagination-options {
   display: none; /* optional: hide page size selector */
 }
+
+/* Target your custom wrapper */
+.custom-tabs-wrapper::-webkit-scrollbar {
+  height: 8px;   /* thickness for horizontal scrollbar */
+}
+
+.custom-tabs-wrapper::-webkit-scrollbar-track {
+  background: #e5e7eb;  /* light gray track */
+  border-radius: 8px;
+}
+
+.custom-tabs-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ffcc70, #eacb01);
+  border-radius: 8px;
+}
+
+.custom-tabs-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ffcc70, #eacb01);
+}
+.ant-timeline-item-head {
+  width: 24px !important;
+  height: 24px !important;
+  margin-top: -12px; /* half of height to center */
+  border-radius: 50%;
+}
+
+.ant-timeline-item-head-blue {
+  background-color: #1890ff; /* change color if needed */
+}

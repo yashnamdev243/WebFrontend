@@ -1,8 +1,21 @@
-
-import React, { useMemo, useState ,useEffect, useRef} from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 
-import { Segmented, Button, Tabs, Timeline, Card, Collapse, Tag, Statistic, Row, Col, Descriptions, Divider, message } from "antd";
+import {
+  Segmented,
+  Button,
+  Tabs,
+  Timeline,
+  Card,
+  Collapse,
+  Tag,
+  Statistic,
+  Row,
+  Col,
+  Descriptions,
+  Divider,
+  message,
+} from "antd";
 import {
   PhoneOutlined,
   WhatsAppOutlined,
@@ -80,7 +93,7 @@ const copy = {
       },
     ],
     orderNow: "अभी व्हाट्सएप करें",
-        keywords: [
+    keywords: [
       "🕉️ नर्मदेश्वर शिवलिंग ऑनलाइन खरीदें ",
       "🌊 माँ नर्मदा पत्थर शिवलिंग ",
       "🙏 हस्तनिर्मित शिवलिंग ",
@@ -92,7 +105,6 @@ const copy = {
       "📿 सकारात्मक ऊर्जा और समृद्धि हेतु शिवलिंग ",
       "🏔️ खरगोन, मध्यप्रदेश से ओरिजिनल ",
     ],
-
   },
   en: {
     seoTitle:
@@ -143,7 +155,7 @@ const copy = {
       },
     ],
     orderNow: "WhatsApp Now",
-        keywords: [
+    keywords: [
       "🕉️ Buy Narmadeshwar Shivling Online ",
       "🌊 Original Narmada Stone Shivling ",
       "🙏 Handcrafted Narmadeshwar Shivling Idol ",
@@ -155,9 +167,35 @@ const copy = {
       "📿 Shivling for Spiritual Energy & Prosperity ",
       "🏔️ Authentic Narmadeshwar Shivling from Khargone, MP ",
     ],
-
   },
 };
+const timelineData = [
+  {
+    color: "green",
+    icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
+    textHi: "स्व. मांगीलाल जी नामदेव — परंपरा की शुरुआत",
+    textEn: "Late Mangilal Namdev — Craft begins",
+  },
+  {
+    color: "blue",
+    icon: <SafetyCertificateOutlined />,
+    textHi: "अटल बिहारी वाजपेयी जी सहित संतों को शिवलिंग भेंट",
+    textEn:
+      "Shivlings presented to leaders & saints incl. Atal Bihari Vajpayee",
+  },
+  {
+    color: "purple",
+    icon: <ReadOutlined />,
+    textHi: "दीपक जी, शिवनारायण जी और अरविंद नामदेव द्वारा परंपरा का विस्तार",
+    textEn: "Tradition carried by Deepak, Shivanarayan & Arvind Namdev",
+  },
+  {
+    color: "gold",
+    icon: <GlobalOutlined />,
+    textHi: "भारत से विदेश तक स्थापना",
+    textEn: "Installed across India & overseas",
+  },
+];
 
 // ---------- SMALL UI BITS ----------
 const Fade = ({ children, delay = 0 }) => (
@@ -172,7 +210,10 @@ const Fade = ({ children, delay = 0 }) => (
 );
 
 const Section = ({ id, children, className = "" }) => (
-  <section id={id} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+  <section
+    id={id}
+    className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}
+  >
     {children}
   </section>
 );
@@ -190,11 +231,15 @@ export default function About() {
         <Row gutter={[24, 24]} className="">
           <Col xs={24} md={14}>
             <Fade>
-              <Card   bordered={false}
-            className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-yellow-50 ">
-                <p className=" text-sm sm:text-base leading-7 text-gray-700 mb-4">{t.story}</p>
+              <Card
+                bordered={false}
+                className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-yellow-50 "
+              >
+                <p className=" text-sm sm:text-base leading-7 text-gray-700 mb-4">
+                  {t.story}
+                </p>
                 <Divider />
-                <Timeline
+                {/* <Timeline
                   items={[
                     {
                       color: "green",
@@ -227,6 +272,27 @@ export default function About() {
                         lang === "hi" ? "भारत से विदेश तक स्थापना" : "Installed across India & overseas",
                     },
                   ]}
+                /> */}
+                <Timeline
+                  items={timelineData.map(
+                    ({ color, icon, textHi, textEn }) => ({
+                      color,
+                      dot: (
+                        <div className="flex items-center justify-center h-full">
+                          <span style={{ fontSize: "16px", lineHeight: 0 }}>
+                            {icon}
+                          </span>
+                        </div>
+                      ),
+                      children: (
+                        <div className="flex items-center">
+                          <p className="text-sm sm:text-base ml-2 leading-7">
+                            {lang === "hi" ? textHi : textEn}{" "}
+                          </p>{" "}
+                        </div>
+                      ),
+                    })
+                  )}
                 />
               </Card>
             </Fade>
@@ -234,10 +300,10 @@ export default function About() {
           <Col xs={24} md={10}>
             <Fade delay={0.1}>
               <Card
-                 bordered={false}
-            className="rounded-2xl shadow-md overflow-hidden "
+                bordered={false}
+                className="rounded-2xl shadow-md overflow-hidden "
                 cover={
-              <div className="relative h-64 sm:h-80 md:h-96 w-full">
+                  <div className="relative h-64 sm:h-80 md:h-96 w-full">
                     {/* Replace with your image */}
                     <img
                       src="/slide8.jpg"
@@ -245,23 +311,42 @@ export default function About() {
                       className="h-full w-full object-cover rounded-t-2xl"
                       onError={(e) => (e.currentTarget.style.display = "none")}
                     />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-t-2xl" />
-                <div className="absolute !bottom-4 left-4 text-white drop-shadow-lg">
-                      <h3 className="sm:text-xl font-semibold">{t.heroTitle}</h3>
-                      <p className="sm:text-sm text-xs opacity-90 max-w-xs">{t.heroSubtitle}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-t-2xl" />
+                    <div className="absolute !bottom-4 left-4 text-white drop-shadow-lg">
+                      <h3 className="sm:text-xl font-semibold">
+                        {t.heroTitle}
+                      </h3>
+                      <p className="sm:text-sm text-xs opacity-90 max-w-xs">
+                        {t.heroSubtitle}
+                      </p>
                     </div>
                   </div>
                 }
               >
-                <Row gutter={16}className="text-center mb-[-4px] p-2 !bg-gradient-to-br from-white to-yellow-50  ">
+                <Row
+                  gutter={16}
+                  className="text-center mb-[-4px] p-2 !bg-gradient-to-br from-white to-yellow-50  "
+                >
                   <Col span={8}>
-                    <Statistic title={lang === "hi" ? "पीढ़ियाँ" : "Generations"} value={3} suffix={lang === "hi" ? "+" : "+"} />
+                    <Statistic
+                      title={lang === "hi" ? "पीढ़ियाँ" : "Generations"}
+                      value={3}
+                      suffix={lang === "hi" ? "+" : "+"}
+                    />
                   </Col>
                   <Col span={8}>
-                    <Statistic title={lang === "hi" ? "आकार" : "Sizes"} value={24} suffix={lang === "hi" ? "फीट" : "ft"} />
+                    <Statistic
+                      title={lang === "hi" ? "आकार" : "Sizes"}
+                      value={24}
+                      suffix={lang === "hi" ? "फीट" : "ft"}
+                    />
                   </Col>
                   <Col span={8}>
-                    <Statistic title={lang === "hi" ? "देश" : "Countries"} value={15} suffix={lang === "hi" ? "+" : "+"} />
+                    <Statistic
+                      title={lang === "hi" ? "देश" : "Countries"}
+                      value={15}
+                      suffix={lang === "hi" ? "+" : "+"}
+                    />
                   </Col>
                 </Row>
               </Card>
@@ -275,26 +360,42 @@ export default function About() {
       label: lang === "hi" ? "विशेषताएँ" : "Highlights",
       children: (
         <Fade>
-          <Row gutter={[16, 16]} className="!p-4 sm:!p-6  !bg-gradient-to-br from-white to-yellow-50 rounded-2xl">
+          <Row
+            gutter={[16, 16]}
+            className="!p-4 sm:!p-6  !bg-gradient-to-br from-white to-yellow-50 rounded-2xl"
+          >
             {[
-              { key: "ardhanarishwar", textHi: "अर्धनारीश्वर", textEn: "Ardhanarishwar" },
-              { key: "janeu", textHi: "जनेऊ की आकृति", textEn: "Janeu marking" },
+              {
+                key: "ardhanarishwar",
+                textHi: "अर्धनारीश्वर",
+                textEn: "Ardhanarishwar",
+              },
+              {
+                key: "janeu",
+                textHi: "जनेऊ की आकृति",
+                textEn: "Janeu marking",
+              },
               { key: "om", textHi: "ॐ की आकृति", textEn: "Om marking" },
               { key: "trishul", textHi: "त्रिशूल", textEn: "Trishul" },
-              { key: "ganesha", textHi: "गणेश जी की आकृति", textEn: "Ganesha pattern" },
+              {
+                key: "ganesha",
+                textHi: "गणेश जी की आकृति",
+                textEn: "Ganesha pattern",
+              },
               { key: "tilak", textHi: "तिलकधारी", textEn: "Tilak marking" },
             ].map((f) => (
-              <Col xs={24} sm={12} md={8}key={f.key}>
-                <Card             
-  bordered={false}
-              className="rounded-2xl !shadow-md h-full !bg-gradient-to-tl from-white to-yellow-50  hover:!shadow-lg transition-all duration-300 hover:scale-[1.02]  !p-4 sm:!p-5">
-              <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                <ThunderboltOutlined className="!text-yellow-500 text-xl sm:text-2xl" />
-                <h4 className="!text-base font-semibold !text-yellow-800">
+              <Col xs={24} sm={12} md={8} key={f.key}>
+                <Card
+                  bordered={false}
+                  className="rounded-2xl !shadow-md h-full !bg-gradient-to-tl from-white to-yellow-50  hover:!shadow-lg transition-all duration-300 hover:scale-[1.02]  !p-4 sm:!p-5"
+                >
+                  <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                    <ThunderboltOutlined className="!text-yellow-500 text-xl sm:text-2xl" />
+                    <h4 className="!text-base font-semibold !text-yellow-800">
                       {lang === "hi" ? f.textHi : f.textEn}
                     </h4>
                   </div>
-              <p className="text-xs sm:text-sm text-gray-600 leading-6">
+                  <p className="text-xs sm:text-sm text-gray-600 leading-6">
                     {lang === "hi"
                       ? "कई शिवलिंगों में ये नेचुरल पैटर्न स्वाभाविक रूप से दिखाई देते हैं।"
                       : "These natural patterns are often revealed in the stone itself."}
@@ -303,32 +404,43 @@ export default function About() {
               </Col>
             ))}
           </Row>
-      <Divider className="my-6 sm:my-8" />
-      <Card bordered={false} className="rounded-2xl !shadow-md !bg-gradient-to-br from-white to-yellow-50 !p-4 sm:!p-6">
+          <Divider className="my-6 sm:my-8" />
+          <Card
+            bordered={false}
+            className="rounded-2xl !shadow-md !bg-gradient-to-br from-white to-yellow-50 !p-4 sm:!p-6"
+          >
             <Descriptions
-              title={     <h3 className="text-base sm:text-lg font-semibold text-yellow-700">
- {lang === "hi" ? t.accessoriesHead : t.accessoriesHead}             </h3>
+              title={
+                <h3 className="text-base sm:text-lg font-semibold text-yellow-700">
+                  {lang === "hi" ? t.accessoriesHead : t.accessoriesHead}{" "}
+                </h3>
               }
               bordered
               column={{ xs: 1, sm: 2, md: 3 }}
               size="middle"
-                        labelStyle={{ fontWeight: 600, color: "#374151" }}
-
+              labelStyle={{ fontWeight: 600, color: "#374151" }}
             >
-              <Descriptions.Item label={lang === "hi" ? "देव प्रतिमाएँ" : "Deities"}>
+              <Descriptions.Item
+                label={lang === "hi" ? "देव प्रतिमाएँ" : "Deities"}
+              >
                 {lang === "hi"
                   ? "नंदी, गणेश, पार्वती, कार्तिकेय, संपूर्ण शिव परिवार"
                   : "Nandi, Ganesha, Parvati, Kartikeya, Complete Shiva Parivar"}
               </Descriptions.Item>
-              <Descriptions.Item label={lang === "hi" ? "पूजन सामग्री" : "Puja Items"}>
-                {lang === "hi" ? "नाग, त्रिशूल, जलपात्र" : "Naag, Trishul, Jalpatra"}
+              <Descriptions.Item
+                label={lang === "hi" ? "पूजन सामग्री" : "Puja Items"}
+              >
+                {lang === "hi"
+                  ? "नाग, त्रिशूल, जलपात्र"
+                  : "Naag, Trishul, Jalpatra"}
               </Descriptions.Item>
               <Descriptions.Item label={lang === "hi" ? "धातु" : "Metals"}>
                 {lang === "hi" ? "तांबा, पीतल" : "Copper, Brass"}
               </Descriptions.Item>
             </Descriptions>
             <p className="mt-4 sm:mt-5 text-yellow-700 text-xs sm:text-sm italic border-t pt-3 sm:pt-4">
-              {t.exportLine}</p>
+              {t.exportLine}
+            </p>
           </Card>
         </Fade>
       ),
@@ -339,43 +451,90 @@ export default function About() {
       children: (
         <Fade>
           <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={14}>
-              <Card className=" rounded-2xl shadow-md !p-4 sm:!p-6 !bg-gradient-to-br from-white to-yellow-50 
-">
-                <p className="text-sm sm:text-base leading-7 text-gray-700 mb-3 sm:mb-4">{t.sizes}</p>
-            <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                  {["1\"", "3\"", "6\"", "9\"", "12\"", "18\"", "24\"", "3ft", "6ft", "12ft", "24ft"].map((s) => (
-                    <Tag key={s} color="geekblue" className="px-3 py-1 rounded-full  text-xs sm:text-sm font-medium !bg-yellow-100 !text-yellow-700">{s}</Tag>
+            <Col xs={24} sm={24} md={14}>
+              <Card
+                className=" rounded-2xl shadow-md !p-4 sm:!p-6 !bg-gradient-to-br from-white to-yellow-50 
+"
+              >
+                <p className="text-sm sm:text-base leading-7 text-gray-700 mb-3 sm:mb-4">
+                  {t.sizes}
+                </p>
+                <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                  {[
+                    '1"',
+                    '3"',
+                    '6"',
+                    '9"',
+                    '12"',
+                    '18"',
+                    '24"',
+                    "3ft",
+                    "6ft",
+                    "12ft",
+                    "24ft",
+                  ].map((s) => (
+                    <Tag
+                      key={s}
+                      color="geekblue"
+                      className="px-3 py-1 rounded-full  text-xs sm:text-sm font-medium !bg-yellow-100 !text-yellow-700"
+                    >
+                      {s}
+                    </Tag>
                   ))}
                 </div>
-            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+                <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
                   <Button
                     type="primary"
-                    icon={<WhatsAppOutlined  className="text-lg sm:text-xl mt-0.5"/>}
+                    icon={
+                      <WhatsAppOutlined className="text-lg sm:text-xl mt-0.5" />
+                    }
                     size="large"
                     className="!bg-green-600 hover:!bg-green-700 rounded-xl  w-full sm:w-auto"
-                    onClick={() => message.success(lang === "hi" ? "ऑर्डर सहायता खोली गई" : "Order assistance opened")}
+                    onClick={() =>
+                      message.success(
+                        lang === "hi"
+                          ? "ऑर्डर सहायता खोली गई"
+                          : "Order assistance opened"
+                      )
+                    }
                     href={WHATSAPP_LINK}
                     target="_blank"
                   >
                     {t.orderNow}
                   </Button>
-                  <Button  type="primary" icon={<PhoneOutlined  className="text-lg sm:text-xl mt-0.5" />} href={`tel:+91${PHONE}`} size="large"                              className="!bg-blue-600 hover:!bg-blue-700 rounded-xl w-full sm:w-auto"
-
->
+                  <Button
+                    type="primary"
+                    icon={
+                      <PhoneOutlined className="text-lg sm:text-xl mt-0.5" />
+                    }
+                    href={`tel:+91${PHONE}`}
+                    size="large"
+                    className="!bg-blue-600 hover:!bg-blue-700 rounded-xl w-full sm:w-auto"
+                  >
                     {t.ctas.call}
                   </Button>
-                  <Button  type="primary" icon={<EnvironmentOutlined  className="text-lg sm:text-xl mt-0.5"/>} href={MAPS_LINK} target="_blank" size="large"                                className="!bg-red-600 hover:!bg-red-700 rounded-xl w-full sm:w-auto"
-
->
+                  <Button
+                    type="primary"
+                    icon={
+                      <EnvironmentOutlined className="text-lg sm:text-xl mt-0.5" />
+                    }
+                    href={MAPS_LINK}
+                    target="_blank"
+                    size="large"
+                    className="!bg-red-600 hover:!bg-red-700 rounded-xl w-full sm:w-auto"
+                  >
                     {t.ctas.directions}
                   </Button>
                 </div>
               </Card>
             </Col>
-        <Col xs={24} sm={24} md={10}>
+            <Col xs={24} sm={24} md={10}>
               <Card className="rounded-2xl shadow-sm overflow-hidden">
-                <div className={"h-52 sm:h-64  w-full !bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center"}> 
+                <div
+                  className={
+                    "h-52 sm:h-64  w-full !bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center"
+                  }
+                >
                   {/* Replace with a size showcase image */}
                   <img
                     src="/slide8.jpg"
@@ -384,14 +543,28 @@ export default function About() {
                     onError={(e) => (e.currentTarget.style.display = "none")}
                   />
                 </div>
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 sm:p-6">
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 sm:p-6">
                   <Card size="small" className="rounded-xl !bg-indigo-50 !p-4">
-                    <h5 className="font-semibold text-sm text-indigo-800">{lang === "hi" ? "टेंपल ग्रेड फिनिश" : "Temple-grade finish"}</h5>
-                    <p className="text-xs mt-1 text-slate-600">{lang === "hi" ? "हाथों से पॉलिश व संतुलन" : "Hand-polished and balanced"}</p>
+                    <h5 className="font-semibold text-sm text-indigo-800">
+                      {lang === "hi"
+                        ? "टेंपल ग्रेड फिनिश"
+                        : "Temple-grade finish"}
+                    </h5>
+                    <p className="text-xs mt-1 text-slate-600">
+                      {lang === "hi"
+                        ? "हाथों से पॉलिश व संतुलन"
+                        : "Hand-polished and balanced"}
+                    </p>
                   </Card>
                   <Card size="small" className="rounded-xl !bg-yellow-50 !p-4">
-                    <h5 className="font-semibold text-sm text-yellow-800">{lang === "hi" ? "कस्टम उत्कीर्णन" : "Custom engraving"}</h5>
-                    <p className="text-xs mt-1 text-slate-600">{lang === "hi" ? "आदेश पर उपलब्ध" : "Available on request"}</p>
+                    <h5 className="font-semibold text-sm text-yellow-800">
+                      {lang === "hi" ? "कस्टम उत्कीर्णन" : "Custom engraving"}
+                    </h5>
+                    <p className="text-xs mt-1 text-slate-600">
+                      {lang === "hi"
+                        ? "आदेश पर उपलब्ध"
+                        : "Available on request"}
+                    </p>
                   </Card>
                 </div>
               </Card>
@@ -407,13 +580,23 @@ export default function About() {
         <Fade>
           <Collapse
             accordion
-              bordered={false}
+            bordered={false}
             className="rounded-2xl overflow-hidden shadow-sm bg-gradient-to-br from-white to-yellow-50"
-                    expandIconPosition="end"
-
-            items={t.faqs.map((f, i) => ({ key: `${i}`, label:(
-            <span className="sm:text-base font-semibold !text-yellow-600 transition-colors">  {f.q}  </span>
-          ), children: <p className="leading-7 text-yellow-700 p-4 rounded-xl bg-yellow-100">{f.a}</p> }))}
+            expandIconPosition="end"
+            items={t.faqs.map((f, i) => ({
+              key: `${i}`,
+              label: (
+                <span className="sm:text-base font-semibold !text-yellow-600 transition-colors">
+                  {" "}
+                  {f.q}{" "}
+                </span>
+              ),
+              children: (
+                <p className="leading-7 text-yellow-700 p-4 rounded-xl bg-yellow-100">
+                  {f.a}
+                </p>
+              ),
+            }))}
           />
         </Fade>
       ),
@@ -445,19 +628,16 @@ export default function About() {
     ],
   };
 
-
-
   const [index, setIndex] = useState(0);
- 
 
-    useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % copy[lang].keywords.length);
     }, 3000);
     return () => clearInterval(timer);
   }, [lang]);
 
-    const navRef = useRef(null);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -498,219 +678,227 @@ export default function About() {
 
       {/* Hero */}
       <div className={`relative overflow-hidden ${bgGrad}`}>
-  <Section className="pt-16 pb-14 sm:pt-24 sm:pb-20">
-    <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-14 items-center text-center lg:text-left">
-      
-      {/* Left Section */}
-      <div className="lg:col-span-7 flex flex-col items-center lg:items-start">
-        <Fade>
-          {/* Small Tag */}
-          {/* <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-1.5 text-xs sm:text-sm mb-6 bg-white/60 backdrop-blur-lg shadow-sm">
+        <Section className="pt-16 pb-14 sm:pt-24 sm:pb-20">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-14 items-center text-center lg:text-left">
+            {/* Left Section */}
+            <div className="lg:col-span-7 flex flex-col items-center lg:items-start">
+              <Fade>
+                {/* Small Tag */}
+                {/* <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-1.5 text-xs sm:text-sm mb-6 bg-white/60 backdrop-blur-lg shadow-sm">
             <span className="font-semibold text-slate-700 tracking-wide">
               ✨ About • के बारे में
             </span>
           </div> */}
 
-          {/* Heading */}
-          <h1 className="text-2xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight text-gray-900 leading-tight">
-            {t.heroTitle}
-          </h1>
+                {/* Heading */}
+                <h1 className="text-2xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight text-yellow-500 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
+                  {t.heroTitle}
+                </h1>
 
-          {/* Subtitle */}
-          <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-            {t.heroSubtitle}
-          </p>
+                {/* Subtitle */}
+                <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed ">
+                  {t.heroSubtitle}
+                </p>
 
-          {/* Buttons */}
-      <div className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-5">
-  {/* Call Button */}
-  <Button
-    type="primary"
-    size="large"
-    icon={<PhoneOutlined style={{ fontSize: '1.25rem' }} />}
-    href={`tel:+91${PHONE}`}
-    className="!bg-gradient-to-r from-blue-600 to-blue-700 hover:!from-blue-700 hover:!to-blue-800 
+                {/* Buttons */}
+                <div className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-5">
+                  {/* Call Button */}
+                  <Button
+                    type="primary"
+                    size="large"
+                    icon={<PhoneOutlined style={{ fontSize: "1.25rem" }} />}
+                    href={`tel:+91${PHONE}`}
+                    className="!bg-gradient-to-r from-blue-600 to-blue-700 hover:!from-blue-700 hover:!to-blue-800 
                rounded-2xl !px-8 !py-5 !shadow-lg hover:!shadow-2xl 
                transform hover:scale-105 transition-all duration-300 ease-out
                flex items-center gap-2"
-  >
-    <span className="font-semibold tracking-wide">{t.ctas.call}</span>
-  </Button>
+                  >
+                    <span className="font-semibold tracking-wide">
+                      {t.ctas.call}
+                    </span>
+                  </Button>
 
-  {/* WhatsApp Button */}
-  <Button
-    size="large"
-    icon={<WhatsAppOutlined style={{ fontSize: '1.25rem' }} />}
-    href={WHATSAPP_LINK}
-    target="_blank"
-    className="!bg-gradient-to-r from-green-500 to-green-600 hover:!from-green-600 hover:!to-green-700 
+                  {/* WhatsApp Button */}
+                  <Button
+                    size="large"
+                    icon={<WhatsAppOutlined style={{ fontSize: "1.25rem" }} />}
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    className="!bg-gradient-to-r from-green-500 to-green-600 hover:!from-green-600 hover:!to-green-700 
                !text-white rounded-2xl !px-8 !py-5 !shadow-lg hover:!shadow-2xl 
                transform hover:scale-105 transition-all duration-300 ease-out
                flex items-center gap-2"
-  >
-    <span className="font-semibold tracking-wide">{t.ctas.whatsapp}</span>
-  </Button>
+                  >
+                    <span className="font-semibold tracking-wide">
+                      {t.ctas.whatsapp}
+                    </span>
+                  </Button>
 
-  {/* Directions Button */}
-  <Button
-    size="large"
-    icon={<EnvironmentOutlined style={{ fontSize: '1.25rem' }} />}
-    href={MAPS_LINK}
-    target="_blank"
-    className="!bg-gradient-to-r from-red-500 to-red-600 hover:!from-red-600 hover:!to-red-700 
+                  {/* Directions Button */}
+                  <Button
+                    size="large"
+                    icon={
+                      <EnvironmentOutlined style={{ fontSize: "1.25rem" }} />
+                    }
+                    href={MAPS_LINK}
+                    target="_blank"
+                    className="!bg-gradient-to-r from-red-500 to-red-600 hover:!from-red-600 hover:!to-red-700 
                !text-white rounded-2xl !px-8 !py-5 !shadow-lg hover:!shadow-2xl 
                transform hover:scale-105 transition-all duration-300 ease-out
                flex items-center gap-2"
-  >
-    <span className="font-semibold tracking-wide">{t.ctas.directions}</span>
-  </Button>
-</div>
+                  >
+                    <span className="font-semibold tracking-wide">
+                      {t.ctas.directions}
+                    </span>
+                  </Button>
+                </div>
 
-
-          {/* Language Switch */}
-          <div className="mt-10">
-            <Segmented
-              size="large"
-              value={lang}
-              onChange={(val) => setLang(val)}
-              options={[
-                { label: "हिंदी", value: "hi" },
-                { label: "English", value: "en" },
-              ]}
-              className="!bg-white/60 backdrop-blur-md !shadow-xl 
+                {/* Language Switch */}
+                <div className="mt-10">
+                  <Segmented
+                    size="large"
+                    value={lang}
+                    onChange={(val) => setLang(val)}
+                    options={[
+                      { label: "हिंदी", value: "hi" },
+                      { label: "English", value: "en" },
+                    ]}
+                    className="!bg-white/60 backdrop-blur-md !shadow-xl 
                rounded-full px-4 py-2 border border-slate-200/50
                transition-all duration-300 hover:shadow-2xl"
-            />
-          </div>
-        </Fade>
-      </div>
+                  />
+                </div>
+              </Fade>
+            </div>
 
-      {/* Right Section (Image) */}
-      <div className="lg:col-span-5 w-full flex justify-center mt-10">
-        <Fade delay={0.1}>
-          <div className="relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/5 max-w-md w-full">
-            <img
-              src="/slide2.jpg"
-              alt="Namdev Narmadeshwar Shivling Arts workshop"
-              className="w-full h-64 sm:h-80 object-cover"
-              onError={(e) => (e.currentTarget.style.display = "none")}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            <div className="absolute bottom-4 text-white px-1">
-               <motion.p
-      key={index}
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.7 }}
-      className="lg:text-lg text-sm font-medium tracking-wide drop-shadow text-center text-gray-200"
-    >
-       {t.keywords[index]}
-    </motion.p>
+            {/* Right Section (Image) */}
+            <div className="lg:col-span-5 w-full flex justify-center mt-10">
+              <Fade delay={0.1}>
+                <div className="relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/5 max-w-md w-full">
+                  <img
+                    src="/slide2.jpg"
+                    alt="Namdev Narmadeshwar Shivling Arts workshop"
+                    className="w-full h-64 sm:h-80 object-cover"
+                    onError={(e) => (e.currentTarget.style.display = "none")}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-4 text-white px-1">
+                    <motion.p
+                      key={index}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.7 }}
+                      className="lg:text-lg text-sm font-medium tracking-wide drop-shadow text-center text-gray-200"
+                    >
+                      {t.keywords[index]}
+                    </motion.p>
+                  </div>
+                </div>
+              </Fade>
             </div>
           </div>
-        </Fade>
+        </Section>
       </div>
-    </div>
-  </Section>
-</div>
-
 
       {/* Tabs Sections */}
       <Section className="pb-16">
         <Tabs
           defaultActiveKey="story"
-              className="custom-tabs"
-
-          items={tabs.map(({ key, label, children }) => ({ key, label:  (
-        <span className="px-4 py-2 text-sm md:text-base font-medium whitespace-nowrap  ">{label}</span>
-      ), children }))}
-              renderTabBar={(props, DefaultTabBar) => (
-          <div ref={navRef} className="overflow-x-auto  flex w-full">
-            <DefaultTabBar {...props} className="!flex !w-max space-x-2"  />
-          </div>
-        )}
-
+          className="custom-tabs"
+          items={tabs.map(({ key, label, children }) => ({
+            key,
+            label: (
+              <span className="px-4 py-2 text-sm md:text-base font-medium whitespace-nowrap  ">
+                {label}
+              </span>
+            ),
+            children,
+          }))}
+          renderTabBar={(props, DefaultTabBar) => (
+            <div
+              ref={navRef}
+              className="overflow-x-auto  flex w-full custom-tabs-wrapper  "
+            >
+              <DefaultTabBar {...props} className="!flex !w-max space-x-2" />
+            </div>
+          )}
         />
       </Section>
-      
 
       {/* Contact Card */}
-    <Section className="py-12 lg:px-8 px-4">
-  <Fade>
-    <Card className="rounded-3xl shadow-lg border border-slate-100 !bg-gradient-to-br from-white to-yellow-50 !p-8">
-      <Row gutter={[32, 32]} align="stretch">
-        
-        {/* Left Section */}
-        <Col xs={24} md={14}>
-         <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
- <h2 className="lg:text-3xl text-xl font-bold text-center py-2 px-10 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">    {t.specsHead}
-  </h2>
-  <p className="text-gray-600 text-lg mb-6">
-    {t.addressTitle}
-  </p>
-  <ul className="space-y-3">
-    {t.address.map((line, i) => (
-      <li
-        key={i}
-        className="flex items-start justify-start gap-3 text-base text-yellow-700"
-      >
-        <span className="flex-shrink-0 w-2.5 h-2.5 mt-2 rounded-full bg-gradient-to-r from-yellow-500 to-black"></span>
-        {line}
-      </li>
-    ))}
-  </ul>
-</div>
+      <Section className="py-12 lg:px-8 px-4">
+        <Fade>
+          <Card className="rounded-3xl shadow-lg border border-slate-100 !bg-gradient-to-br from-white to-yellow-50 !p-8">
+            <Row gutter={[32, 32]} align="stretch">
+              {/* Left Section */}
+              <Col xs={24} md={14}>
+                <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+                  <h2 className="lg:text-3xl text-xl font-bold text-center py-2 px-10 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">
+                    {" "}
+                    {t.specsHead}
+                  </h2>
+                  <p className="text-gray-600 text-lg mb-6">{t.addressTitle}</p>
+                  <ul className="space-y-3">
+                    {t.address.map((line, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start justify-start gap-3 text-base text-yellow-700"
+                      >
+                        <span className="flex-shrink-0 w-2.5 h-2.5 mt-2 rounded-full bg-gradient-to-r from-yellow-500 to-black"></span>
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Col>
 
-        </Col>
+              {/* Right Section - Action Buttons as Tiles */}
+              <Col xs={24} md={10}>
+                <div className="h-full flex flex-col justify-center gap-5">
+                  <a
+                    href={`tel:+91${PHONE}`}
+                    className="flex items-center gap-4 !bg-blue-50 hover:!bg-blue-100 rounded-2xl p-5 shadow-sm transition"
+                  >
+                    <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-blue-600 text-white">
+                      <PhoneOutlined />
+                    </div>
+                    <span className="text-lg font-semibold text-slate-800">
+                      {t.ctas.call}
+                    </span>
+                  </a>
 
-        {/* Right Section - Action Buttons as Tiles */}
-        <Col xs={24} md={10}>
-          <div className="h-full flex flex-col justify-center gap-5">
-            <a
-              href={`tel:+91${PHONE}`}
-              className="flex items-center gap-4 !bg-blue-50 hover:!bg-blue-100 rounded-2xl p-5 shadow-sm transition"
-            >
-              <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-blue-600 text-white">
-                <PhoneOutlined />
-              </div>
-              <span className="text-lg font-semibold text-slate-800">
-                {t.ctas.call}
-              </span>
-            </a>
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    className="flex items-center gap-4 !bg-green-50 hover:!bg-green-100 rounded-2xl p-5 shadow-sm transition"
+                  >
+                    <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-green-500 text-white">
+                      <WhatsAppOutlined />
+                    </div>
+                    <span className="text-lg font-semibold text-slate-800">
+                      {t.ctas.whatsapp}
+                    </span>
+                  </a>
 
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              className="flex items-center gap-4 !bg-green-50 hover:!bg-green-100 rounded-2xl p-5 shadow-sm transition"
-            >
-              <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-green-500 text-white">
-                <WhatsAppOutlined />
-              </div>
-              <span className="text-lg font-semibold text-slate-800">
-                {t.ctas.whatsapp}
-              </span>
-            </a>
-
-            <a
-              href={MAPS_LINK}
-              target="_blank"
-              className="flex items-center gap-4 !bg-red-50 hover:!bg-red-100 rounded-2xl p-5 shadow-sm transition"
-            >
-              <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-red-500 text-white">
-                <EnvironmentOutlined />
-              </div>
-              <span className="text-lg font-semibold text-slate-800">
-                {t.ctas.directions}
-              </span>
-            </a>
-          </div>
-        </Col>
-      </Row>
-    </Card>
-  </Fade>
-</Section>
-
+                  <a
+                    href={MAPS_LINK}
+                    target="_blank"
+                    className="flex items-center gap-4 !bg-red-50 hover:!bg-red-100 rounded-2xl p-5 shadow-sm transition"
+                  >
+                    <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-red-500 text-white">
+                      <EnvironmentOutlined />
+                    </div>
+                    <span className="text-lg font-semibold text-slate-800">
+                      {t.ctas.directions}
+                    </span>
+                  </a>
+                </div>
+              </Col>
+            </Row>
+          </Card>
+        </Fade>
+      </Section>
 
       {/* <footer className="border-t py-8 text-center text-sm text-slate-500">
         © {new Date().getFullYear()} Namdev Narmadeshwar Shivling Arts • {lang === "hi" ? "मर्दाना, बड़वाह, खरगोन" : "Mardana, Barwaha, Khargone"}
