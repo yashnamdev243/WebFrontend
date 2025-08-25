@@ -802,7 +802,7 @@ export default function About() {
       </div>
 
       {/* Tabs Sections */}
-      <Section className="pb-16">
+      <Section className="w-full">
         <Tabs
           defaultActiveKey="story"
           className="custom-tabs"
@@ -813,7 +813,11 @@ export default function About() {
                 {label}
               </span>
             ),
-            children,
+          children: (
+        <div className="!pt-4"> {/* Add spacing between tab label and content */}
+          {children}
+        </div>
+      ),
           }))}
           renderTabBar={(props, DefaultTabBar) => (
             <div
@@ -824,6 +828,7 @@ export default function About() {
             </div>
           )}
         />
+        
       </Section>
 
       {/* Contact Card */}
