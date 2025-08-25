@@ -43,6 +43,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { Spin } from "antd";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -70,17 +71,19 @@ export default function Products() {
 
      <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">Our Products</h2>
        </div>
+          <div className="z-10 w-full max-w-[90%] md:max-w-[95%] mx-auto  md:p-4 my-4 ">
+
         {loading ? (
-          <p className="text-center text-gray-500">Loading products...</p>
-        ) : products.length === 0 ? (
-          <p className="text-center text-gray-500">No products available.</p>
+  <div className="flex justify-center items-center py-10">
+      <Spin size="large" tip="Loading products..." />
+    </div>        ) : products.length === 0 ? (
+    <p className="text-center text-gray-500">No products available.</p>
         ) : (
-   <div className="z-10 w-full max-w-[90%] md:max-w-[95%] mx-auto  md:p-4 my-4 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:px-6">
-        {products.map((p) => <ProductCard key={p.id} product={p} />)}
-      </div>
+        {products.map((p) =>( <ProductCard key={p.id} product={p} />))}
       </div>
               )}
+      </div>
 
     </section>
   );
