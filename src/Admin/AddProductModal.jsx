@@ -1,9 +1,6 @@
 // import { useState } from "react";
 // import { Modal, Button, Upload, Input, message } from "antd";
 // import { UploadOutlined } from "@ant-design/icons";
-// import { db } from "../firebase";
-// import { collection, addDoc } from "firebase/firestore";
-// import { getStorage, ref, uploadString, getDownloadURL } from "firebase/storage";
 
 // export default function AddProductModal({ visible, onClose, onAdded }) {
 //   const [file, setFile] = useState(null);

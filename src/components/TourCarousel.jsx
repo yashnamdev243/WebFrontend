@@ -5,34 +5,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import HeroSection from "./HeroSection";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase";
-// const tourImages = [
-//   { src: "/slide1.jpg" },
-//   { src: "/slide2.jpg" },
-//   { src: "/slide3.jpg" },
-//   { src: "/slide4.jpg" },
-//   { src: "/slide5.jpg" },
-//   { src: "/slide6.jpg" },
-//   { src: "/slide7.jpg" },
-//   { src: "/slide8.jpg" },
-//   { src: "/slide9.jpg" },
 
-
-// ];
 
 const TourCarousel = () => {
     const [slides, setSlides] = useState([]);
 
+
   useEffect(() => {
     const fetchSlides = async () => {
-      const q = query(collection(db, "slides"), orderBy("order"));
-      const snapshot = await getDocs(q);
-      const slideList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setSlides(slideList);
+      try {
+        const res = await fetch("http://localhost:5000/api/slides");
+        if (!res.ok) throw new Error("Failed to fetch slides");
+        const data = await res.json();
+        setSlides(data);
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     fetchSlides();
@@ -64,8 +52,9 @@ const TourCarousel = () => {
             <div className="relative h-screen">
               <img
                 // src={tour.src}
-                                src={slide.src}
-
+                  // src={slide.src}
+              src={`http://localhost:5000${slide.src}`}
+              // src={`${import.meta.env.VITE_API_URL}${slide.src}`}
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"

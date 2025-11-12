@@ -7,8 +7,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import ReviewModalForm from "./ReviewModalForm";
 import { MessageCircleHeart, UsersRound } from "lucide-react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase"; 
 import { Spin } from "antd";
 
 //const LOCAL_KEY = "user_reviews";
@@ -17,35 +15,25 @@ const ReviewSection = () => {
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  // Fetch reviews from Firestore
-  const fetchReviews = async () => {
+
+ const fetchReviews = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const querySnapshot = await getDocs(collection(db, "reviews"));
-      const fetched = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setReviews(fetched);
-    } catch (error) {
-      console.error("Error fetching reviews:", error);
+      const res = await fetch("http://localhost:5000/api/reviews");
+      if (!res.ok) throw new Error("Failed to fetch reviews");
+      const data = await res.json();
+      setReviews(data);
+    } catch (err) {
+      console.error("Error fetching reviews:", err);
     } finally {
       setLoading(false);
     }
   };
-
-  // useEffect(() => {
-  //   const stored = localStorage.getItem(LOCAL_KEY);
-  //   setReviews(stored ? JSON.parse(stored) : []);
-  // }, []);
+ 
   useEffect(() => {
     fetchReviews();
   }, []);
 
-  // const refreshReviews = () => {
-  //   const stored = localStorage.getItem(LOCAL_KEY);
-  //   setReviews(stored ? JSON.parse(stored) : []);
-  // };
 
   return (
     <>
@@ -106,7 +94,8 @@ const ReviewSection = () => {
               <SwiperSlide key={idx}>
                 <div className="group bg-white mb-8 p-6 shadow-md rounded-lg flex flex-col items-center text-center hover:shadow-2xl transition-all duration-300 border border-[#ffe3c4]">
                   <img
-                    src={review.image || "/default-avatar.jpg"}
+                    // src={review.image || "/default-avatar.jpg"}
+                     src={`http://localhost:5000${review.image}`} 
                     alt={review.name}
                     className="w-24 h-24 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300 object-cover"
                   />
@@ -123,6 +112,17 @@ const ReviewSection = () => {
                   <p className="text-gray-600 lg:text-lg text-sm mt-4 italic fira-sans">
                     "{review.review}"
                   </p>
+                  {/* <p>{review.review}</p>
+{review.reply && <p className="text-green-600 italic">Admin Reply: {review.reply}</p>} */}
+
+                {/* <p>"{review.review}"</p> */}
+               {review.reply && (
+                <p className="!text-blue-600 italic mt-2">
+                  Admin Reply: {review.reply}
+                </p>
+         )}
+
+
                 </div>
               </SwiperSlide>
             ))}

@@ -22,7 +22,8 @@ const ProductCard = ({ product }) => {
       onClick={handleClick}
     >
       <img
-        src={product.image}
+        // src={product.image}
+        src={`http://localhost:5000${product.image}`}
         alt={product.name}
         className="w-full h-full object-cover"
       />

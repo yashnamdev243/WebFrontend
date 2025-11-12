@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import {
-  collection,
-  getDocs,
-  deleteDoc,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
-import { db } from "../firebase";
-import {
   Table,
   Card,
   Row,
@@ -38,22 +30,18 @@ import {
   PhoneOutlined,
   MessageOutlined,
   CloseOutlined,
+  DeleteOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import AdminProducts from "./AdminProducts";
 import AdminSlides from "./AdminSlides";
-import { PictureAsPdfOutlined, StarOutlineRounded } from "@mui/icons-material";
 
 const { Title } = Typography;
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
 
-// Dashboard Page (Stats)
-function DashboardPage({
-  contactCount,
-  galleryCount,
-  reviewCount,
-  slideCount,
-}) {
+// ---------------- Dashboard Overview ----------------
+function DashboardPage({ contactCount, galleryCount, reviewCount, slideCount }) {
   const navigate = useNavigate();
   const stats = [
     {
@@ -64,7 +52,7 @@ function DashboardPage({
       route: "/admin/contacts",
     },
     {
-      title: "Total Product Images",
+      title: "Total Products",
       value: galleryCount,
       icon: <PictureOutlined style={{ fontSize: 32, color: "#fff" }} />,
       gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
@@ -73,7 +61,7 @@ function DashboardPage({
     {
       title: "Total Reviews",
       value: reviewCount,
-      icon: <StarOutlineRounded style={{ fontSize: 38, color: "#fff" }} />,
+      icon: <StarOutlined style={{ fontSize: 32, color: "#fff" }} />,
       gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
       route: "/admin/reviews",
     },
@@ -91,7 +79,6 @@ function DashboardPage({
       <Title level={3} style={{ textAlign: "center", marginBottom: 20 }}>
         Dashboard Overview
       </Title>
-
       <Row gutter={[16, 16]} justify="center">
         {stats.map((stat, index) => (
           <Col key={index} xs={24} sm={12} md={8} lg={6}>
@@ -104,14 +91,14 @@ function DashboardPage({
                 boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 background: stat.gradient,
                 color: "#fff",
-                transition: "transform 0.3s ease",
                 cursor: "pointer",
+                transition: "transform 0.3s ease",
               }}
               hoverable={!!stat.route}
             >
               <div className="flex flex-col items-center justify-center gap-3 p-4">
                 {stat.icon}
-                <h2 style={{ fontSize: 28, margin: 0, fontWeight: "bold" }}>
+                <h2 style={{ fontSize: 28, fontWeight: "bold", margin: 0 }}>
                   {stat.value}
                 </h2>
                 <p style={{ fontSize: 16, opacity: 0.9 }}>{stat.title}</p>
@@ -124,14 +111,12 @@ function DashboardPage({
   );
 }
 
-// Contacts Page
-function ContactsPage({ contacts, loading ,onDelete}) {
+// ---------------- Contacts Page ----------------
+function ContactsPage({ contacts, loading, onDelete }) {
   const [searchText, setSearchText] = useState("");
-    const [isModalOpen, setIsModalOpen] = useState(false);
-      const [selectedContact, setSelectedContact] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedContact, setSelectedContact] = useState(null);
 
-
-  // Filter contacts based on search
   const filteredContacts = contacts.filter((contact) =>
     Object.values(contact)
       .join(" ")
@@ -143,20 +128,19 @@ function ContactsPage({ contacts, loading ,onDelete}) {
     {
       title: "S.No",
       key: "serial",
-      render: (_, __, index) => index + 1, // serial number
-      width: 80,
+      render: (_, __, index) => index + 1,
+      width: 70,
       align: "center",
     },
     { title: "Name", dataIndex: "name", key: "name", align: "center" },
     { title: "Contact", dataIndex: "contact", key: "contact", align: "center" },
     { title: "Message", dataIndex: "message", key: "message", align: "center" },
-        // ✅ Action Column
     {
       title: "Actions",
       key: "actions",
       align: "center",
       render: (_, record) => (
-          <div className="flex gap-2 justify-center">
+        <div className="flex gap-2 justify-center">
           <Button
             type="primary"
             icon={<EyeOutlined />}
@@ -167,72 +151,50 @@ function ContactsPage({ contacts, loading ,onDelete}) {
           >
             View
           </Button>
-
           <Popconfirm
-            title="Are you sure you want to delete this submission?"
-            onConfirm={() => onDelete(record.key)}   
+            title="Are you sure to delete this contact?"
+            onConfirm={() => onDelete(record.id)}
             okText="Yes"
             cancelText="No"
             okButtonProps={{ danger: true }}
-
           >
-            <Button type="primary" danger className="!bg-red-600 hover:!bg-red-500">
-              Delete
-            </Button>
+            <Button danger>Delete</Button>
           </Popconfirm>
         </div>
       ),
     },
-
   ];
+
   return (
     <div>
       <Title level={3} style={{ textAlign: "center", marginBottom: 20 }}>
-        Contact Form Submissions
+        Contact Submissions
       </Title>
-      {/* Search Bar */}
-      <div style={{ maxWidth: 400, margin: "0 auto 20px auto" }}>
+      <div style={{ maxWidth: 400, margin: "0 auto 20px" }}>
         <Search
           placeholder="Search here"
           allowClear
-          enterButton
-          onSearch={(value) => setSearchText(value)}
+          onSearch={(v) => setSearchText(v)}
           onChange={(e) => setSearchText(e.target.value)}
-          style={{ width: "100%" }}
         />
       </div>
       <Table
         dataSource={filteredContacts}
         columns={columns}
-        rowKey="key"
-        loading={loading}
+        rowKey="id"
         bordered
-        scroll={{ x: "max-content" }}
+        loading={loading}
         pagination={{
           pageSize: 5,
-          showSizeChanger: false,
-          showTotal: (total) => (
-            <p>
-              Total <span className="font-semibold">{total}</span> Submissions
-            </p>
-          ),
-          className: "mx-4 custom-pagination",
-          responsive: true,
-          onChange: () => {
-            window.scrollTo({ top: 250, behavior: "smooth" });
-          },
+          showTotal: (total) => `Total ${total} contacts`,
         }}
-        className="custom-table"
-        rowClassName={(_, index) =>
-          index % 2 === 0 ? "custom-odd-row" : "custom-even-row"
-        }
         components={{
           header: {
             cell: (props) => (
               <th
                 {...props}
                 style={{
-                  backgroundColor: "#274b6b",
+                  background: "#274b6b",
                   color: "white",
                   textAlign: "center",
                   whiteSpace: "nowrap",
@@ -242,89 +204,125 @@ function ContactsPage({ contacts, loading ,onDelete}) {
           },
         }}
       />
-            {/* View Modal */}
-      {/* <Modal
-        title="Contact Details"
+
+      {/* View Modal */}
+      <Modal
         open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
         footer={null}
+        closable={false}
+        centered
+        onCancel={() => setIsModalOpen(false)}
       >
         {selectedContact && (
-          <div className="space-y-2">
-            <p>
-              <strong>Name:</strong> {selectedContact.name}
-            </p>
-            <p>
-              <strong>Contact:</strong> {selectedContact.contact}
-            </p>
-            <p>
-              <strong>Message:</strong> {selectedContact.message}
-            </p>
+          <div className="overflow-hidden rounded-xl">
+            <div className="bg-[#274b6b] text-white py-3 px-4 flex justify-between items-center">
+              <h2 className="text-lg font-semibold m-0">Contact Details</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-white hover:text-red-400"
+              >
+                <CloseOutlined />
+              </button>
+            </div>
+            <div className="p-4 space-y-3">
+              <p>
+                <UserOutlined /> <b>Name:</b> {selectedContact.name}
+              </p>
+              <p>
+                <PhoneOutlined /> <b>Contact:</b> {selectedContact.contact}
+              </p>
+              <p>
+                <MessageOutlined /> <b>Message:</b> {selectedContact.message}
+              </p>
+            </div>
           </div>
         )}
-      </Modal> */}
-
-
-{/* View Modal */}
-<Modal
-  title={null}
-  open={isModalOpen}
-  footer={null}
-  centered
-  closable={false} // hide default X
-  bodyStyle={{
-    padding: 0,
-    borderRadius: "12px",
-    background: "#f9fafb",
-  }}
-  onCancel={() => setIsModalOpen(false)}
->
-  {selectedContact && (
-    <div className="overflow-hidden rounded-xl shadow-lg">
-      {/* Custom Header */}
-      <div className="bg-[#274b6b] text-white py-4 px-6 flex items-center justify-between">
-        <h2 className="text-lg font-semibold tracking-wide m-0">
-          Contact Details
-        </h2>
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="text-white hover:text-red-400 rounded-full p-1 transition"
-        >
-          <CloseOutlined className="text-lg" />
-        </button>
-      </div>
-
-      {/* Content */}
-      <div className="bg-white p-6 space-y-4">
-        <p className="flex items-center text-base text-gray-800">
-          <UserOutlined className="text-blue-600 mr-2 text-lg" />
-          <span className="font-medium text-gray-600 mr-1">Name:</span>
-          {selectedContact.name}
-        </p>
-
-        <p className="flex items-center text-base text-gray-800">
-          <PhoneOutlined className="text-green-600 mr-2 text-lg" />
-          <span className="font-medium text-gray-600 mr-1">Contact:</span>
-          {selectedContact.contact}
-        </p>
-
-        <p className="flex items-start text-base text-gray-800">
-          <MessageOutlined className="text-purple-600 mr-2 text-lg mt-0.5" />
-          <span className="font-medium text-gray-600 mr-1">Message:</span>
-          <span>{selectedContact.message}</span>
-        </p>
-      </div>
-    </div>
-  )}
-</Modal>
-
-
+      </Modal>
     </div>
   );
 }
 
-// Add this ReviewsPage component above AdminDashboard
+// ---------------- Reviews Page ----------------
 function ReviewsPage({ reviews, loading }) {
+
+    const [replyModalOpen, setReplyModalOpen] = useState(false);
+const [currentReview, setCurrentReview] = useState(null);
+const [replyText, setReplyText] = useState("");
+
+  // Fetch all reviews
+  const fetchReviews = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/reviews");
+      const data = await res.json();
+      setReviews(data);
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
+
+const openReplyModal = (review) => {
+    console.log("Opening reply modal for review:", review);
+
+  setCurrentReview(review);
+  setReplyText(review.reply || "");
+  setReplyModalOpen(true);
+};
+
+
+
+// const saveReply = async () => {
+//     if (!replyText) {
+//       message.error("Reply cannot be empty");
+//       return;
+//     }
+
+//     try {
+//       const res = await fetch(`http://localhost:5000/api/reviews/${currentReview.id}/reply`, {
+//         method: "PUT",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ reply: replyText }),
+//       });
+//       if (!res.ok) throw new Error("Failed to save reply");
+//       message.success("Reply saved!");
+//       setReplyModalOpen(false);
+//       fetchReviews();
+//     } catch (err) {
+//       console.error(err);
+//       message.error("Failed to save reply");
+//     }
+//   };
+
+const saveReply = async () => {
+    if (!currentReview) return;
+    try {
+      const res = await fetch(`http://localhost:5000/api/reviews/${currentReview.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reply: replyText }),
+      });
+
+      if (!res.ok) throw new Error("Failed to save reply");
+      message.success("Reply saved successfully!");
+      setReplyModalOpen(false);
+      fetchReviews();
+    } catch (err) {
+      console.error(err);
+      message.error("Unable to save reply. Try again.");
+    }
+  };
+  const handleDeleteReview = async (id) => {
+  try {
+    await fetch(`http://localhost:5000/api/reviews/${id}`, { method: "DELETE" });
+    message.success("Review deleted successfully!");
+    fetchReviews(); // refresh table
+  } catch (err) {
+    console.error(err);
+    message.error("Failed to delete review");
+  }
+};
+
   const columns = [
     { title: "Name", dataIndex: "name", key: "name", align: "center" },
     { title: "Rating", dataIndex: "rating", key: "rating", align: "center" },
@@ -335,12 +333,41 @@ function ReviewsPage({ reviews, loading }) {
       key: "image",
       align: "center",
       render: (text) =>
-        text && <Image width={80} src={text} className="rounded-md" />,
+        text ? <Image width={80}  src={`http://localhost:5000${text}`}  className="flex justify-center" /> : "NA",
     },
-    
-  ];
+  
+  { title: "Reply", dataIndex: "reply", key: "reply", align: "center" },
+  {
+    title: "Actions",
+    key: "actions",
+    align: "center",
+    render: (_, record) => (
+      <div className="flex justify-center gap-2">
+        <Button
+          icon={<EditOutlined />}
+          onClick={() => openReplyModal(record)}
+        >
+          Reply
+        </Button>
 
+        <Popconfirm
+          title="Are you sure to delete this review?"
+          okText="Yes"
+          cancelText="No"
+          okButtonProps={{ danger: true }}
+          onConfirm={() => handleDeleteReview(record.id)}
+        >
+          <Button danger icon={<DeleteOutlined />}>Delete</Button>
+        </Popconfirm>
+      </div>
+    ),
+  },
+
+
+  ];
+  
   return (
+    
     <div>
       <Title level={3} style={{ textAlign: "center", marginBottom: 20 }}>
         User Reviews
@@ -348,55 +375,57 @@ function ReviewsPage({ reviews, loading }) {
       <Table
         dataSource={reviews}
         columns={columns}
-        loading={loading}
+        rowKey="id"
         bordered
+        loading={loading}
         pagination={{
           pageSize: 5,
-          showSizeChanger: false,
-          showTotal: (total) => (
-            <p>
-              Total <span className="font-semibold">{total}</span> Reviews
-            </p>
-          ),
-          className: "mx-4 custom-pagination",
-          responsive: true,
-          onChange: () => {
-            window.scrollTo({ top: 250, behavior: "smooth" });
-          },
-        }}
-        scroll={{ x: "max-content" }} // Horizontal scroll for small screens
-        className="custom-table"
-        rowClassName={(_, index) =>
-          index % 2 === 0 ? "custom-odd-row" : "custom-even-row"
-        }
-        components={{
-          header: {
-            cell: (props) => (
-              <th
-                {...props}
-                style={{
-                  backgroundColor: "#274b6b",
-                  color: "white",
-                  textAlign: "center",
-                  whiteSpace: "nowrap",
-                }}
-              />
-            ),
-          },
+          showTotal: (total) => `Total ${total} reviews`,
         }}
       />
+     
+ <Modal
+        title={`Reply to Review by ${currentReview?.name}`}
+        open={replyModalOpen}
+        onCancel={() => setReplyModalOpen(false)}
+        onOk={saveReply}
+        okText="Save Reply"
+        centered
+      >
+        <div className="flex flex-col gap-4">
+          {currentReview?.image && (
+            <Image
+              src={`http://localhost:5000${currentReview.image}`}
+              width={120}
+              alt="Review Image"
+            />
+          )}
+          <p><strong>Rating:</strong> {currentReview?.rating} ★</p>
+          <p><strong>Review:</strong> {currentReview?.review}</p>
+
+          <Input.TextArea
+            value={replyText}
+            onChange={(e) => setReplyText(e.target.value)}
+            placeholder="Write your reply here..."
+            rows={4}
+          />
+        </div>
+      </Modal>
     </div>
+    
   );
 }
 
+// ---------------- Main Admin Dashboard ----------------
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [galleryItems, setGalleryItems] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [slides, setSlides] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   const handleLogout = () => {
     localStorage.removeItem("isAdmin");
@@ -404,91 +433,43 @@ export default function AdminDashboard() {
     navigate("/admin-login");
   };
 
-  // Fetch data from Firestore
+  // Fetch all data
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAll = async () => {
       try {
-        // Contacts
-        const contactSnap = await getDocs(collection(db, "contacts"));
-        setContacts(
-          contactSnap.docs.map((doc) => ({ key: doc.id, ...doc.data() }))
-        );
-
-        // Gallery
-        const gallerySnap = await getDocs(collection(db, "products"));
-        setGalleryItems(
-          gallerySnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-        );
-        // Slides
-        const slidesSnap = await getDocs(collection(db, "slides"));
-        setSlides(
-          slidesSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-        );
+        const [contactsRes, galleryRes, reviewsRes, slidesRes] =
+          await Promise.all([
+            fetch("http://localhost:5000/api/contacts").then((r) => r.json()),
+            fetch("http://localhost:5000/api/products").then((r) => r.json()),
+            fetch("http://localhost:5000/api/reviews").then((r) => r.json()),
+            fetch("http://localhost:5000/api/slides").then((r) => r.json()),
+          ]);
+        setContacts(contactsRes);
+        setGalleryItems(galleryRes);
+        setReviews(reviewsRes);
+        setSlides(slidesRes);
       } catch (err) {
         console.error(err);
-        message.error("Failed to load data");
+        message.error("Failed to fetch data");
       } finally {
         setLoading(false);
       }
     };
-    fetchData();
+    fetchAll();
   }, []);
-  const fetchGallery = async () => {
-    const gallerySnap = await getDocs(collection(db, "products"));
-    setGalleryItems(
-      gallerySnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-    );
-  };
 
-  // Use in useEffect
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const contactSnap = await getDocs(collection(db, "contacts"));
-        setContacts(
-          contactSnap.docs.map((doc) => ({ key: doc.id, ...doc.data() }))
-        );
-
-        await fetchReviews();
-      } catch (err) {
-        console.error(err);
-        message.error("Failed to load data");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-  const fetchReviews = async () => {
+  const handleDeleteContact = async (id) => {
     try {
-      const reviewsSnap = await getDocs(collection(db, "reviews"));
-      setReviews(
-        reviewsSnap.docs.map((doc) => ({ key: doc.id, ...doc.data() }))
-      );
+      await fetch(`http://localhost:5000/api/contacts/${id}`, {
+        method: "DELETE",
+      });
+      setContacts((prev) => prev.filter((c) => c.id !== id));
+      message.success("Contact deleted successfully");
     } catch (err) {
       console.error(err);
-      message.error("Failed to load reviews");
+      message.error("Failed to delete contact");
     }
   };
-  const fetchSlides = async () => {
-    try {
-      const slidesSnap = await getDocs(collection(db, "slides"));
-      setSlides(slidesSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    } catch (err) {
-      console.error(err);
-      message.error("Failed to load slides");
-    }
-  };
-const handleDeleteContact = async (id) => {
-  try {
-    await deleteDoc(doc(db, "contacts", id)); // delete from Firestore
-    setContacts((prev) => prev.filter((c) => c.key !== id)); // ✅ remove by key
-    message.success("Contact deleted successfully");
-  } catch (err) {
-    console.error(err);
-    message.error("Failed to delete contact");
-  }
-};
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -497,69 +478,23 @@ const handleDeleteContact = async (id) => {
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
-         style={{
-    position: "fixed",      // 👈 keeps it fixed
-    left: 0,
-    top: 0,
-    bottom: 0,
-    height: "100vh",
-    zIndex: 1000,
-  }}
+        style={{ position: "fixed", left: 0, top: 0, bottom: 0 }}
       >
-        {/* <div
+        <div
           style={{
-            height: 32,
-            margin: 16,
-            background: "rgba(255, 255, 255, 0.3)",
-            textAlign: "center",
-            lineHeight: "32px",
-            color: "#fff",
-            fontWeight: "bold",
+            height: 64,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#fff",
           }}
         >
-          Admin
-        </div> */}
-        {/* <div
-  style={{
-    height: 48,
-    margin: 16,
-    background: "linear-gradient(135deg, #274b6b, #3f6e9c)",
-    borderRadius: 8,
-    textAlign: "center",
-    lineHeight: "48px",
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: "18px",
-    letterSpacing: "1px",
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-  }}
->
-  Admin Panel
-</div> */}
-
-<div
-  style={{
-    height: 64,
-    margin: 0,
-    background: "linear-gradient(135deg, #ffff, #ffff)", // ✅ gradient background
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "8px",
-  }}
->
-  <img
-    src="/Namdevlogo.png" // ✅ replace with your logo path
-    alt="Admin Logo"
-    style={{
-      maxHeight: "48px",
-      maxWidth: "100%",
-      objectFit: "contain",
-    }}
-  />
-</div>
+          <img
+            src="/Namdevlogo.png"
+            alt="Logo"
+            style={{ maxHeight: 40, maxWidth: "100%" }}
+          />
+        </div>
 
         <Menu
           theme="dark"
@@ -571,57 +506,41 @@ const handleDeleteContact = async (id) => {
             { key: "products", icon: <PictureOutlined />, label: "Products" },
             { key: "reviews", icon: <StarOutlined />, label: "Reviews" },
             { key: "slides", icon: <FileImageOutlined />, label: "Slides" },
-
-            {
-              key: "logout",
-              icon: <LogoutOutlined />,
-              label: "Logout",
-              onClick: handleLogout,
-            },
+            { key: "logout", icon: <LogoutOutlined />, label: "Logout", onClick: handleLogout },
           ]}
         />
       </Sider>
 
       {/* Main Content */}
-<Layout style={{ marginLeft: collapsed ? 80 : 200, transition: "all 0.2s" }}>
+      <Layout style={{ marginLeft: collapsed ? 80 : 200, transition: "all 0.2s" }}>
         <Header
-               style={{
-        position: "fixed",
-        top: 0,
-        left: collapsed ? 80 : 200,
-        right: 0,
-        height: 64,
-        zIndex: 999,
-        background: "#fff",
-      fontSize: "20px",
-        fontWeight: "bold",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-              display: "flex",
-      alignItems: "center",
-      justifyContent: "center", // ✅ centers text
-      textAlign: "center",
-      padding: "0 10px",        // ✅ prevents text touching edges
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "ellipsis", // ✅ prevents text breaking on mobile
-
-      }}
-
+          style={{
+            position: "fixed",
+            top: 0,
+            left: collapsed ? 80 : 200,
+            right: 0,
+            height: 64,
+            background: "#fff",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: "bold",
+          }}
         >
           Admin Panel
         </Header>
-        <Content  style={{
-        marginTop: 64, // 👈 makes space for fixed header
-      padding: "12px",
-      }}>
- <div
-      style={{
-        padding: 16,
-        background: "#fff",
-        minHeight: "calc(100vh - 64px)",
-        borderRadius: 8,
-      }}
-    >            <Routes>
+
+        <Content style={{ marginTop: 64, padding: 16 }}>
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: 8,
+              minHeight: "calc(100vh - 64px)",
+              padding: 16,
+            }}
+          >
+            <Routes>
               <Route
                 path="/"
                 element={
@@ -635,14 +554,20 @@ const handleDeleteContact = async (id) => {
               />
               <Route
                 path="/contacts"
-                element={<ContactsPage contacts={contacts} loading={loading}onDelete={handleDeleteContact}    />}
+                element={
+                  <ContactsPage
+                    contacts={contacts}
+                    loading={loading}
+                    onDelete={handleDeleteContact}
+                  />
+                }
               />
               <Route
                 path="/products"
                 element={
                   <AdminProducts
                     galleryItems={galleryItems}
-                    refreshGallery={fetchGallery}
+                    refreshGallery={() => {}}
                   />
                 }
               />
@@ -650,7 +575,10 @@ const handleDeleteContact = async (id) => {
                 path="/reviews"
                 element={<ReviewsPage reviews={reviews} loading={loading} />}
               />
-              <Route path="/slides" element={<AdminSlides slides={slides} />} />
+              <Route
+                path="/slides"
+                element={<AdminSlides slides={slides} />}
+              />
             </Routes>
           </div>
         </Content>
@@ -658,3 +586,4 @@ const handleDeleteContact = async (id) => {
     </Layout>
   );
 }
+

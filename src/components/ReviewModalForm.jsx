@@ -2,59 +2,92 @@
 import { useState } from "react";
 import { Modal, Form, Input, Rate, Upload, Button, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { collection, addDoc } from "firebase/firestore"; // ⬅️ added
-import { db } from "../firebase"; // ⬅️ your firebase config
 //const LOCAL_KEY = "user_reviews";
 
 const ReviewModalForm = ({ open, onClose, onSubmit }) => {
   const [form] = Form.useForm();
+  const [file, setFile] = useState(null);
   const [previewImage, setPreviewImage] = useState("");
-const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const getBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = reject;
-    });
-     const handleImageUpload = async (file) => {
-    const base64 = await getBase64(file);
-    setPreviewImage(base64);
-    return false; // prevent Upload from uploading automatically
+  // const getBase64 = (file) =>
+  //   new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => resolve(reader.result);
+  //     reader.onerror = reject;
+  //   });
+  //    const handleImageUpload = async (file) => {
+  //   const base64 = await getBase64(file);
+  //   setPreviewImage(base64);
+  //   return false; // prevent Upload from uploading automatically
+  // };
+
+  const handleImageSelect = (file) => {
+    setFile(file);
+    setPreviewImage(URL.createObjectURL(file));
+    return false; // prevent automatic upload
   };
 
+//   const handleSubmit = async (values) => {
+//     const newReview = {
+//       name: values.name,
+//       review: values.review,
+//       rating: values.rating || 5,
+//       image: previewImage || "/default-avatar.jpg",
+//       createdAt: new Date()
 
-  const handleSubmit = async (values) => {
-    const newReview = {
-      name: values.name,
-      review: values.review,
-      rating: values.rating || 5,
-      image: previewImage || "/default-avatar.jpg",
-      createdAt: new Date()
+//     };
+//  try {
+//       const res = await fetch("http://localhost:5000/api/reviews", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(newReview),
+//       });
 
-    };
-try {
-  //  const stored = localStorage.getItem(LOCAL_KEY);
-  //  const existing = stored ? JSON.parse(stored) : [];
-  //  const updated = [newReview, ...existing];
-    //  const trimmed = [newReview, ...existing].slice(0, 20);
+//       if (!res.ok) throw new Error("Failed to submit review");
 
-   // localStorage.setItem(LOCAL_KEY, JSON.stringify(trimmed));
-      await addDoc(collection(db, "reviews"), newReview);
+//       message.success("Review submitted successfully!");
+//       form.resetFields();
+//       setPreviewImage("");
+//       onSubmit(); // refresh parent review list
+//       onClose(); // close modal
+//     }
+//   catch (err) {
+//       console.error(err);
+//       message.error("Unable to save review at this time. Please try again later.");
+//     }
+//   };
 
-    message.success("Review submitted successfully!");
-    form.resetFields();
-    setPreviewImage("");
-    onSubmit(); // trigger parent update
-    onClose(); // close modal
-  }
-  catch (e) {
-      console.error(e);
+ const handleSubmit = async (values) => {
+    if (!values.name || !values.review) {
+      message.error("Name and review are required!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("review", values.review);
+    formData.append("rating", values.rating || 5);
+    if (file) formData.append("image", file);
+    try {
+      const res = await fetch("http://localhost:5000/api/reviews", {
+        method: "POST",
+        body: formData,
+      });
+      if (!res.ok) throw new Error("Failed to submit review");
+        console.log("Response:", res);
+      message.success("Review submitted successfully!");
+      form.resetFields();
+      setFile(null);
+      setPreviewImage("");
+      onSubmit(); // refresh parent reviews
+      onClose();  // close modal
+    } catch (err) {
+      console.error(err);
       message.error("Unable to save review at this time. Please try again later.");
     }
-      };
-
+  };
 
   return (
     <Modal
@@ -106,7 +139,7 @@ try {
             //   return false;
             // }}
              maxCount={1}
-            beforeUpload={handleImageUpload}
+            beforeUpload={handleImageSelect}
             showUploadList={false}
             accept="image/*"
           >
@@ -131,7 +164,7 @@ try {
     footer={null}
     onCancel={() => setIsModalVisible(false)}
     centered
-    bodyStyle={{ padding: 0 }}
+    style={{ padding: 0 }}
   >
     <img
       src={previewImage}

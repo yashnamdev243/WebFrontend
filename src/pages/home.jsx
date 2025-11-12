@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import ReviewSection from "../components/ReviewSection";
 import TourCarousel from "../components/TourCarousel";
 //import products from "../Data/products";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase"; // your firebase config
 
 import ProductCard from "../components/ProductCard";
 import { Spin } from "antd";
@@ -14,22 +12,21 @@ const Home = () => {
      const [loading, setLoading] = useState(true);
 
    useEffect(() => {
-      const fetchProducts = async () => {
-              try {
+    // React fetch
+const fetchProducts = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/api/products");
+    if (!res.ok) throw new Error("Failed to fetch products");
+    const data = await res.json();
+    setProducts(data);
+  } catch (err) {
+    console.error(err);
+  }
+  finally {
+    setLoading(false);
+  }
+};
 
-        const querySnapshot = await getDocs(collection(db, "products"));
-        const productsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setProducts(productsData);
-         } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-      };
-  
       fetchProducts();
     }, []);
   return (

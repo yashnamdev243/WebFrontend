@@ -4,8 +4,6 @@ import { toast, Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { Select } from "antd";
 import React, { useState } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase";
 import {
   PhoneOutlined,
   MailOutlined,
@@ -34,52 +32,124 @@ const TEMPLATE_ID = "template_f7vhbph";
 const USER_ID = "zhJbSf_YRwbbc1hOg";
 
 const Contact = () => {
-  const [hover, setHover] = useState(false);
-  const [formData, setFormData] = useState({
+    const [hover, setHover] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // ✅ Only one form state
+  const [form, setForm] = useState({
     name: "",
     email: "",
     contact: "",
-    tour: "",
     message: "",
   });
- const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  // ✅ handleChange works for all inputs
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // ✅ Fixed handleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      await addDoc(collection(db, "contacts"), {
-        ...form,
-        createdAt: serverTimestamp(),
+      const res = await fetch("http://localhost:5000/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Failed to send message");
+
       toast.success("Message sent successfully!");
-      setForm({ name: "", email: "", message: "" });
-    } catch (err) {
-      console.error("Error adding document:", err);
-      toast.error("Failed to send message. Check console.");
+      setForm({ name: "", email: "", contact: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
-      .then(() => {
-        toast.success("Message sent successfully!");
-        setFormData({
-          name: "",
-          contact: "",
-          message: "",
-        });
-        e.target.reset();
-      })
-      .catch(() => {
-        toast.error("Failed to send message. Please try again.");
-      });
-  };
+//   const [hover, setHover] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     contact: "",
+//     message: "",
+//   });
+//  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+//   const handleChange = (e) => {
+//     setForm({ ...form, [e.target.name]: e.target.value });
+//   };
+
+//   // const handleSubmit = async (e) => {
+//   //   e.preventDefault();
+//   //    setLoading(true);
+
+  
+//   //     try {
+//   //   const res = await fetch("http://localhost:5000/api/contact", {
+//   //     method: "POST",
+//   //     headers: { "Content-Type": "application/json" },
+//   //     body: JSON.stringify(form)
+//   //   });
+
+//   //   if (!res.ok) throw new Error("Failed to send message");
+//   //   alert("Message sent successfully!");
+//   //   setForm({ name: "", email: "", message: "" });
+//   // } catch (error) {
+//   //   console.error(error);
+//   // }
+
+//   //    finally {
+//   //     setLoading(false);
+//   //   }
+//   // };
+  
+//   const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   setLoading(true);
+
+//   try {
+//     const res = await fetch("http://localhost:5000/api/contacts", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(form),
+//     });
+
+//     if (!res.ok) throw new Error("Failed to send message");
+
+//     alert("Message sent successfully!");
+//     setForm({ name: "", email: "", contact: "", message: "" });
+//   } catch (error) {
+//     console.error(error);
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  //   emailjs
+  //     .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
+  //     .then(() => {
+  //       toast.success("Message sent successfully!");
+  //       setFormData({
+  //         name: "",
+  //         contact: "",
+  //         message: "",
+  //       });
+  //       e.target.reset();
+  //     })
+  //     .catch(() => {
+  //       toast.error("Failed to send message. Please try again.");
+  //     });
+  // };
 
   return (
     <>
@@ -128,7 +198,7 @@ const Contact = () => {
             </div>
 
             {/* Email Field */}
-            {/* <div className="relative">
+            <div className="relative">
             <label className="text-yellow-700 lg:text-lg">Your Email</label>
             <FaEnvelope className="absolute left-4 lg:top-11 top-10 text-gray-400 lg:text-lg text-sm" />
             <input
@@ -140,7 +210,7 @@ const Contact = () => {
             onChange={handleChange}
               className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
             />
-          </div> */}
+          </div>
 
             {/* Contact Field */}
             <div className="relative">
@@ -288,41 +358,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-// import React, { useState } from "react";
-// import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-// import { db } from "../firebase"; // adjust path as needed
-
-// export default function Contact() {
-//   const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-//   const handleChange = (e) => {
-//     setForm({ ...form, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       await addDoc(collection(db, "contacts"), {
-//         ...form,
-//         createdAt: serverTimestamp(),
-//       });
-//       alert("Message sent successfully!");
-//       setForm({ name: "", email: "", message: "" });
-//     } catch (err) {
-//       console.error("Error adding document:", err);
-//       alert("Failed to send message. Check console.");
-//     }
-//   };
-
-//   return (<div className="my-50"> 
-//     <form onSubmit={handleSubmit}>
-//       <input name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
-//       <input name="email" value={form.email} onChange={handleChange} placeholder="Email" required />
-//       <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" required />
-//       <button type="submit">Send</button>
-//     </form>
-//     </div>
-//   );
-// }
