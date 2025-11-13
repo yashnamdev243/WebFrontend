@@ -2,19 +2,25 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 import "swiper/css";
 import "swiper/css/pagination";
 import ReviewModalForm from "./ReviewModalForm";
 import { MessageCircleHeart, UsersRound } from "lucide-react";
 import { Spin } from "antd";
 
-//const LOCAL_KEY = "user_reviews";
 
 const ReviewSection = () => {
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedReview, setSelectedReview] = useState(null);
+
+  const handleCardClick = (review) => {
+    setSelectedReview(review);
+    setOpenModal(true);
+  };
 
  const fetchReviews = async () => {
     setLoading(true);
@@ -42,18 +48,12 @@ const ReviewSection = () => {
         Blessings & Feedback
       </h2>
 
-      {/* Button to open modal */}
-     
-
-      {/* Modal Form Component */}
       <ReviewModalForm open={open} onClose={() => setOpen(false)} onSubmit={fetchReviews} />
 
       {/* Swiper: no change needed */}
       <div className="w-full max-w-7xl mx-auto px-4 py-6">
         {reviews.length === 0 ? (
-          // <p className="text-center text-gray-500 italic">
-          //   No reviews yet. Be the first to share your blessings!
-          // </p>
+        
            <div className="flex flex-col items-center justify-center gap-4 text-gray-500">
       <MessageCircleHeart className="w-12 h-12 text-red-400 animate-pulse" />
       <p className="text-center italic text-lg sm:text-xl">
@@ -90,11 +90,10 @@ const ReviewSection = () => {
             }}
             className="rounded-xl"
           >
-            {reviews.map((review, idx) => (
+            {/* {reviews.map((review, idx) => (
               <SwiperSlide key={idx}>
                 <div className="group bg-white mb-8 p-6 shadow-md rounded-lg flex flex-col items-center text-center hover:shadow-2xl transition-all duration-300 border border-[#ffe3c4]">
                   <img
-                    // src={review.image || "/default-avatar.jpg"}
                      src={`http://localhost:5000${review.image}`} 
                     alt={review.name}
                     className="w-24 h-24 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300 object-cover"
@@ -112,10 +111,7 @@ const ReviewSection = () => {
                   <p className="text-gray-600 lg:text-lg text-sm mt-4 italic fira-sans">
                     "{review.review}"
                   </p>
-                  {/* <p>{review.review}</p>
-{review.reply && <p className="text-green-600 italic">Admin Reply: {review.reply}</p>} */}
-
-                {/* <p>"{review.review}"</p> */}
+                 
                {review.reply && (
                 <p className="!text-blue-600 italic mt-2">
                   Admin Reply: {review.reply}
@@ -125,8 +121,107 @@ const ReviewSection = () => {
 
                 </div>
               </SwiperSlide>
-            ))}
+            ))} */}
+         
+                    {reviews.map((review, idx) => (
+          <SwiperSlide key={idx}>
+            <div
+              onClick={() => handleCardClick(review)}
+              className="relative bg-[#f5f3f0] p-6 h-80 shadow-md rounded-2xl flex flex-col items-center text-center 
+              border border-[#ffe3c4] transition-all duration-300 hover:shadow-2xl overflow-hidden cursor-pointer hover:-translate-y-2"
+            >
+              <img
+                src={
+                  review.image
+                    ? `http://localhost:5000${review.image}`
+                    : "/default-avatar.jpg"
+                }
+                alt={review.name}
+                className="w-20 h-20 rounded-full border-4 border-[#ffcc70] shadow-md mb-3 object-cover"
+              />
+
+              <h3 className="text-lg font-semibold text-gray-700">
+                {review.name}
+              </h3>
+
+              <div className="flex justify-center mt-1 mb-2">
+                {Array.from({ length: review.rating }).map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-lg">
+                    ★
+                  </span>
+                ))}
+              </div>
+
+              <p className="text-gray-600 italic text-sm leading-snug line-clamp-3">
+             {review.name} Review : "{review.review}"
+              </p>
+
+              {review.reply && (
+                <p className="text-blue-600 italic text-xs mt-2 line-clamp-2">
+                  Namdev Narmadeshwar Shivling Arts
+                Reply: {review.reply}
+                </p>
+              )}
+            </div>
+          </SwiperSlide>
+        ))}
+
           </Swiper>
+                {/* Modal for Full Review */}
+      <Modal
+        open={openModal}
+        onCancel={() => setOpenModal(false)}
+        footer={null}
+        centered
+        width={600}
+        className="rounded-xl"
+      >
+        {selectedReview && (
+          <div className="p-2 flex flex-col items-center text-center">
+            <img
+              src={
+                selectedReview.image
+                  ? `http://localhost:5000${selectedReview.image}`
+                  : "/default-avatar.jpg"
+              }
+              alt={selectedReview.name}
+              className="w-24 h-24 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 object-cover"
+            />
+            <h3 className="text-xl font-semibold text-gray-800">
+              {selectedReview.name}
+            </h3>
+
+            <div className="flex justify-center mt-2 mb-4">
+              {Array.from({ length: selectedReview.rating }).map((_, i) => (
+                <span key={i} className="text-yellow-400 text-xl">
+                  ★
+                </span>
+              ))}
+            </div>
+
+            <div className="bg-[#fefaf5] rounded-lg p-4 w-full shadow-inner mb-3">
+              <p className="text-yellow-700 font-semibold text-base mb-1">
+                  {selectedReview.name} Review :
+                </p>
+              <p className="text-yellow-600 italic text-sm leading-relaxed">
+                “{selectedReview.review}”
+              </p>
+            </div>
+
+            {selectedReview.reply && (
+              <div className="bg-[#eef3ff] rounded-lg p-4 w-full shadow-inner border border-blue-200">
+                <p className="text-blue-700 font-semibold text-base mb-1">
+                  Namdev Narmadeshwar Shivling Arts Reply :
+                </p>
+                <p className="text-blue-600 italic text-sm leading-relaxed">
+                  {selectedReview.reply}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+      </Modal>
+
               </div>
 
         )}
