@@ -42,7 +42,7 @@ const fetchProducts = async () => {
         >
    
 <div className="mt-10 px-4 lg:px-19 "> 
-    <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">
+    <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8">
         Featured Products
 
       </h2></div>

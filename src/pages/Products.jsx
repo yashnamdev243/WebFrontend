@@ -29,7 +29,7 @@ const fetchProducts = async () => {
    <section className=" py-12 lg:mt-26 mt-12  bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0]">
     <div className="px-4 lg:px-19">
 
-     <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">Our Products</h2>
+     <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8">Our Products</h2>
        </div>
         {loading ? (
           <p className="text-center text-gray-500">Loading products...</p>

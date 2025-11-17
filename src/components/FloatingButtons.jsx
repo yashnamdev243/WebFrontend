@@ -42,7 +42,7 @@ const FloatingButtons = () => {
         <motion.button
           onClick={scrollToTop}
 
-            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] rounded-full shadow-lg  transition cursor-pointer"
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] rounded-full shadow-lg  transition cursor-pointer"
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
         >

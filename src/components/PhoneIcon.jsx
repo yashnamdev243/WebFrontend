@@ -18,7 +18,7 @@ const PhoneIcon = () => {
     <motion.div
       className={`mr-14 flex items-center justify-center h-10  p-2 rounded-full w-10 sm:w-50 text-white ${
         isScrolled
-          ? "bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70]  bg-opacity-80 shadow-lg"
+          ? "bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]   bg-opacity-80 shadow-lg"
           : "lg:border-2 lg:px-5 lg:py-2 lg:rounded-4xl lg:backdrop-blur-md bg-transparent"
       }`}
 

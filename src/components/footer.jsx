@@ -24,15 +24,11 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-[#0A141E]  text-white py-6">
       <div className="container mx-auto px-6">
-        {/* Heading Section */}
-
-        {/* <p className=" mb-10 text-3xl text-center text-gray-400">
-            Feel free to reach out for any inquiries or assistance.
-          </p> */}
 
         <div className="mt-4 grid md:grid-cols-3 gap-4 text-center md:text-center">
           <div>
-            <h3 className="lg:text-2xl text-xl  font-bold text-[#ffcc70]">
+           <h3 className="lg:text-2xl text-xl font-extrabold bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] bg-clip-text text-transparent tracking-wide">
+
               Store Address
             </h3>
             {/* Address */}
@@ -45,24 +41,7 @@ const Footer = () => {
                 />
               </div>
             </div>
-            {/* <div className="flex items-start justify-center md:justify-center lg:space-x-[-20px]  space-x-[-5px]">
-              <FaMapMarkerAlt className="text-[#ffcc70] text-2xl " />
-              <p className="lg:text-lg text-sm  max-w-xs">
-              Handcrafted Narmadeshwar Shivlings & Sacred Art for Peaceful Spaces
-              </p>
-            </div> */}
-            {/* <div className="flex justify-center md:justify-center mt-2">
-              <a
-                href="mailto:arvindnamdev62@gmail.com"
-                className="flex items-center space-x-2 text-lg hover:text-[#ffcc70] transition"
-              >
-                <FaMapMarkerAlt className="text-[#ffcc70] lg:text-xl text-sm lg:mb-9 mb-8" />
-                <span className="lg:text-lg text-sm">
-                  Bakawan , post - Mardana ,<br /> Teh -Barwaha , <br /> Dist
-                  -Khargone (M.P) 451113
-                </span>
-              </a>
-            </div> */}
+           
             <div className="flex justify-center mt-2 px-4">
               <a
                 href="https://maps.app.goo.gl/znzwKS4GrVBksKgh9"
@@ -79,29 +58,11 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          {/* <div>
-            <h3 className="lg:text-2xl text-xl font-bold text-[#ffcc70]">
-              Certified By{" "}
-            </h3>
-            <div className="flex justify-center md:justify-center">
-              <div className="flex justify-center md:justify-center mt-2">
-                <img
-                  src="/msme-logo.png"
-                  width="80"
-                  alt="Image 2"
-                  className="mx-2"
-                ></img>
-              </div>
-            </div>
-            <div className="flex items-start justify-center md:justify-center space-x-0 ">
-              <p className=" mt-2 lg:text-lg text-sm  max-w-xs">
-                Ministry of Micro, Small and Medium Enterprises (MSME)
-              </p>
-            </div>
-          </div> */}
-
+        
           <div>
-            <h3 className="lg:text-2xl text-xl  font-bold text-[#ffcc70]">
+            {/* <h3 className="lg:text-2xl text-xl  font-bold text-[#ffcc70]"> */}
+            <h3 className="lg:text-2xl text-xl font-extrabold bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] bg-clip-text text-transparent tracking-wide">
+
               Namdev Narmadeshwar Shivling Arts
             </h3>
             <p className="mt-2">
@@ -137,7 +98,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="lg:text-2xl text-xl  font-bold text-[#ffcc70]">
+            <h3 className="lg:text-2xl text-xl font-extrabold bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] bg-clip-text text-transparent tracking-wide">
+
               {" "}
               Help & Support
             </h3>

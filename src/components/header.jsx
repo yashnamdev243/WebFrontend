@@ -24,20 +24,8 @@ const Header = () => {
     <>
       {" "}
       <header
-        // className={`fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4 ${
-        //   isScrolled
-        //   // ? "bg-gradient-to-r from-[#105859] via-[#116869] to-[#116869] text-white bg-opacity-80 backdrop-blur-md shadow-lg"
-        //   // : "bg-transparent"
-        //   // isScrolled
-        //   //   ? "bg-gradient-to-r from-[#188687] via-[#188687] to-[#2592b7] text-white bg-opacity-80 backdrop-blur-md shadow-lg"
-        //   //   : "bg-transparent"
-        // }`}
-        // style={{
-        //   backgroundImage: isScrolled ? "url('/image.avif')" : "none",
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        // }}
-        className="fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4  bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70]"
+     
+        className="fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4  bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] "
       >
         {/* Logo */}
         <div className="flex items-center">

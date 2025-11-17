@@ -153,11 +153,11 @@ const Contact = () => {
 
   return (
     <>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 bg-gradient-to-b from-[#2e2b06]  to-[#ffcc70] text-gray-900 shadow-lg mx-auto relative p-8 md:p-30 ">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6  text-gray-900 shadow-lg mx-auto relative p-8 md:p-30 ">
         {/* <FloatingParticles /> */}
         {/* Left Side (Content, Heading, Image) */}
         <div className="flex flex-col justify-center items-center text-center space-y-5">
-          <h1 className="lg:mt-12 mt-15 text-xl lg:text-4xl font-extrabold text-gray-300 animate-bounce">
+          <h1 className="lg:mt-12 mt-15 text-xl lg:text-4xl font-extrabold text-orange-400 animate-bounce">
             Connect with Namdev Narmadeshwar Shivling Arts
           </h1>
           <p className="text-sm lg:text-lg text-gray-400 animate-bounce">
@@ -174,17 +174,17 @@ const Contact = () => {
         <div className="flex justify-center">
           <form
             onSubmit={handleSubmit}
-            className="bg-gray-200 p-8 rounded-2xl  shadow-xl bg-opacity-80 backdrop-blur-lg max-w-xl w-full space-y-6"
+            className="bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] p-8 rounded-2xl  shadow-xl bg-opacity-80 backdrop-blur-lg max-w-xl w-full space-y-6"
           >
             {/* Name Field */}
             <div>
-              <h1 className="text-lg lg:text-2xl text-yellow-900 text-center font-semibold  ">
+              <h1 className="text-lg lg:text-2xl text-white text-center font-semibold  ">
                 Contact us now!
               </h1>
             </div>
             <div className="relative">
-              <label className="text-yellow-700 lg:text-lg">Your Name</label>
-              <FaUser className="absolute left-4 lg:top-11 top-10 text-gray-400 lg:text-lg text-sm" />
+              <label className="text-white lg:text-lg">Your Name</label>
+              <FaUser className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
               <input
                 type="text"
                 name="name"
@@ -193,14 +193,14 @@ const Contact = () => {
                 value={form.name}
                onChange={handleChange} 
                 
-                className="w-full pl-10 p-3 lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
+                className="w-full pl-10 p-3 lg:text-lg text-sm rounded-lg bg-gray-100 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
               />
             </div>
 
             {/* Email Field */}
             <div className="relative">
-            <label className="text-yellow-700 lg:text-lg">Your Email</label>
-            <FaEnvelope className="absolute left-4 lg:top-11 top-10 text-gray-400 lg:text-lg text-sm" />
+            <label className="text-white lg:text-lg">Your Email</label>
+            <FaEnvelope className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
             <input
               type="email"
               name="email"
@@ -208,14 +208,14 @@ const Contact = () => {
               required
               value={form.email}
             onChange={handleChange}
-              className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
+              className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-100 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
             />
           </div>
 
             {/* Contact Field */}
             <div className="relative">
-              <label className="text-yellow-700 lg:text-lg">Your Contact</label>
-              <FaPhone className="absolute left-4 lg:top-11 top-10 text-gray-400 lg:text-lg text-sm" />
+              <label className="text-white lg:text-lg">Your Contact</label>
+              <FaPhone className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
               <input
                 type="tel"
                 name="contact"
@@ -224,13 +224,13 @@ const Contact = () => {
                 value={form.contact}
                 onChange={handleChange}
                 
-                className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
+                className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-100 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
               />
             </div>
 
             {/* Message Field */}
             <div className="relative">
-              <label className="text-yellow-700 lg:text-lg ">
+              <label className="text-white lg:text-lg ">
                 Your Message
               </label>
               <textarea
@@ -239,7 +239,7 @@ const Contact = () => {
                 required
                 value={form.message}
                onChange={handleChange}
-                className="w-full p-3  lg:text-lg text-sm  rounded-lg bg-gray-300 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all h-20"
+                className="w-full p-3  lg:text-lg text-sm  rounded-lg bg-gray-100 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all h-20"
               />
             </div>
 
@@ -247,7 +247,7 @@ const Contact = () => {
             <div className="flex justify-center mt-4">
               <button
                 type="submit"
-                className={`bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] text-white font-bold  px-4  text-xs md:text-lg py-3 rounded-lg shadow-lg transition-all transform ${
+                className={`bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] text-white font-bold  px-4  text-xs md:text-lg py-3 rounded-lg shadow-lg transition-all transform ${
                   hover
                     ? "scale-110 shadow-xl"
                     : "hover:scale-110 hover:shadow-lg"
@@ -266,7 +266,7 @@ const Contact = () => {
       <section className="min-h-screen py-12 bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0] overflow-hidden">
         <div className="max-w-6xl mx-auto  px-4 lg:px-0  gap-16 items-start">
           <div className="space-y-4" data-aos="fade-right">
-            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] lg:mb-4">
+            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] lg:mb-4">
               Contact Us
             </h2>
             <p className="text-sm lg:text-lg px-2 text-gray-600 mt-10 mb-8 text-center animate-bounce">
@@ -335,7 +335,7 @@ const Contact = () => {
 
           {/* MAP */}
           <div className="mt-20 ">
-            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] lg:mb-4 ">
+            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] lg:mb-4 ">
               Our Location
             </h2>
             <p className="text-sm lg:text-lg px-2 text-gray-600 mt-10 mb-8 text-center animate-bounce">

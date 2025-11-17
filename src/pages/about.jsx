@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
-
 import {
   Segmented,
   Button,
@@ -235,44 +234,11 @@ export default function About() {
                 bordered={false}
                 className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-yellow-50 "
               >
-                <p className=" text-sm sm:text-base leading-7 text-gray-700 mb-4">
+             <p className="text-base sm:text-lg leading-relaxed text-gray-600 font-medium mb-5 tracking-wide">
                   {t.story}
                 </p>
                 <Divider />
-                {/* <Timeline
-                  items={[
-                    {
-                      color: "green",
-                      dot: <CheckCircleTwoTone twoToneColor="#52c41a" />,
-                      children:
-                        lang === "hi"
-                          ? "स्व. मांगीलाल जी नामदेव — परंपरा की शुरुआत"
-                          : "Late Mangilal Namdev — Craft begins",
-                    },
-                    {
-                      color: "blue",
-                      dot: <SafetyCertificateOutlined />,
-                      children:
-                        lang === "hi"
-                          ? "अटल बिहारी वाजपेयी जी सहित संतों को शिवलिंग भेंट"
-                          : "Shivlings presented to leaders & saints incl. Atal Bihari Vajpayee",
-                    },
-                    {
-                      color: "purple",
-                      dot: <ReadOutlined />,
-                      children:
-                        lang === "hi"
-                          ? "दीपक जी, शिवनारायण जी और अरविंद नामदेव द्वारा परंपरा का विस्तार"
-                          : "Tradition carried by Deepak, Shivanarayan & Arvind Namdev",
-                    },
-                    {
-                      color: "gold",
-                      dot: <GlobalOutlined />,
-                      children:
-                        lang === "hi" ? "भारत से विदेश तक स्थापना" : "Installed across India & overseas",
-                    },
-                  ]}
-                /> */}
+                
                 <Timeline
                   items={timelineData.map(
                     ({ color, icon, textHi, textEn }) => ({
@@ -285,8 +251,8 @@ export default function About() {
                         </div>
                       ),
                       children: (
-                        <div className="flex items-center">
-                          <p className="text-sm sm:text-base ml-2 leading-7">
+                        <div className="flex items-start gap-3">
+                          <p className="text-base sm:text-lg leading-relaxed text-gray-700 font-medium tracking-wide">
                             {lang === "hi" ? textHi : textEn}{" "}
                           </p>{" "}
                         </div>
@@ -301,50 +267,71 @@ export default function About() {
             <Fade delay={0.1}>
               <Card
                 bordered={false}
-                className="rounded-2xl shadow-md overflow-hidden "
+                className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-yellow-50 "
                 cover={
-                  <div className="relative h-64 sm:h-80 md:h-96 w-full">
-                    {/* Replace with your image */}
-                    <img
-                      src="/slide8.jpg"
-                      alt="Narmadeshwar Shivling artisan craft"
-                      className="h-full w-full object-cover rounded-t-2xl"
-                      onError={(e) => (e.currentTarget.style.display = "none")}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-t-2xl" />
-                    <div className="absolute !bottom-4 left-4 text-white drop-shadow-lg">
-                      <h3 className="sm:text-xl font-semibold">
-                        {t.heroTitle}
-                      </h3>
-                      <p className="sm:text-sm text-xs opacity-90 max-w-xs">
-                        {t.heroSubtitle}
-                      </p>
-                    </div>
-                  </div>
+                 <div className="relative h-64 sm:h-80 md:h-96 w-full group overflow-hidden rounded-t-2xl">
+
+  {/* IMAGE */}
+  <img
+    src="/slide8.jpg"
+    alt="Narmadeshwar Shivling artisan craft"
+    className="h-full w-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+    onError={(e) => (e.currentTarget.style.display = "none")}
+  />
+
+  {/* Dark Luxury Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+  {/* Soft Golden Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-yellow-600/10 opacity-40" />
+
+  {/* TEXT */}
+  <div className="absolute bottom-5 left-5 text-white space-y-1 drop-shadow-xl">
+    <h3 className="text-xl sm:text-2xl font-bold tracking-wide">
+      {t.heroTitle}
+    </h3>
+    <p className="text-xs sm:text-sm opacity-90 leading-relaxed max-w-xs">
+      {t.heroSubtitle}
+    </p>
+  </div>
+
+  {/* Subtle Shine Effect on Hover */}
+  <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-gradient-to-r from-white/10 to-transparent" />
+</div>
+
                 }
               >
                 <Row
                   gutter={16}
-                  className="text-center mb-[-4px] p-2 !bg-gradient-to-br from-white to-yellow-50  "
+              className="text-center p-3 rounded-b-2xl bg-gradient-to-br from-white to-yellow-50"
                 >
                   <Col span={8}>
                     <Statistic
-                      title={lang === "hi" ? "पीढ़ियाँ" : "Generations"}
+                      title={              <span className="text-gray-700 font-semibold">
+{lang === "hi" ? "पीढ़ियाँ" : "Generations"} </span>
+            }
                       value={3}
+                       valueStyle={{ fontSize: '22px', fontWeight: '700', color: '#FF9011' }}
                       suffix={lang === "hi" ? "+" : "+"}
                     />
                   </Col>
                   <Col span={8}>
                     <Statistic
-                      title={lang === "hi" ? "आकार" : "Sizes"}
+                      title= {              <span className="text-gray-700 font-semibold">
+{lang === "hi" ? "आकार" : "Sizes"} </span>
+            }
                       value={24}
+                       valueStyle={{ fontSize: '22px', fontWeight: '700', color: '#FF9011' }}
                       suffix={lang === "hi" ? "फीट" : "ft"}
                     />
                   </Col>
                   <Col span={8}>
                     <Statistic
-                      title={lang === "hi" ? "देश" : "Countries"}
+                      title= {              <span className="text-gray-700 font-semibold">
+{lang === "hi" ? "देश" : "Countries"} </span>
+            }
                       value={15}
+                       valueStyle={{ fontSize: '22px', fontWeight: '700', color: '#FF9011' }}
                       suffix={lang === "hi" ? "+" : "+"}
                     />
                   </Col>
@@ -390,12 +377,12 @@ export default function About() {
                   className="rounded-2xl !shadow-md h-full !bg-gradient-to-tl from-white to-yellow-50  hover:!shadow-lg transition-all duration-300 hover:scale-[1.02]  !p-4 sm:!p-5"
                 >
                   <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                    <ThunderboltOutlined className="!text-yellow-500 text-xl sm:text-2xl" />
-                    <h4 className="!text-base font-semibold !text-yellow-800">
+                    <ThunderboltOutlined className="!text-orange-400 text-xl sm:text-2xl" />
+                    <h4 className="text-base sm:text-lg font-semibold !text-orange-400 tracking-wide">
                       {lang === "hi" ? f.textHi : f.textEn}
                     </h4>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-6">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     {lang === "hi"
                       ? "कई शिवलिंगों में ये नेचुरल पैटर्न स्वाभाविक रूप से दिखाई देते हैं।"
                       : "These natural patterns are often revealed in the stone itself."}
@@ -404,41 +391,58 @@ export default function About() {
               </Col>
             ))}
           </Row>
-          <Divider className="my-6 sm:my-8" />
+          <Divider className="my-6 sm:my-8 bg-orange-200" />
           <Card
             bordered={false}
             className="rounded-2xl !shadow-md !bg-gradient-to-br from-white to-yellow-50 !p-4 sm:!p-6"
           >
-            <Descriptions
-              title={
-                <h3 className="text-base sm:text-lg font-semibold text-yellow-700">
-                  {lang === "hi" ? t.accessoriesHead : t.accessoriesHead}{" "}
-                </h3>
-              }
-              bordered
-              column={{ xs: 1, sm: 2, md: 3 }}
-              size="middle"
-              labelStyle={{ fontWeight: 600, color: "#374151" }}
-            >
-              <Descriptions.Item
-                label={lang === "hi" ? "देव प्रतिमाएँ" : "Deities"}
-              >
-                {lang === "hi"
-                  ? "नंदी, गणेश, पार्वती, कार्तिकेय, संपूर्ण शिव परिवार"
-                  : "Nandi, Ganesha, Parvati, Kartikeya, Complete Shiva Parivar"}
-              </Descriptions.Item>
-              <Descriptions.Item
-                label={lang === "hi" ? "पूजन सामग्री" : "Puja Items"}
-              >
-                {lang === "hi"
-                  ? "नाग, त्रिशूल, जलपात्र"
-                  : "Naag, Trishul, Jalpatra"}
-              </Descriptions.Item>
-              <Descriptions.Item label={lang === "hi" ? "धातु" : "Metals"}>
-                {lang === "hi" ? "तांबा, पीतल" : "Copper, Brass"}
-              </Descriptions.Item>
-            </Descriptions>
-            <p className="mt-4 sm:mt-5 text-yellow-700 text-xs sm:text-sm italic border-t pt-3 sm:pt-4">
+         <Descriptions
+  title={
+    <h4 className="text-base sm:text-lg font-semibold !text-orange-400 tracking-wide px-4 pt-2">
+      {lang === "hi" ? t.accessoriesHead : t.accessoriesHead}
+    </h4>
+  }
+  bordered
+  column={{ xs: 1, sm: 2, md: 3 }}
+  size="middle"
+  className="rounded-xl overflow-hidden shadow-sm"
+  labelStyle={{
+    fontWeight: 600,
+    color: "#FFFFFF",
+    background: "#FF9011",
+    padding: "12px 20px",
+  }}
+  contentStyle={{
+    color: "#4b5563",
+    fontSize: "14px",
+    padding: "12px 20px",
+    background: "white",
+  }}
+>
+  <Descriptions.Item
+    label={lang === "hi" ? "देव प्रतिमाएँ" : "Deities"}
+  >
+    {lang === "hi"
+      ? "नंदी, गणेश, पार्वती, कार्तिकेय, संपूर्ण शिव परिवार"
+      : "Nandi, Ganesha, Parvati, Kartikeya, Complete Shiva Parivar"}
+  </Descriptions.Item>
+
+  <Descriptions.Item
+    label={lang === "hi" ? "पूजन सामग्री" : "Puja Items"}
+  >
+    {lang === "hi"
+      ? "नाग, त्रिशूल, जलपात्र"
+      : "Naag, Trishul, Jalpatra"}
+  </Descriptions.Item>
+
+  <Descriptions.Item
+    label={lang === "hi" ? "धातु" : "Metals"}
+  >
+    {lang === "hi" ? "तांबा, पीतल" : "Copper, Brass"}
+  </Descriptions.Item>
+</Descriptions>
+
+            <p className="mt-4 sm:mt-5 text-orange-400 text-xs sm:text-sm italic border-t pt-3 sm:pt-4">
               {t.exportLine}
             </p>
           </Card>
@@ -456,7 +460,7 @@ export default function About() {
                 className=" rounded-2xl shadow-md !p-4 sm:!p-6 !bg-gradient-to-br from-white to-yellow-50 
 "
               >
-                <p className="text-sm sm:text-base leading-7 text-gray-700 mb-3 sm:mb-4">
+                <p className="sm:mb-4 text-base sm:text-lg leading-relaxed text-gray-600 font-medium mb-5 tracking-wide">
                   {t.sizes}
                 </p>
                 <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
@@ -473,13 +477,18 @@ export default function About() {
                     "12ft",
                     "24ft",
                   ].map((s) => (
-                    <Tag
+                    <span
                       key={s}
                       color="geekblue"
-                      className="px-3 py-1 rounded-full  text-xs sm:text-sm font-medium !bg-yellow-100 !text-yellow-700"
+                      className="px-4 py-1.5 
+            text-xs sm:text-sm 
+            rounded-full 
+            bg-gradient-to-r from-orange-200 to-orange-100
+            text-orange-400 font-semibold
+            shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
                     >
                       {s}
-                    </Tag>
+                    </span>
                   ))}
                 </div>
                 <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
@@ -586,13 +595,13 @@ export default function About() {
             items={t.faqs.map((f, i) => ({
               key: `${i}`,
               label: (
-                <span className="sm:text-base font-semibold !text-yellow-600 transition-colors">
+                <span className="text-base sm:text-lg  font-semibold !text-orange-400 transition-colors">
                   {" "}
                   {f.q}{" "}
                 </span>
               ),
               children: (
-                <p className="leading-7 text-yellow-700 p-4 rounded-xl bg-yellow-100">
+                <p className="leading-7 text-orange-400 p-4 rounded-xl bg-orange-50 text-sm sm:text-base">
                   {f.a}
                 </p>
               ),
@@ -809,7 +818,10 @@ export default function About() {
           items={tabs.map(({ key, label, children }) => ({
             key,
             label: (
-              <span className="px-4 py-2 text-sm md:text-base font-medium whitespace-nowrap  ">
+              <span className="px-6 py-2 
+            text-sm md:text-base 
+            font-semibold
+            tracking-wide">
                 {label}
               </span>
             ),
@@ -818,9 +830,10 @@ export default function About() {
           renderTabBar={(props, DefaultTabBar) => (
             <div
               ref={navRef}
-              className="overflow-x-auto  flex w-full custom-tabs-wrapper  "
+              className="overflow-x-auto  flex w-full custom-tabs-wrapper"
             >
-              <DefaultTabBar {...props} className="!flex !w-max space-x-2" />
+              <DefaultTabBar {...props} className="!flex !w-max space-x-3     
+" />
             </div>
           )}
         />
@@ -829,23 +842,28 @@ export default function About() {
       {/* Contact Card */}
       <Section className="py-12 lg:px-8 px-4">
         <Fade>
-          <Card className="rounded-3xl shadow-lg border border-slate-100 !bg-gradient-to-br from-white to-yellow-50 !p-8">
+          <Card className="rounded-3xl shadow-lg border border-slate-100 !bg-gradient-to-br from-white to-orange-50 !p-8">
             <Row gutter={[32, 32]} align="stretch">
               {/* Left Section */}
               <Col xs={24} md={14}>
                 <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
-                  <h2 className="lg:text-3xl text-xl font-bold text-center py-2 px-10 text-white bg-gradient-to-l from-[#2e2b06]  to-[#ffcc70] mb-8">
+                  <h2 className="lg:text-3xl text-xl text-center py-2 px-10 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8">
                     {" "}
                     {t.specsHead}
                   </h2>
-                  <p className="text-gray-600 text-lg mb-6">{t.addressTitle}</p>
+                  <p className="  bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  
+  bg-clip-text text-transparent
+ text-lg mb-6">{t.addressTitle}</p>
                   <ul className="space-y-3">
                     {t.address.map((line, i) => (
                       <li
                         key={i}
-                        className="flex items-start justify-start gap-3 text-base text-yellow-700"
+                        className="flex items-start justify-start gap-3 text-base text-orange-400"
                       >
-                        <span className="flex-shrink-0 w-2.5 h-2.5 mt-2 rounded-full bg-gradient-to-r from-yellow-500 to-black"></span>
+                        <span className="  flex-shrink-0 w-3 h-3 mt-2 rounded-full 
+  bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]
+  
+"></span>
                         {line}
                       </li>
                     ))}
@@ -854,55 +872,61 @@ export default function About() {
               </Col>
 
               {/* Right Section - Action Buttons as Tiles */}
-              <Col xs={24} md={10}>
-                <div className="h-full flex flex-col justify-center gap-5">
-                  <a
-                    href={`tel:+91${PHONE}`}
-                    className="flex items-center gap-4 !bg-blue-50 hover:!bg-blue-100 rounded-2xl p-5 shadow-sm transition"
-                  >
-                    <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-blue-600 text-white">
-                      <PhoneOutlined />
-                    </div>
-                    <span className="text-lg font-semibold text-slate-800">
-                      {t.ctas.call}
-                    </span>
-                  </a>
+             <Col xs={24} md={10}>
+  <div className="h-full flex flex-col justify-center gap-5">
 
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    className="flex items-center gap-4 !bg-green-50 hover:!bg-green-100 rounded-2xl p-5 shadow-sm transition"
-                  >
-                    <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-green-500 text-white">
-                      <WhatsAppOutlined />
-                    </div>
-                    <span className="text-lg font-semibold text-slate-800">
-                      {t.ctas.whatsapp}
-                    </span>
-                  </a>
+    {/* CALL */}
+    <a
+      href={`tel:+91${PHONE}`}
+      className="flex items-center gap-4 bg-gradient-to-r from-[#fff2cc] to-[#ffe4a3] hover:from-[#ffe9b5] hover:to-[#ffd98a] rounded-2xl p-5 shadow-md transition border border-[#f6d381]/50"
+    >
+      <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-gradient-to-br from-[#ffcc70] to-[#ff8c00] text-white shadow">
+        <PhoneOutlined />
+      </div>
+      <span className="text-lg font-semibold text-slate-900 tracking-wide">
+        {t.ctas.call}
+      </span>
+    </a>
 
-                  <a
-                    href={MAPS_LINK}
-                    target="_blank"
-                    className="flex items-center gap-4 !bg-red-50 hover:!bg-red-100 rounded-2xl p-5 shadow-sm transition"
-                  >
-                    <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-red-500 text-white">
-                      <EnvironmentOutlined />
-                    </div>
-                    <span className="text-lg font-semibold text-slate-800">
-                      {t.ctas.directions}
-                    </span>
-                  </a>
-                </div>
-              </Col>
+
+    {/* WHATSAPP */}
+    <a
+      href={WHATSAPP_LINK}
+      target="_blank"
+      className="flex items-center gap-4 bg-gradient-to-r from-[#e3ffdb] to-[#c7ffbd] hover:from-[#d8ffcf] hover:to-[#b9ffae] rounded-2xl p-5 shadow-md transition border border-[#a9f796]/40"
+    >
+      <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-green-500 text-white shadow">
+        <WhatsAppOutlined />
+      </div>
+      <span className="text-lg font-semibold text-slate-900 tracking-wide">
+        {t.ctas.whatsapp}
+      </span>
+    </a>
+
+
+    {/* LOCATION */}
+    <a
+      href={MAPS_LINK}
+      target="_blank"
+      className="flex items-center gap-4 bg-gradient-to-r from-[#ffd4d4] to-[#ffbaba] hover:from-[#ffc6c6] hover:to-[#ffa8a8] rounded-2xl p-5 shadow-md transition border border-[#ffb3b3]/40"
+    >
+      <div className="flex h-12 w-12 lg:text-2xl text-xl items-center justify-center rounded-xl bg-red-500 text-white shadow">
+        <EnvironmentOutlined />
+      </div>
+      <span className="text-lg font-semibold text-slate-900 tracking-wide">
+        {t.ctas.directions}
+      </span>
+    </a>
+
+  </div>
+</Col>
+
             </Row>
           </Card>
         </Fade>
       </Section>
 
-      {/* <footer className="border-t py-8 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Namdev Narmadeshwar Shivling Arts • {lang === "hi" ? "मर्दाना, बड़वाह, खरगोन" : "Mardana, Barwaha, Khargone"}
-      </footer> */}
+      
     </div>
   );
 }
