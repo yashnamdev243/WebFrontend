@@ -22,14 +22,14 @@ const FloatingButtons = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-3 md:bottom-6 md:right-6 lg:bottom-8 lg:right-8 flex flex-col gap-3 md:gap-4 transition-all p-2 z-50">
+    <div className="fixed bottom-4 right-1 md:bottom-6 md:right-6 lg:bottom-8 lg:right-4 flex flex-col gap-3 md:gap-4 transition-all p-2 z-50">
       {/* WhatsApp Button */}
       {isVisible && (
         <motion.a
           href={`https://wa.me/${phoneNumber}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition cursor-pointer"
+          className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition cursor-pointer drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]"
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -42,11 +42,11 @@ const FloatingButtons = () => {
         <motion.button
           onClick={scrollToTop}
 
-            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] rounded-full shadow-lg  transition cursor-pointer"
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] rounded-full shadow-lg  transition cursor-pointer drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]"
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FaArrowUp className="text-white text-xl md:text-2xl" />
+          <FaArrowUp className="text-white text-xl md:text-2xl " />
         </motion.button>
       )}
     </div>

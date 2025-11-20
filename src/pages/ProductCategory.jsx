@@ -57,7 +57,7 @@ const fetchProducts = async () => {
         />
       </Helmet>
 
-      <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8 capitalize">
+      <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8 capitalize leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
         {formatCategoryTitle(category)} Products
       </h2>
 

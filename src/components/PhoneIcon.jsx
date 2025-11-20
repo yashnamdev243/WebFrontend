@@ -18,8 +18,8 @@ const PhoneIcon = () => {
     <motion.div
       className={`mr-14 flex items-center justify-center h-10  p-2 rounded-full w-10 sm:w-50 text-white ${
         isScrolled
-          ? "bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]   bg-opacity-80 shadow-lg"
-          : "lg:border-2 lg:px-5 lg:py-2 lg:rounded-4xl lg:backdrop-blur-md bg-transparent"
+          ? "bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]   bg-opacity-80 shadow-lg leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]"
+          : "lg:border-2 lg:px-5 lg:py-2 lg:rounded-4xl lg:backdrop-blur-md bg-transparent "
       }`}
 
       initial={{ opacity: 0 }}
@@ -34,11 +34,11 @@ const PhoneIcon = () => {
         whileTap={{ scale: 0.9 }}
       >
         {/* Number Hidden on Mobile */}
-        <p className="hidden sm:block text-md font-semibold text-white tracking-wider text-nowrap">
+        <p className="hidden sm:block text-md font-semibold text-white tracking-wider text-nowrap ">
           {phoneNumber}
         </p>
         <motion.span whileHover={{ scale: 1.2 }}>
-          <FaPhone className="text-white text-xl" />
+          <FaPhone className="text-white text-xl drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]" />
         </motion.span>
       </a>
     </motion.div>

@@ -25,10 +25,10 @@ const Header = () => {
       {" "}
       <header
      
-        className="fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4  bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] "
+        className="fixed lg:top-3 top-0 left-0 right-0 z-20 w-full md:w-9/10 mx-auto flex justify-between items-center lg:rounded-xl transition-all duration-300 px-4 bg-[#0A141E] "
       >
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center p-1">
           <LogoComponent />
         </div>
 

@@ -159,6 +159,19 @@ app.delete("/api/products/:id", (req, res) => {
     res.json({ message: "Product deleted successfully" });
   });
 });
+// ---------------- PRODUCTS ----------------
+
+// GET - Fetch single product by ID
+app.get("/api/products/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = "SELECT * FROM products WHERE id = ?";
+  db.query(sql, [id], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (rows.length === 0) return res.status(404).json({ error: "Product not found" });
+    res.json(rows[0]);
+  });
+});
+
 // UPDATE product
 app.put("/api/products/:id", uploadProduct.single("image"), (req, res) => {
   const { id } = req.params;

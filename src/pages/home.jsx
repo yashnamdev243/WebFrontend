@@ -30,7 +30,7 @@ const fetchProducts = async () => {
       fetchProducts();
     }, []);
   return (
-    <div className="bg-gray-100 ">
+    <div className="bg-white">
       <section className="flex flex-col items-center justify-center text-center md:px-0">
         <div className="w-full mx-auto sm:px-5 lg:px-0">
           <TourCarousel />
@@ -38,11 +38,11 @@ const fetchProducts = async () => {
 
         <div
           className="w-full relative pt-5 md:min-h-screen bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/Home_bg.jpg')" }}
+          // style={{ backgroundImage: "url('/Home_bg.jpg')" }}
         >
    
-<div className="mt-10 px-4 lg:px-19 "> 
-    <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8">
+<div className="mt-10 px-4 lg:px-20 "> 
+    <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] mb-8 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
         Featured Products
 
       </h2></div>
@@ -70,7 +70,7 @@ const fetchProducts = async () => {
 
          
 
-          <div className="w-full max-w-[90%] md:max-w-[95%] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6">
+          <div className="w-full max-w-[90%] md:max-w-[96%] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6">
             <ReviewSection />
           </div>
         </div>

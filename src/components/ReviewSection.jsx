@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import ReviewModalForm from "./ReviewModalForm";
 import { MessageCircleHeart, UsersRound } from "lucide-react";
 import { Spin } from "antd";
+import { FaRegCommentDots } from "react-icons/fa";
 
 
 const ReviewSection = () => {
@@ -43,8 +44,8 @@ const ReviewSection = () => {
 
   return (
     <>
-    <div className="py-10 lg:px-8">
-      <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8">
+    <div className="py-10 lg:px-0">
+      <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] mb-8 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
         Blessings & Feedback
       </h2>
 
@@ -62,11 +63,11 @@ const ReviewSection = () => {
     </div>
         ) : (<div className="relative">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="lg:text-3xl font-semibold text-gray-800 flex items-center gap-2">
-          <UsersRound className="w-6 h-6 text-gray-900" />
+        <h2 className="lg:text-3xl font-semibold text-orange-400 flex items-center gap-2 ">
+          <UsersRound className="w-6 h-6 text-orange-400 " />
           What Devotees Say
         </h2>
-        <span className="lg:text-lg text-gray-600">
+        <span className="lg:text-lg text-orange-400">
           {reviews.length} {reviews.length === 1 ? 'Review' : 'Reviews'}
         </span>
       </div>
@@ -124,46 +125,147 @@ const ReviewSection = () => {
             ))} */}
          
                     {reviews.map((review, idx) => (
+          // <SwiperSlide key={idx}>
+          //   <div
+          //     onClick={() => handleCardClick(review)}
+          //     className="relative bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] p-6 h-80 shadow-md rounded-2xl flex flex-col items-center text-center 
+          //     border border-[#ffe3c4] transition-all duration-300 hover:shadow-2xl overflow-hidden cursor-pointer hover:-translate-y-2"
+          //   >
+          //     <img
+          //       src={
+          //         review.image
+          //           ? `http://localhost:5000${review.image}`
+          //           : "/default-avatar.jpg"
+          //       }
+          //       alt={review.name}
+          //       className="w-28 h-28 rounded-full border-4 border-[#ffff] shadow-md mb-3 object-cover"
+          //     />
+
+          //     <h3 className="text-lg font-semibold text-white leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
+          //       {review.name}
+          //     </h3>
+
+          //     <div className="flex justify-center mt-1 mb-2">
+          //       {Array.from({ length: review.rating }).map((_, i) => (
+          //         <span key={i} className="text-yellow-400 text-lg leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
+          //           ★
+          //         </span>
+          //       ))}
+          //     </div>
+
+          //     <p className="text-white italic text-sm leading-snug line-clamp-3 ">
+          //    {review.name} Review : <span className="text-gray-600 ">"{review.review}"</span>
+          //     </p>
+
+          //     {review.reply && (
+          //       <p className="text-white italic text-xs mt-2 line-clamp-2">
+          //         Namdev Narmadeshwar Shivling Arts
+          //       Reply: <span className="text-gray-600">  {review.reply}</span>
+          //       </p>
+          //     )}
+          //   </div>
+          // </SwiperSlide>
           <SwiperSlide key={idx}>
-            <div
-              onClick={() => handleCardClick(review)}
-              className="relative bg-[#f5f3f0] p-6 h-80 shadow-md rounded-2xl flex flex-col items-center text-center 
-              border border-[#ffe3c4] transition-all duration-300 hover:shadow-2xl overflow-hidden cursor-pointer hover:-translate-y-2"
-            >
-              <img
-                src={
-                  review.image
-                    ? `http://localhost:5000${review.image}`
-                    : "/default-avatar.jpg"
-                }
-                alt={review.name}
-                className="w-20 h-20 rounded-full border-4 border-[#ffcc70] shadow-md mb-3 object-cover"
-              />
+  <div
+    onClick={() => handleCardClick(review)}
+    className="
+      relative 
+      p-6
+      h-80 
+      rounded-2xl 
+      cursor-pointer
+      overflow-hidden
+      flex flex-col items-center text-center
+      transition-all duration-500 
 
-              <h3 className="text-lg font-semibold text-gray-700">
-                {review.name}
-              </h3>
+      /* Background */
+      bg-gradient-to-br from-[#ffcc70]/90 to-[#ff8c00]/90 
 
-              <div className="flex justify-center mt-1 mb-2">
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-lg">
-                    ★
-                  </span>
-                ))}
-              </div>
+      /* Glass Glow */
+      backdrop-blur-md 
+      border border-white/30
 
-              <p className="text-gray-600 italic text-sm leading-snug line-clamp-3">
-             {review.name} Review : "{review.review}"
-              </p>
+      /* Hover */
+      hover:-translate-y-3 
+      hover:shadow-[0_12px_35px_rgba(0,0,0,0.35)]
+    "
+  >
 
-              {review.reply && (
-                <p className="text-blue-600 italic text-xs mt-2 line-clamp-2">
-                  Namdev Narmadeshwar Shivling Arts
-                Reply: {review.reply}
-                </p>
-              )}
-            </div>
-          </SwiperSlide>
+    {/* 🎇 Floating Glow Border */}
+    <div className="
+      absolute inset-0 rounded-2xl 
+      bg-gradient-to-r from-transparent via-white/20 to-transparent 
+      opacity-0 hover:opacity-100 
+      transition-all duration-700
+      animate-pulse
+    " />
+
+    {/* PROFILE IMAGE */}
+    <img
+      src={
+        review.image
+          ? `http://localhost:5000${review.image}`
+          : "/default-avatar.jpg"
+      }
+      alt={review.name}
+      className="
+        w-32 h-32 
+        rounded-full 
+        border-4 border-white 
+        shadow-lg 
+        object-cover
+        mb-2
+        transition-all duration-300
+        group-hover:scale-105
+      "
+    />
+
+    {/* NAME */}
+    <h3 className="
+      text-lg font-bold text-white 
+      tracking-wide 
+      [text-shadow:_0_3px_6px_rgb(0_0_0_/_0.6)]
+    ">
+      {review.name}
+    </h3>
+
+    {/* ⭐ RATING */}
+    <div className="flex justify-center mt-1 mb-2">
+      {Array.from({ length: review.rating }).map((_, i) => (
+        <span
+          key={i}
+          className="
+            text-yellow-300 
+            text-xl 
+            drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]
+          "
+        >
+          ★
+        </span>
+      ))}
+    </div>
+
+    {/* USER REVIEW */}
+    <p className="text-white text-sm italic leading-snug line-clamp-1 px-1">
+      <span className="font-semibold">{review.name} says:</span>
+      <span className="text-gray-100"> “{review.review}”</span>
+    </p>
+
+    {/* ADMIN REPLY */}
+    {review.reply && (
+      <p className="
+        text-white text-sm mt-2 italic opacity-90 line-clamp-2
+        px-2
+      ">
+        <span className="font-semibold">
+          Namdev Narmadeshwar Shivling Arts:
+        </span>{" "}
+        <span className="text-gray-100">“{review.reply}”</span>
+      </p>
+    )}
+  </div>
+</SwiperSlide>
+
         ))}
 
           </Swiper>
@@ -185,7 +287,7 @@ const ReviewSection = () => {
                   : "/default-avatar.jpg"
               }
               alt={selectedReview.name}
-              className="w-24 h-24 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 object-cover"
+              className="w-32 h-32 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 object-cover"
             />
             <h3 className="text-xl font-semibold text-gray-800">
               {selectedReview.name}
@@ -200,10 +302,10 @@ const ReviewSection = () => {
             </div>
 
             <div className="bg-[#fefaf5] rounded-lg p-4 w-full shadow-inner mb-3">
-              <p className="text-yellow-700 font-semibold text-base mb-1">
+              <p className="text-orange-600 font-semibold text-base mb-1">
                   {selectedReview.name} Review :
                 </p>
-              <p className="text-yellow-600 italic text-sm leading-relaxed">
+              <p className="text-orange-500 italic text-sm leading-relaxed">
                 “{selectedReview.review}”
               </p>
             </div>
@@ -228,23 +330,37 @@ const ReviewSection = () => {
       </div>
       
     </div>
-   <div className="flex justify-end mb-10">
+   {/* <div className="flex justify-end mb-10">
   <button
     onClick={() => setOpen(true)}
-    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-yellow-300 via-yellow-400 to-yellow-500 text-black font-bold shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl group overflow-hidden"
+    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-yellow-300 via-yellow-400 to-yellow-500 text-black font-bold shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl group overflow-hidden drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]"
   >
-    {/* Sparkling background on hover */}
-    <span className="absolute inset-0 bg-yellow-100 opacity-0 group-hover:opacity-20 transition-all duration-300 blur-sm rounded-full" />
+    <span className="absolute inset-0 bg-orange-100 opacity-0 group-hover:opacity-20 transition-all duration-300 blur-sm rounded-full " />
 
-    {/* Animated Pen Emoji */}
-    <span className="text-2xl sm:text-3xl animate-bounce-slow">✍️</span>
+    <span className="text-2xl sm:text-3xl animate-bounce-slow ">✍️</span>
 
-    {/* Tooltip-style label on hover */}
     <span className="absolute right-full top-1/2 transform -translate-y-1/2 pr-2 text-sm sm:text-base bg-white px-3 py-1 rounded-md shadow-md text-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-300">
       Share Review
     </span>
   </button>
+</div> */}
+<div className="flex justify-start mb-10">
+  <FaRegCommentDots
+    onClick={() => setOpen(true)}
+    className="
+      w-14 h-14 sm:w-16 sm:h-16 
+      p-3
+      rounded-full 
+      bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] 
+      text-white
+      shadow-xl 
+      hover:scale-110 
+      transition-all duration-300 
+      cursor-pointer
+    "
+  />
 </div>
+
 
     </>
   );

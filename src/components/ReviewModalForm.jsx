@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { Modal, Form, Input, Rate, Upload, Button, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { FaPaperPlane } from "react-icons/fa";
+
 //const LOCAL_KEY = "user_reviews";
 
 const ReviewModalForm = ({ open, onClose, onSubmit }) => {
@@ -9,6 +11,7 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
   const [file, setFile] = useState(null);
   const [previewImage, setPreviewImage] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
+    const [hover, setHover] = useState(false);
 
   // const getBase64 = (file) =>
   //   new Promise((resolve, reject) => {
@@ -179,9 +182,15 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
             type="primary"
             htmlType="submit"
             block
-            className="!bg-yellow-400 !text-black font-semibold hover:!bg-yellow-500"
+           className={`!bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] text-white font-bold  px-4  text-xs md:text-lg py-3 rounded-lg shadow-lg transition-all transform leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)] ${
+                  hover
+                    ? "scale-110 shadow-xl"
+                    : "hover:scale-110 hover:shadow-lg"
+                }`}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
           >
-            Submit Review
+             <FaPaperPlane className="inline-block mr-2 text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]" />  Submit Review
           </Button>
         </Form.Item>
       </Form>

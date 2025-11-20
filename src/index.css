@@ -157,27 +157,6 @@
   scrollbar-width: none;
 }
 
-/* Override AntD Tabs with Tailwind look */
-.custom-tabs .ant-tabs-nav {
-  @apply !mb-6 ;
-}
-
-.custom-tabs .ant-tabs-tab {
-  @apply rounded-xl bg-gradient-to-r from-white to-yellow-50 
-         px-4 py-2 shadow-sm transition-all duration-300 hover:text-yellow-700;
-}
-
-.custom-tabs .ant-tabs-tab-active {
-  @apply bg-gradient-to-r from-yellow-400 to-yellow-300 shadow-md ;
-}
-
-.custom-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
-  @apply !text-yellow-700 font-semibold;
-}
-
-.custom-tabs .ant-tabs-ink-bar {
-  @apply hidden;
-}
 
 .custom-table .custom-odd-row td {
   background-color: #FFFF !important;
@@ -238,7 +217,7 @@
   display: none; /* optional: hide page size selector */
 }
 
-/* Target your custom wrapper */
+Target your custom wrapper
 .custom-tabs-wrapper::-webkit-scrollbar {
   height: 8px;   /* thickness for horizontal scrollbar */
 }
@@ -264,5 +243,45 @@
 }
 
 .ant-timeline-item-head-blue {
-  background-color: #1890ff; /* change color if needed */
+  background-color: #eacb01; /* change color if needed */
+}
+
+/* --- Custom Tab Wrapper --- */
+.custom-tabs .ant-tabs-nav {
+  margin-bottom: 20px !important;
+}
+
+/* Default tab button */
+.custom-tabs .ant-tabs-tab-btn {
+  color: #666 !important;
+  font-weight: 600;
+  font-size: 18px; 
+  padding: 8px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+/* Tab container spacing */
+.custom-tabs .ant-tabs-tab {
+  margin: 0 8px !important;
+}
+
+/* Hover effect */
+.custom-tabs .ant-tabs-tab:hover .ant-tabs-tab-btn {
+  color: #ff8c00 !important;
+  background: rgba(255, 140, 0, 0.1);
+}
+
+/* Active tab */
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #fff !important;
+  background: #ff8c00 !important;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.3);
+}
+
+/* Bottom underline (ink bar) */
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: #ff8c00 !important;
+  height: 4px;
+  border-radius: 4px;
 }

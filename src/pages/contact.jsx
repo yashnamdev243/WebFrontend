@@ -14,6 +14,7 @@ import {
   UserOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
+import { FaMessage } from "react-icons/fa6";
 
 const { Option } = Select;
 
@@ -157,10 +158,10 @@ const Contact = () => {
         {/* <FloatingParticles /> */}
         {/* Left Side (Content, Heading, Image) */}
         <div className="flex flex-col justify-center items-center text-center space-y-5">
-          <h1 className="lg:mt-12 mt-15 text-xl lg:text-4xl font-extrabold text-orange-400 animate-bounce">
+          <h1 className="lg:mt-12 mt-15 text-xl lg:text-4xl font-extrabold text-orange-400 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)] animate-bounce">
             Connect with Namdev Narmadeshwar Shivling Arts
           </h1>
-          <p className="text-sm lg:text-lg text-gray-400 animate-bounce">
+          <p className="text-sm lg:text-lg text-slate-500 animate-bounce">
             Your source for Narmadeshwar Shivlings and spiritual art.
           </p>
           <img
@@ -178,12 +179,12 @@ const Contact = () => {
           >
             {/* Name Field */}
             <div>
-              <h1 className="text-lg lg:text-2xl text-white text-center font-semibold  ">
+              <h1 className="text-lg lg:text-2xl text-white text-center font-semibold  leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
                 Contact us now!
               </h1>
             </div>
             <div className="relative">
-              <label className="text-white lg:text-lg">Your Name</label>
+              <label className="text-white lg:text-lg leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)] ">Your Name</label>
               <FaUser className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
               <input
                 type="text"
@@ -199,7 +200,7 @@ const Contact = () => {
 
             {/* Email Field */}
             <div className="relative">
-            <label className="text-white lg:text-lg">Your Email</label>
+            <label className="text-white lg:text-lg leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">Your Email</label>
             <FaEnvelope className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
             <input
               type="email"
@@ -214,7 +215,7 @@ const Contact = () => {
 
             {/* Contact Field */}
             <div className="relative">
-              <label className="text-white lg:text-lg">Your Contact</label>
+              <label className="text-white lg:text-lg leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">Your Contact</label>
               <FaPhone className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
               <input
                 type="tel"
@@ -230,16 +231,17 @@ const Contact = () => {
 
             {/* Message Field */}
             <div className="relative">
-              <label className="text-white lg:text-lg ">
+              <label className="text-white lg:text-lg leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)] ">
                 Your Message
               </label>
+              <FaMessage className="absolute left-4 lg:top-11 top-10 text-yellow-600 lg:text-lg text-sm" />
               <textarea
                 name="message"
                 placeholder="Enter your message here..."
                 required
                 value={form.message}
                onChange={handleChange}
-                className="w-full p-3  lg:text-lg text-sm  rounded-lg bg-gray-100 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all h-20"
+                className="w-full pl-10 p-3  lg:text-lg text-sm rounded-lg bg-gray-100 text-gray-400 focus:ring-2 focus:ring-gray-400 outline-none shadow-md border border-yellow-700 transition-all"
               />
             </div>
 
@@ -247,7 +249,7 @@ const Contact = () => {
             <div className="flex justify-center mt-4">
               <button
                 type="submit"
-                className={`bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] text-white font-bold  px-4  text-xs md:text-lg py-3 rounded-lg shadow-lg transition-all transform ${
+                className={`bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] text-white font-bold  px-4  text-xs md:text-lg py-3 rounded-lg shadow-lg transition-all transform leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)] ${
                   hover
                     ? "scale-110 shadow-xl"
                     : "hover:scale-110 hover:shadow-lg"
@@ -255,7 +257,7 @@ const Contact = () => {
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
               >
-                <FaPaperPlane className="inline-block mr-2" /> Send Message
+                <FaPaperPlane className="inline-block mr-2 text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]" /> Send Message
               </button>
             </div>
           </form>
@@ -264,12 +266,12 @@ const Contact = () => {
         <Toaster position="top-center" />
       </div>
       <section className="min-h-screen py-12 bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0] overflow-hidden">
-        <div className="max-w-6xl mx-auto  px-4 lg:px-0  gap-16 items-start">
+        <div className="max-w-[1422px] mx-auto  px-4 lg:px-0  gap-16 items-start">
           <div className="space-y-4" data-aos="fade-right">
-            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] lg:mb-4">
+            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] lg:mb-4 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
               Contact Us
             </h2>
-            <p className="text-sm lg:text-lg px-2 text-gray-600 mt-10 mb-8 text-center animate-bounce">
+            <p className="text-sm lg:text-lg px-2 text-slate-500 mt-10 mb-8 text-center animate-bounce">
               We’d love to hear from you. Whether you have a question, want to
               collaborate, or just want to say hi – our team is here.
             </p>
@@ -335,10 +337,10 @@ const Contact = () => {
 
           {/* MAP */}
           <div className="mt-20 ">
-            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] lg:mb-4 ">
+            <h2 className="lg:text-3xl text-2xl font-bold text-center py-2 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] lg:mb-4 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
               Our Location
             </h2>
-            <p className="text-sm lg:text-lg px-2 text-gray-600 mt-10 mb-8 text-center animate-bounce">
+            <p className="text-sm lg:text-lg px-2 text-slate-500 mt-10 mb-8 text-center animate-bounce">
               Visit Us at Namdev Narmadeshwar Shivling Arts – Easily Accessible
               on Google Maps for Your Divine Shopping Experience!
             </p>

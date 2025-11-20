@@ -1,81 +1,98 @@
-// import { useState } from "react";
-// import { Modal, Button, Upload, Input, message } from "antd";
-// import { UploadOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-// export default function AddProductModal({ visible, onClose, onAdded }) {
-//   const [file, setFile] = useState(null);
-//   const [name, setName] = useState("");
-//   const [loading, setLoading] = useState(false);
+const AddProductModal = () => {
+  const [products, setProducts] = useState([]);
+  const [form, setForm] = useState({
+    title: "",
+    category: "",
+    description: "",
+    price: "",
+    image: "",
+  });
 
-//   const handleUpload = async () => {
-//     if (!file || !name) {
-//       message.warning("Please provide a name and select an image.");
-//       return;
-//     }
-//     setLoading(true);
-//     try {
-//       const storage = getStorage();
-//       const storageRef = ref(storage, `products/${file.name}`);
+  useEffect(() => {
+    // Load products from localStorage (replace with API call if needed)
+    const stored = localStorage.getItem("products");
+    if (stored) setProducts(JSON.parse(stored));
+  }, []);
 
-//       // Convert file to Base64
-//       const base64 = await new Promise((resolve, reject) => {
-//         const reader = new FileReader();
-//         reader.readAsDataURL(file); // converts to base64
-//         reader.onload = () => resolve(reader.result);
-//         reader.onerror = (err) => reject(err);
-//       });
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-//       // Upload Base64 string
-//       await uploadString(storageRef, base64, "data_url");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newProduct = { ...form, id: uuidv4() };
+    const updated = [...products, newProduct];
+    setProducts(updated);
+    localStorage.setItem("products", JSON.stringify(updated));
+    setForm({ title: "", category: "", description: "", price: "", image: "" });
+    alert("Product added!");
+  };
 
-//       // Get download URL
-//       const url = await getDownloadURL(storageRef);
+  return (
+    <div className="p-6 max-w-3xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4">Admin Product Panel</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+          placeholder="Product Title"
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+          placeholder="Category"
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          name="price"
+          value={form.price}
+          onChange={handleChange}
+          placeholder="Price"
+          type="number"
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          name="image"
+          value={form.image}
+          onChange={handleChange}
+          placeholder="Image URL"
+          className="w-full p-2 border rounded"
+          required
+        />
+        <textarea
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+          placeholder="Description"
+          className="w-full p-2 border rounded"
+          required
+        />
+        <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded">
+          Add Product
+        </button>
+      </form>
 
-//       // Save metadata to Firestore
-//       await addDoc(collection(db, "products"), {
-//         name,
-//         imageUrl: url,
-//         createdAt: new Date()
-//       });
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold mb-2">Existing Products</h3>
+        {products.map((p) => (
+          <div key={p.id} className="border p-2 rounded mb-2">
+            <p className="font-bold">{p.title}</p>
+            <p>Category: {p.category}</p>
+            <p>Price: ₹{p.price}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-//       message.success("Product added successfully!");
-//       setFile(null);
-//       setName("");
-//       onAdded(); // refresh gallery in parent
-//       onClose();
-//     } catch (err) {
-//       console.error(err);
-//       message.error("Failed to upload product");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <Modal
-//       visible={visible}
-//       title="Add New Product"
-//       onCancel={onClose}
-//       onOk={handleUpload}
-//       confirmLoading={loading}
-//     >
-//       <Input
-//         placeholder="Product Name"
-//         value={name}
-//         onChange={(e) => setName(e.target.value)}
-//         style={{ marginBottom: 10 }}
-//       />
-//       <Upload
-//         beforeUpload={(file) => {
-//           setFile(file);
-//           return false; // prevent auto upload
-//         }}
-//         maxCount={1}
-//       >
-//         <Button icon={<UploadOutlined />}>Select Image</Button>
-//       </Upload>
-//     </Modal>
-//   );
-// }
-
-
+export default AddProductModal;

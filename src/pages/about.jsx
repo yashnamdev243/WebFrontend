@@ -27,6 +27,9 @@ import {
   GlobalOutlined,
 } from "@ant-design/icons";
 import { motion } from "framer-motion";
+import { FaDharmachakra } from "react-icons/fa";
+import { MdHandyman } from "react-icons/md";
+import { Sparkles } from "lucide-react";
 
 // ---------- CONFIG ----------
 const PHONE = "9691089549";
@@ -50,7 +53,7 @@ const copy = {
       "नर्मदा नदी के पवित्र पत्थर से बने नर्मदेश्वर शिवलिंग — नामदेव परिवार (मर्दाना, बड़वाह) द्वारा पीढ़ियों से हस्तनिर्मित। 1 इंच से 24 फीट तक, देश-विदेश में आपूर्ति।",
     heroTitle: "नामदेव नर्मदेश्वर शिवलिंग आर्ट",
     heroSubtitle:
-      "मां नर्मदा के पत्थर से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग — परंपरा, शुद्धता और आस्था का संगम।",
+      "स्वयं प्रकट नर्मदेश्वर शिवलिंग, जो पवित्र नर्मदा पत्थर से अत्यंत निपुणता और श्रद्धा के साथ तराशे जाते हैं, सनातन विरासत, दिव्य पवित्रता और गहन आध्यात्मिक भक्ति के प्रतीक हैं। अपनी प्राकृतिक उत्पत्ति और शक्तिशाली ऊर्जा के कारण पूजित ये शिवलिंग विश्वास, शांति और भगवान शिव से गहन आध्यात्मिक जुड़ाव की अनुभूति कराते हैं।",
     ctas: { call: "कॉल करें", whatsapp: "व्हाट्सएप", directions: "दिशाएँ" },
     storyHead: "हमारी विरासत",
     story:
@@ -112,7 +115,7 @@ const copy = {
       "Handcrafted Narmadeshwar Shivlings made from sacred Narmada river stone by the Namdev family (Mardana, Barwaha) for generations. Sizes from 1 inch to 24 feet. Shipping across India and worldwide.",
     heroTitle: "Namdev Narmadeshwar Shivling Arts",
     heroSubtitle:
-      "Self-manifest Narmadeshwar Shivlings carved from the holy Narmada stone — heritage, purity and devotion.",
+      "Self-manifest Narmadeshwar Shivlings, meticulously carved from the sacred Narmada stone, embody timeless heritage, divine purity, and deep spiritual devotion. Revered for their natural formation and powerful energies, they inspire faith, peace, and a profound connection to Lord Shiva.",
     ctas: { call: "Call", whatsapp: "WhatsApp", directions: "Directions" },
     storyHead: "Our Legacy",
     story:
@@ -221,7 +224,10 @@ const Section = ({ id, children, className = "" }) => (
 export default function About() {
   const [lang, setLang] = useState("en");
   const t = useMemo(() => copy[lang], [lang]);
-
+const sizes = [
+  '1"', '3"', '6"', '9"', '12"', '18"', '24"',
+  "3ft", "6ft", "12ft", "24ft",
+];
   const tabs = [
     {
       key: "story",
@@ -232,9 +238,9 @@ export default function About() {
             <Fade>
               <Card
                 bordered={false}
-                className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-yellow-50 "
+                className="rounded-2xl shadow-md !p-6 !bg-gradient-to-br from-white to-orange-50 "
               >
-             <p className="text-base sm:text-lg leading-relaxed text-gray-600 font-medium mb-5 tracking-wide">
+             <p className="text-base sm:text-lg leading-relaxed text-slate-500 font-medium mb-5 tracking-wide">
                   {t.story}
                 </p>
                 <Divider />
@@ -252,7 +258,7 @@ export default function About() {
                       ),
                       children: (
                         <div className="flex items-start gap-3">
-                          <p className="text-base sm:text-lg leading-relaxed text-gray-700 font-medium tracking-wide">
+                          <p className="text-base sm:text-lg leading-relaxed text-slate-500 font-medium tracking-wide">
                             {lang === "hi" ? textHi : textEn}{" "}
                           </p>{" "}
                         </div>
@@ -283,14 +289,14 @@ export default function About() {
   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
   {/* Soft Golden Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-yellow-600/10 opacity-40" />
+  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-orange-400 opacity-40" />
 
   {/* TEXT */}
   <div className="absolute bottom-5 left-5 text-white space-y-1 drop-shadow-xl">
     <h3 className="text-xl sm:text-2xl font-bold tracking-wide">
       {t.heroTitle}
     </h3>
-    <p className="text-xs sm:text-sm opacity-90 leading-relaxed max-w-xs">
+    <p className="text-xs sm:text-sm opacity-90 leading-relaxed max-w-lg">
       {t.heroSubtitle}
     </p>
   </div>
@@ -307,7 +313,7 @@ export default function About() {
                 >
                   <Col span={8}>
                     <Statistic
-                      title={              <span className="text-gray-700 font-semibold">
+                      title={              <span className="text-slate-500 font-semibold">
 {lang === "hi" ? "पीढ़ियाँ" : "Generations"} </span>
             }
                       value={3}
@@ -317,7 +323,7 @@ export default function About() {
                   </Col>
                   <Col span={8}>
                     <Statistic
-                      title= {              <span className="text-gray-700 font-semibold">
+                      title= {              <span className="text-slate-500 font-semibold">
 {lang === "hi" ? "आकार" : "Sizes"} </span>
             }
                       value={24}
@@ -327,7 +333,7 @@ export default function About() {
                   </Col>
                   <Col span={8}>
                     <Statistic
-                      title= {              <span className="text-gray-700 font-semibold">
+                      title= {              <span className="text-slate-500 font-semibold">
 {lang === "hi" ? "देश" : "Countries"} </span>
             }
                       value={15}
@@ -382,7 +388,7 @@ export default function About() {
                       {lang === "hi" ? f.textHi : f.textEn}
                     </h4>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
                     {lang === "hi"
                       ? "कई शिवलिंगों में ये नेचुरल पैटर्न स्वाभाविक रूप से दिखाई देते हैं।"
                       : "These natural patterns are often revealed in the stone itself."}
@@ -460,10 +466,10 @@ export default function About() {
                 className=" rounded-2xl shadow-md !p-4 sm:!p-6 !bg-gradient-to-br from-white to-yellow-50 
 "
               >
-                <p className="sm:mb-4 text-base sm:text-lg leading-relaxed text-gray-600 font-medium mb-5 tracking-wide">
+                <p className="sm:mb-4 text-base sm:text-lg leading-relaxed text-slate-500 font-medium mb-4 tracking-wide">
                   {t.sizes}
                 </p>
-                <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                {/* <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                   {[
                     '1"',
                     '3"',
@@ -490,8 +496,120 @@ export default function About() {
                       {s}
                     </span>
                   ))}
-                </div>
-                <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+                </div> */}
+                {/* <div className="relative w-72 h-72 mx-auto rounded-full bg-gradient-to-br from-yellow-100 to-orange-50 shadow-lg">
+  {[
+    '1"', '3"', '6"', '9"', '12"', '18"', '24"',
+    "3ft", "6ft", "12ft", "24ft",
+  ].map((s, i, arr) => {
+    const angle = (360 / arr.length) * i;
+    return (
+      <span
+        key={s}
+        style={{
+          position: "absolute",
+          top: "42%",
+          left: "42%",
+          transform: `rotate(${angle}deg) translate(100px) rotate(-${angle}deg)`,
+        }}
+        className="
+          h-12 w-12 flex items-center justify-center
+          text-sm font-semibold
+          rounded-full
+          bg-gradient-to-br from-orange-200 to-orange-100
+          text-orange-600
+          shadow-[0_3px_8px_rgba(0,0,0,0.15)]
+          border border-orange-300/30
+        "
+      >
+        {s}
+      </span>
+    );
+  })}
+</div> */}
+
+    <div className="relative w-72 h-72 mx-auto flex items-center justify-center 
+      rounded-full bg-gradient-to-br from-yellow-100 to-orange-50 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+
+      {/* Center Shivling Icon */}
+      <div className="absolute w-32 h-32 rounded-full 
+        bg-gradient-to-br from-orange-300 to-yellow-200 
+        shadow-lg flex items-center justify-center text-3xl text-white border-2 border-orange-400">
+        <FaDharmachakra />
+      </div>
+
+      {/* Radial Items */}
+      {sizes.map((s, i) => {
+        const angle = (i / sizes.length) * (2 * Math.PI);
+        const radius = 110; // distance from center
+
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+
+        return (
+          <motion.div
+            // key={s}
+            // initial={{ scale: 0 }}
+            // animate={{ scale: 1 }}
+            // transition={{ delay: i * 0.06, type: "spring" }}
+            className="absolute flex items-center justify-center 
+              w-32 h-32 rounded-full text-orange-700 font-medium text-sm
+              bg-[#0A141E]
+              shadow-md border border-orange-300"
+            // style={{ transform: `translate(${x}px, ${y}px)` }}
+            // whileHover={{ scale: 1.25, rotate: 8 }}
+          >
+            <img 
+    src="/namdevshivling.png" 
+    alt="icon" 
+    className="w-32 h-32 object-contain"
+  />
+          </motion.div>
+        );
+      })}
+      <div className="absolute inset-0 flex items-center justify-center">
+    <div className="relative w-full h-full">
+
+      {[
+        '1"', '3"', '6"', '9"', '12"', '18"', '24"',
+        "3ft", "6ft", "12ft", "24ft",
+      ].map((s, i, arr) => {
+        const angle = (i / arr.length) * 2 * Math.PI;
+        const radius = 110; // distance from center
+
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+
+        return (
+          <span
+            key={s}
+            className="
+              absolute
+              h-12 w-12
+              flex items-center justify-center
+              text-xs sm:text-sm
+              rounded-full
+              bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] 
+              text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] font-semibold
+              shadow-[0_3px_8px_rgba(0,0,0,0.12)]
+              border border-orange-300/40
+            "
+            style={{
+              left: `calc(50% + ${x}px - 24px)`,
+              top: `calc(50% + ${y}px - 24px)`,
+            }}
+          >
+            {s}
+          </span>
+        );
+      })}
+    </div>
+  </div>
+    </div>
+
+
+
+                {/* <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
                   <Button
                     type="primary"
                     icon={
@@ -534,7 +652,7 @@ export default function About() {
                   >
                     {t.ctas.directions}
                   </Button>
-                </div>
+                </div> */}
               </Card>
             </Col>
             <Col xs={24} sm={24} md={10}>
@@ -553,7 +671,12 @@ export default function About() {
                   />
                 </div>
                 <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 sm:p-6">
-                  <Card size="small" className="rounded-xl !bg-indigo-50 !p-4">
+                  <Card size="small" className="rounded-xl !bg-indigo-50 !p-4 flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-indigo-100 text-indigo-700 shadow-sm ">
+      <Sparkles size={20} />
+    </div>
+
+    <div>
                     <h5 className="font-semibold text-sm text-indigo-800">
                       {lang === "hi"
                         ? "टेंपल ग्रेड फिनिश"
@@ -564,8 +687,14 @@ export default function About() {
                         ? "हाथों से पॉलिश व संतुलन"
                         : "Hand-polished and balanced"}
                     </p>
+                    </div>
                   </Card>
-                  <Card size="small" className="rounded-xl !bg-yellow-50 !p-4">
+                  <Card size="small" className="rounded-xl !bg-yellow-50 !p-4 flex items-start gap-3">
+                     <div className="p-2 rounded-lg bg-yellow-100 text-yellow-700 shadow-sm">
+      <MdHandyman size={20} />
+    </div>
+
+    <div>
                     <h5 className="font-semibold text-sm text-yellow-800">
                       {lang === "hi" ? "कस्टम उत्कीर्णन" : "Custom engraving"}
                     </h5>
@@ -574,6 +703,7 @@ export default function About() {
                         ? "आदेश पर उपलब्ध"
                         : "Available on request"}
                     </p>
+                    </div>
                   </Card>
                 </div>
               </Card>
@@ -672,7 +802,8 @@ export default function About() {
   }, []);
 
   return (
-    <div className="relative min-h-screen  bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0]  text-slate-900 ">
+    <>
+    <div className="relative min-h-screen bg-white  text-slate-900 ">
       <Helmet>
         <title>{t.seoTitle}</title>
         <meta name="description" content={t.seoDesc} />
@@ -692,20 +823,15 @@ export default function About() {
             {/* Left Section */}
             <div className="lg:col-span-7 flex flex-col items-center lg:items-start">
               <Fade>
-                {/* Small Tag */}
-                {/* <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-1.5 text-xs sm:text-sm mb-6 bg-white/60 backdrop-blur-lg shadow-sm">
-            <span className="font-semibold text-slate-700 tracking-wide">
-              ✨ About • के बारे में
-            </span>
-          </div> */}
+               
 
                 {/* Heading */}
-                <h1 className="text-2xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight text-yellow-500 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
+                <h1 className="text-2xl sm:text-4xl lg:text-4xl font-extrabold tracking-tight text-orange-400 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
                   {t.heroTitle}
                 </h1>
 
                 {/* Subtitle */}
-                <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed ">
+                <p className="mt-5 text-base sm:text-lg text-slate-500 max-w-3xl leading-relaxed ">
                   {t.heroSubtitle}
                 </p>
 
@@ -754,7 +880,7 @@ export default function About() {
                     className="!bg-gradient-to-r from-red-500 to-red-600 hover:!from-red-600 hover:!to-red-700 
                !text-white rounded-2xl !px-8 !py-5 !shadow-lg hover:!shadow-2xl 
                transform hover:scale-105 transition-all duration-300 ease-out
-               flex items-center gap-2"
+               flex items-center gap-2 "
                   >
                     <span className="font-semibold tracking-wide">
                       {t.ctas.directions}
@@ -762,21 +888,7 @@ export default function About() {
                   </Button>
                 </div>
 
-                {/* Language Switch */}
-                <div className="mt-10">
-                  <Segmented
-                    size="large"
-                    value={lang}
-                    onChange={(val) => setLang(val)}
-                    options={[
-                      { label: "हिंदी", value: "hi" },
-                      { label: "English", value: "en" },
-                    ]}
-                    className="!bg-white/60 backdrop-blur-md !shadow-xl 
-               rounded-full px-4 py-2 border border-slate-200/50
-               transition-all duration-300 hover:shadow-2xl"
-                  />
-                </div>
+               
               </Fade>
             </div>
 
@@ -818,10 +930,12 @@ export default function About() {
           items={tabs.map(({ key, label, children }) => ({
             key,
             label: (
-              <span className="px-6 py-2 
-            text-sm md:text-base 
-            font-semibold
-            tracking-wide">
+              <span
+            //    className="px-23 py-2 
+            // text-sm md:text-base 
+            // font-semibold
+            // tracking-wide text-orange-400 "
+            >
                 {label}
               </span>
             ),
@@ -847,13 +961,13 @@ export default function About() {
               {/* Left Section */}
               <Col xs={24} md={14}>
                 <div className="h-full flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
-                  <h2 className="lg:text-3xl text-xl text-center py-2 px-10 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8">
+                  <h2 className="lg:text-3xl text-xl text-center py-2 px-10 text-white bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  mb-8 leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)]">
                     {" "}
                     {t.specsHead}
                   </h2>
-                  <p className="  bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  
+                  <p className=" bg-gradient-to-r from-[#ffcc70] to-[#ff8c00]  
   bg-clip-text text-transparent
- text-lg mb-6">{t.addressTitle}</p>
+ text-lg mb-6 ">{t.addressTitle}</p>
                   <ul className="space-y-3">
                     {t.address.map((line, i) => (
                       <li
@@ -928,5 +1042,65 @@ export default function About() {
 
       
     </div>
+     {/* Language Switch */}
+            {/* <div
+ className="fixed z-50"
+  style={{top: "390px",right: "0px",}}>               
+               
+                    <div className="relative inline-flex bg-white/20 backdrop-blur-xl py-2 rounded-xl shadow-lg border border-white/40">
+  <button
+    onClick={() => setLang("hi")}
+    className={`px-3 py-1 rounded-xl transition-all duration-300 ${
+      lang === "hi"
+        ? "bg-[#ff8c00] text-white shadow-md"
+        : "text-gray-700 hover:text-[#ff8c00]"
+    }`}
+  >
+    हिंदी
+  </button>
+
+  <button
+    onClick={() => setLang("en")}
+    className={`px-3 py-1 rounded-xl transition-all duration-300 ${
+      lang === "en"
+        ? "bg-[#ff8c00] text-white shadow-md"
+        : "text-gray-700 hover:text-[#ff8c00]"
+    }`}
+  >
+    English
+  </button>
+</div>
+                </div>
+                 */}
+              <div
+  className="fixed z-50 flex flex-col items-end gap-2"
+  style={{ top: "450px", right: "0px" }}
+>
+  {/* Ribbon Buttons */}
+  <button
+    onClick={() => setLang("hi")}
+    className={`px-4 py-2 rounded-l-xl transition-all duration-300  shadow-lg italic font-semibold ${
+      lang === "hi"
+        ? "bg-[#ff8c00] text-white"
+        : "bg-white/60 text-gray-700 hover:bg-[#ff8c00] hover:text-white"
+    }`}
+  >
+    Hi
+  </button>
+
+  <button
+    onClick={() => setLang("en")}
+    className={`px-4 py-2 rounded-l-xl transition-all duration-300 shadow-lg italic font-semibold ${
+      lang === "en"
+        ? "bg-[#ff8c00] text-white"
+        : "bg-white/60 text-gray-700 hover:bg-[#ff8c00] hover:text-white"
+    }`}
+  >
+    En
+  </button>
+</div>
+
+
+    </>
   );
 }

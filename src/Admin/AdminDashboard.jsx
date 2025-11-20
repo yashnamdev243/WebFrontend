@@ -32,9 +32,11 @@ import {
   CloseOutlined,
   DeleteOutlined,
   EditOutlined,
+  PlusOutlined,
 } from "@ant-design/icons";
 import AdminProducts from "./AdminProducts";
 import AdminSlides from "./AdminSlides";
+// import AddProductModal from "./AddProductModal";
 
 const { Title } = Typography;
 const { Header, Sider, Content } = Layout;
@@ -72,6 +74,13 @@ function DashboardPage({ contactCount, galleryCount, reviewCount, slideCount }) 
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       route: "/admin/slides",
     },
+    // {
+    //   title: "Total Products Added",
+    //   value: slideCount,
+    //   icon: <PlusOutlined style={{ fontSize: 32, color: "#fff" }} />,
+    //   gradient: "linear-gradient(135deg, #f7971e 0%, #ffd200 100%)",
+    //   route: "/admin/productmodal",
+    // },
   ];
 
   return (
@@ -424,6 +433,7 @@ export default function AdminDashboard() {
   const [galleryItems, setGalleryItems] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [slides, setSlides] = useState([]);
+  // const [ productmodal, setProductmodal] = useState([]);
   const [loading, setLoading] = useState(true);
 
 
@@ -443,11 +453,13 @@ export default function AdminDashboard() {
             fetch("http://localhost:5000/api/products").then((r) => r.json()),
             fetch("http://localhost:5000/api/reviews").then((r) => r.json()),
             fetch("http://localhost:5000/api/slides").then((r) => r.json()),
+            // fetch(`http://localhost:5000/api/products/${id}`).then((r) => r.json()),
           ]);
         setContacts(contactsRes);
         setGalleryItems(galleryRes);
         setReviews(reviewsRes);
         setSlides(slidesRes);
+        // setProductmodal(productmodalRes);
       } catch (err) {
         console.error(err);
         message.error("Failed to fetch data");
@@ -486,13 +498,13 @@ export default function AdminDashboard() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "#fff",
+            background: "#001529",
           }}
         >
           <img
-            src="/Namdevlogo.png"
+            src="/namdevshivling.png"
             alt="Logo"
-            style={{ maxHeight: 40, maxWidth: "100%" }}
+            style={{ maxHeight: 60, maxWidth: "110%" }}
           />
         </div>
 
@@ -506,6 +518,7 @@ export default function AdminDashboard() {
             { key: "products", icon: <PictureOutlined />, label: "Products" },
             { key: "reviews", icon: <StarOutlined />, label: "Reviews" },
             { key: "slides", icon: <FileImageOutlined />, label: "Slides" },
+            // { key: "productmodal", icon: <PlusOutlined />, label: "Add Product" },
             { key: "logout", icon: <LogoutOutlined />, label: "Logout", onClick: handleLogout },
           ]}
         />
@@ -549,6 +562,7 @@ export default function AdminDashboard() {
                     galleryCount={galleryItems.length}
                     reviewCount={reviews.length}
                     slideCount={slides.length}
+                    // productmodal={productmodal.length}
                   />
                 }
               />
@@ -579,7 +593,10 @@ export default function AdminDashboard() {
                 path="/slides"
                 element={<AdminSlides slides={slides} />}
               />
+                {/* <Route path="/productmodal" element={<AddProductModal productmodal={productmodal} />} /> */}
             </Routes>
+              
+
           </div>
         </Content>
       </Layout>
