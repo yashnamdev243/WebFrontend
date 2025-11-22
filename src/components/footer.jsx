@@ -33,11 +33,14 @@ const Footer = () => {
             </h3>
             {/* Address */}
             <div className="flex justify-center md:justify-center">
-              <div className="bg-gray-300 rounded-lg inline-block p-1 mb-2 mt-1  ">
+              <div
+              //  className="bg-gray-300 rounded-lg inline-block p-1 mb-2 mt-1  ">
+                             className="p-1 mt-1  ">
+
                 <img
-                  src="/Namdevlogo.png"
+                  src="/namdevshivling.png"
                   alt="Namdev Logo"
-                  className="h-16 w-auto object-contain"
+                  className="h-26 w-auto object-contain"
                 />
               </div>
             </div>
