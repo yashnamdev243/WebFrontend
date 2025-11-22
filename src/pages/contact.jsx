@@ -1,6 +1,6 @@
 import { FaUser, FaEnvelope, FaPhone, FaPaperPlane } from "react-icons/fa";
 import emailjs from "emailjs-com";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { Select } from "antd";
 import React, { useState } from "react";
@@ -263,7 +263,6 @@ const Contact = () => {
           </form>
         </div>
 
-        <Toaster position="top-center" />
       </div>
       <section className="min-h-screen py-12 bg-gradient-to-br from-[#fffdf9] to-[#f8f4f0] overflow-hidden">
         <div className="max-w-[1422px] mx-auto  px-4 lg:px-0  gap-16 items-start">

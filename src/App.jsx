@@ -12,6 +12,8 @@ import NotFound from "./pages/NotFound";
 import AdminDashboard from "./Admin/AdminDashboard";
 import ProtectedRoute from "./Admin/ProtectedRoute";
 import AdminLogin from "./Admin/AdminLogin";
+import { Toaster } from "react-hot-toast";
+
 const AppWrapper = () => {
   const location = useLocation();
 
@@ -61,6 +63,7 @@ const AppWrapper = () => {
           />
           
                 </Routes>
+                <Toaster position="top-center" />
 
     </>
   );

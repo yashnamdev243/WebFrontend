@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Modal, Form, Input, Rate, Upload, Button, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { FaPaperPlane } from "react-icons/fa";
+import { toast } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
 
 //const LOCAL_KEY = "user_reviews";
 
@@ -13,18 +15,7 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
     const [hover, setHover] = useState(false);
 
-  // const getBase64 = (file) =>
-  //   new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = reject;
-  //   });
-  //    const handleImageUpload = async (file) => {
-  //   const base64 = await getBase64(file);
-  //   setPreviewImage(base64);
-  //   return false; // prevent Upload from uploading automatically
-  // };
+
 
   const handleImageSelect = (file) => {
     setFile(file);
@@ -64,7 +55,7 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
 
  const handleSubmit = async (values) => {
     if (!values.name || !values.review) {
-      message.error("Name and review are required!");
+      toast.error("Name and review are required!");
       return;
     }
 
@@ -80,7 +71,10 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
       });
       if (!res.ok) throw new Error("Failed to submit review");
         console.log("Response:", res);
-      message.success("Review submitted successfully!");
+     toast.success("Thanks for your review!", {
+  duration: 2000,
+});
+
       form.resetFields();
       setFile(null);
       setPreviewImage("");
@@ -88,7 +82,7 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
       onClose();  // close modal
     } catch (err) {
       console.error(err);
-      message.error("Unable to save review at this time. Please try again later.");
+      toast.error("Unable to save review at this time. Please try again later.");
     }
   };
 
@@ -184,8 +178,8 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
             block
            className={`!bg-gradient-to-r from-[#ffcc70] to-[#ff8c00] text-white font-bold  px-4  text-xs md:text-lg py-3 rounded-lg shadow-lg transition-all transform leading-tight [text-shadow:_0_4px_4px_rgb(0_0_0_/_0.8)] ${
                   hover
-                    ? "scale-110 shadow-xl"
-                    : "hover:scale-110 hover:shadow-lg"
+                    ? "scale-105 shadow-xl"
+                    : "hover:scale-105 hover:shadow-lg"
                 }`}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}

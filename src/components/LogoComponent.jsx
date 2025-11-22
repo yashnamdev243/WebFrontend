@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function LogoComponent() {
   return (
     <div className="flex items-center justify-center">
-      <Link to="/">
+      <Link to="/admin-login">
         <img 
           src={Logo} 
           alt="Company official logo" 

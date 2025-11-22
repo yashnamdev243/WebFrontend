@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 // import LogoComponent from "../components/LogoComponent";
 import { motion } from "framer-motion";
+import { toast } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -24,21 +26,24 @@ export default function AdminLogin() {
 
     // Basic validation
     if (!email || !password) {
-      setError("Please fill in all fields");
+    toast.error("Please fill in all fields");
       return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("Please enter a valid email address");
+      toast.warning("Please enter a valid email address");
       return;
     }
 
     // Example hardcoded credentials
     if (email === "admin@shivling.com" && password === "admin123") {
       localStorage.setItem("isAdmin", "true");
-      navigate("/admin");
+       toast.success("Login successful!");
+      // navigate("/admin");
+       setTimeout(() => navigate("/admin"), 800);
     } else {
-      setError("Invalid email or password");
+          toast.error("Invalid email or password");
+
     }
   };
 

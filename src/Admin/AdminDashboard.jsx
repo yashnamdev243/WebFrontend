@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { useNavigate, Routes, Route, Link } from "react-router-dom";
 import {
   Table,
   Card,
@@ -500,12 +500,15 @@ export default function AdminDashboard() {
             justifyContent: "center",
             background: "#001529",
           }}
-        >
+        >      <Link to="/">
+        
           <img
             src="/namdevshivling.png"
             alt="Logo"
             style={{ maxHeight: 60, maxWidth: "110%" }}
           />
+                </Link>
+
         </div>
 
         <Menu
