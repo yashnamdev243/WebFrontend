@@ -327,6 +327,6 @@ app.put("/api/slides/:id", upload.single("image"), (req, res) => {
 
 // ---------------- START SERVER ----------------
 app.listen(5000, () => {
-  console.log("🚀 Server running on http://localhost:5000");
+  console.log("🚀 Server running on http://namdevshivlingart.vercel.app");
 });
 

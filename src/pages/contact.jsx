@@ -55,7 +55,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/contacts", {
+      const res = await fetch("http://namdevshivlingart.vercel.app/api/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -94,7 +94,7 @@ const Contact = () => {
 
   
 //   //     try {
-//   //   const res = await fetch("http://localhost:5000/api/contact", {
+//   //   const res = await fetch("http://namdevshivlingart.vercel.app/api/contact", {
 //   //     method: "POST",
 //   //     headers: { "Content-Type": "application/json" },
 //   //     body: JSON.stringify(form)
@@ -117,7 +117,7 @@ const Contact = () => {
 //   setLoading(true);
 
 //   try {
-//     const res = await fetch("http://localhost:5000/api/contacts", {
+//     const res = await fetch("http://namdevshivlingart.vercel.app/api/contacts", {
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify(form),

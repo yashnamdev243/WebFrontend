@@ -14,7 +14,7 @@ const TourCarousel = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/slides");
+        const res = await fetch("http://namdevshivlingart.vercel.app/api/slides");
         if (!res.ok) throw new Error("Failed to fetch slides");
         const data = await res.json();
         setSlides(data);
@@ -53,7 +53,7 @@ const TourCarousel = () => {
               <img
                 // src={tour.src}
                   // src={slide.src}
-              src={`http://localhost:5000${slide.src}`}
+              src={`http://namdevshivlingart.vercel.app${slide.src}`}
               // src={`${import.meta.env.VITE_API_URL}${slide.src}`}
                 className="w-full h-full object-cover"
                 loading="lazy"

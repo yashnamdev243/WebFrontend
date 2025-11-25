@@ -35,7 +35,7 @@ const Footer = () => {
             <div className="flex justify-center md:justify-center">
               <div
               //  className="bg-gray-300 rounded-lg inline-block p-1 mb-2 mt-1  ">
-                             className="p-1 mt-1  ">
+                             className="p-1 ">
 
                 <img
                   src="/namdevshivling.png"
@@ -45,7 +45,7 @@ const Footer = () => {
               </div>
             </div>
            
-            <div className="flex justify-center mt-2 px-4">
+            <div className="flex justify-center px-4">
               <a
                 href="https://maps.app.goo.gl/znzwKS4GrVBksKgh9"
                 className="flex items-start gap-3 text-sm md:text-base lg:text-lg  hover:text-[#ffcc70] transition"

@@ -10,7 +10,7 @@
 //   useEffect(() => {
 //     const fetchProduct = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:5000/api/products/${id}`);
+//         const res = await fetch(`http://namdevshivlingart.vercel.app/api/products/${id}`);
 //         if (!res.ok) throw new Error("Failed to fetch product");
 //         const data = await res.json();
 //         setProduct(data);
@@ -61,7 +61,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`);
+      const res = await fetch(`http://namdevshivlingart.vercel.app/api/products/${id}`);
       const data = await res.json();
       setProduct(data);
     };
@@ -76,7 +76,7 @@ const ProductDetails = () => {
       <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
       <img 
     //   src={product.image} 
-     src={`http://localhost:5000${product.image}`} 
+     src={`http://namdevshivlingart.vercel.app${product.image}`} 
       alt={product.title} 
       className="w-full max-w-md rounded-lg shadow-md" />
       <p className="mt-4">{product.created_at}</p>

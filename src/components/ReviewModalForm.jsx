@@ -33,7 +33,7 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
 
 //     };
 //  try {
-//       const res = await fetch("http://localhost:5000/api/reviews", {
+//       const res = await fetch("http://namdevshivlingart.vercel.app/api/reviews", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify(newReview),
@@ -65,7 +65,7 @@ const ReviewModalForm = ({ open, onClose, onSubmit }) => {
     formData.append("rating", values.rating || 5);
     if (file) formData.append("image", file);
     try {
-      const res = await fetch("http://localhost:5000/api/reviews", {
+      const res = await fetch("http://namdevshivlingart.vercel.app/api/reviews", {
         method: "POST",
         body: formData,
       });

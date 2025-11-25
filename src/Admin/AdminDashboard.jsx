@@ -262,7 +262,7 @@ const [replyText, setReplyText] = useState("");
   const fetchReviews = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/reviews");
+      const res = await fetch("http://namdevshivlingart.vercel.app/api/reviews");
       const data = await res.json();
       setReviews(data);
     } catch (err) {
@@ -288,7 +288,7 @@ const openReplyModal = (review) => {
 //     }
 
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/reviews/${currentReview.id}/reply`, {
+//       const res = await fetch(`http://namdevshivlingart.vercel.app/api/reviews/${currentReview.id}/reply`, {
 //         method: "PUT",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ reply: replyText }),
@@ -306,7 +306,7 @@ const openReplyModal = (review) => {
 const saveReply = async () => {
     if (!currentReview) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/reviews/${currentReview.id}`, {
+      const res = await fetch(`http://namdevshivlingart.vercel.app/api/reviews/${currentReview.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reply: replyText }),
@@ -323,7 +323,7 @@ const saveReply = async () => {
   };
   const handleDeleteReview = async (id) => {
   try {
-    await fetch(`http://localhost:5000/api/reviews/${id}`, { method: "DELETE" });
+    await fetch(`http://namdevshivlingart.vercel.app/api/reviews/${id}`, { method: "DELETE" });
     message.success("Review deleted successfully!");
     fetchReviews(); // refresh table
   } catch (err) {
@@ -342,7 +342,7 @@ const saveReply = async () => {
       key: "image",
       align: "center",
       render: (text) =>
-        text ? <Image width={80}  src={`http://localhost:5000${text}`}  className="flex justify-center" /> : "NA",
+        text ? <Image width={80}  src={`http://namdevshivlingart.vercel.app${text}`}  className="flex justify-center" /> : "NA",
     },
   
   { title: "Reply", dataIndex: "reply", key: "reply", align: "center" },
@@ -404,7 +404,7 @@ const saveReply = async () => {
         <div className="flex flex-col gap-4">
           {currentReview?.image && (
             <Image
-              src={`http://localhost:5000${currentReview.image}`}
+              src={`http://namdevshivlingart.vercel.app${currentReview.image}`}
               width={120}
               alt="Review Image"
             />
@@ -449,11 +449,11 @@ export default function AdminDashboard() {
       try {
         const [contactsRes, galleryRes, reviewsRes, slidesRes] =
           await Promise.all([
-            fetch("http://localhost:5000/api/contacts").then((r) => r.json()),
-            fetch("http://localhost:5000/api/products").then((r) => r.json()),
-            fetch("http://localhost:5000/api/reviews").then((r) => r.json()),
-            fetch("http://localhost:5000/api/slides").then((r) => r.json()),
-            // fetch(`http://localhost:5000/api/products/${id}`).then((r) => r.json()),
+            fetch("http://namdevshivlingart.vercel.app/api/contacts").then((r) => r.json()),
+            fetch("http://namdevshivlingart.vercel.app/api/products").then((r) => r.json()),
+            fetch("http://namdevshivlingart.vercel.app/api/reviews").then((r) => r.json()),
+            fetch("http://namdevshivlingart.vercel.app/api/slides").then((r) => r.json()),
+            // fetch(`http://namdevshivlingart.vercel.app/api/products/${id}`).then((r) => r.json()),
           ]);
         setContacts(contactsRes);
         setGalleryItems(galleryRes);
@@ -472,7 +472,7 @@ export default function AdminDashboard() {
 
   const handleDeleteContact = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/contacts/${id}`, {
+      await fetch(`http://namdevshivlingart.vercel.app/api/contacts/${id}`, {
         method: "DELETE",
       });
       setContacts((prev) => prev.filter((c) => c.id !== id));

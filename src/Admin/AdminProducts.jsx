@@ -66,8 +66,8 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
       if (imageFile) formData.append("image", imageFile);
 
       const url = editingProduct
-        ? `http://localhost:5000/api/products/${editingProduct.id}`
-        : "http://localhost:5000/api/products";
+        ? `http://namdevshivlingart.vercel.app/api/products/${editingProduct.id}`
+        : "http://namdevshivlingart.vercel.app/api/products";
 
       const method = editingProduct ? "PUT" : "POST";
 
@@ -89,7 +89,7 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
   // ✅ DELETE product
   const handleDeleteProduct = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`http://namdevshivlingart.vercel.app/api/products/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete product");
@@ -105,7 +105,7 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
     setEditingProduct(product);
     setProductName(product.name);
     setCategory(product.category);
-    setPreviewUrl(`http://localhost:5000${product.image}`); // backend serves static /uploads
+    setPreviewUrl(`http://namdevshivlingart.vercel.app${product.image}`); // backend serves static /uploads
     setIsModalOpen(true);
   };
 
@@ -163,7 +163,7 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
       render: (text) => (
         <Image
           width={80}
-          src={`http://localhost:5000${text}`}
+          src={`http://namdevshivlingart.vercel.app${text}`}
           className="rounded-md"
         />
       ),
@@ -303,7 +303,7 @@ export default function AdminProducts({ galleryItems, refreshGallery }) {
               <div style={{ marginTop: 12, textAlign: "center" }}>
                 <Image
                   width={120}
-                  src={previewUrl || `http://localhost:5000${editingProduct?.image}`}
+                  src={previewUrl || `http://namdevshivlingart.vercel.app${editingProduct?.image}`}
                   style={{ borderRadius: 8 }}
                 />
               </div>

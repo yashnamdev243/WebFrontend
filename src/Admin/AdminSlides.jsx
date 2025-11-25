@@ -34,7 +34,7 @@ export default function AdminSlides() {
   const fetchSlides = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/slides");
+      const res = await fetch("http://namdevshivlingart.vercel.app/api/slides");
       const data = await res.json();
       setSlides(data.map((d) => ({ key: d.id, ...d })));
     } catch (err) {
@@ -64,7 +64,7 @@ export default function AdminSlides() {
       if (file) formData.append("image", file);
 
       if (editingSlide) {
-        await fetch(`http://localhost:5000/api/slides/${editingSlide.id}`, {
+        await fetch(`http://namdevshivlingart.vercel.app/api/slides/${editingSlide.id}`, {
           method: "PUT",
           body: formData,
         });
@@ -74,7 +74,7 @@ export default function AdminSlides() {
           message.error("Please upload an image");
           return;
         }
-        await fetch("http://localhost:5000/api/slides", {
+        await fetch("http://namdevshivlingart.vercel.app/api/slides", {
           method: "POST",
           body: formData,
         });
@@ -93,7 +93,7 @@ export default function AdminSlides() {
   // ---- delete slide ----
   const handleDeleteSlide = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/slides/${id}`, { method: "DELETE" });
+      await fetch(`http://namdevshivlingart.vercel.app/api/slides/${id}`, { method: "DELETE" });
       message.success("Slide deleted successfully!");
       fetchSlides();
     } catch (err) {
@@ -118,7 +118,7 @@ export default function AdminSlides() {
       key: "src",
       render: (src) => (
         <div className="flex justify-center">
-          <Image src={`http://localhost:5000${src}`} width={100} />
+          <Image src={`http://namdevshivlingart.vercel.app${src}`} width={100} />
         </div>
       ),
     },
@@ -198,7 +198,7 @@ export default function AdminSlides() {
                 <Text type="secondary" style={{ display: "block", marginBottom: 8 }}>Preview</Text>
                 <Image
                   width={140}
-                  src={file ? URL.createObjectURL(file) : `http://localhost:5000${editingSlide.src}`}
+                  src={file ? URL.createObjectURL(file) : `http://namdevshivlingart.vercel.app${editingSlide.src}`}
                 />
               </div>
             )}

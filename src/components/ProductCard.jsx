@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
     >
       <img
         // src={product.image}
-        src={`http://localhost:5000${product.image}`}
+        src={`http://namdevshivlingart.vercel.app${product.image}`}
         alt={product.name}
         className="w-full h-full object-cover"
       />

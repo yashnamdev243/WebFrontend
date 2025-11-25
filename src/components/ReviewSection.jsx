@@ -26,7 +26,7 @@ const ReviewSection = () => {
  const fetchReviews = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/reviews");
+      const res = await fetch("http://namdevshivlingart.vercel.app/api/reviews");
       if (!res.ok) throw new Error("Failed to fetch reviews");
       const data = await res.json();
       setReviews(data);
@@ -95,7 +95,7 @@ const ReviewSection = () => {
               <SwiperSlide key={idx}>
                 <div className="group bg-white mb-8 p-6 shadow-md rounded-lg flex flex-col items-center text-center hover:shadow-2xl transition-all duration-300 border border-[#ffe3c4]">
                   <img
-                     src={`http://localhost:5000${review.image}`} 
+                     src={`http://namdevshivlingart.vercel.app${review.image}`} 
                     alt={review.name}
                     className="w-24 h-24 rounded-full border-4 border-[#ffcc70] shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300 object-cover"
                   />
@@ -134,7 +134,7 @@ const ReviewSection = () => {
           //     <img
           //       src={
           //         review.image
-          //           ? `http://localhost:5000${review.image}`
+          //           ? `http://namdevshivlingart.vercel.app${review.image}`
           //           : "/default-avatar.jpg"
           //       }
           //       alt={review.name}
@@ -204,7 +204,7 @@ const ReviewSection = () => {
     <img
       src={
         review.image
-          ? `http://localhost:5000${review.image}`
+          ? `http://namdevshivlingart.vercel.app${review.image}`
           : "/default-avatar.jpg"
       }
       alt={review.name}
@@ -283,7 +283,7 @@ const ReviewSection = () => {
             <img
               src={
                 selectedReview.image
-                  ? `http://localhost:5000${selectedReview.image}`
+                  ? `http://namdevshivlingart.vercel.app${selectedReview.image}`
                   : "/default-avatar.jpg"
               }
               alt={selectedReview.name}
