@@ -26,13 +26,7 @@ import contactRoutes from "./routes/contactRoutes.js";
 
 app.use("/api/contacts", contactRoutes);
 
-// ✅ MySQL Connection
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "root",
-//   database: "shivling_art_db",
-// });
+
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,

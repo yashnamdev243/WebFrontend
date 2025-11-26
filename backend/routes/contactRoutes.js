@@ -84,13 +84,7 @@ import mysql from "mysql2";
 
 const router = express.Router();
 
-// ✅ Create DB connection (optional: use a shared connection instead)
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "root",
-//   database: "shivling_art_db",
-// });
+
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
