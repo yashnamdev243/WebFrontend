@@ -85,11 +85,21 @@ import mysql from "mysql2";
 const router = express.Router();
 
 // ✅ Create DB connection (optional: use a shared connection instead)
+// const db = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "root",
+//   database: "shivling_art_db",
+// });
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "shivling_art_db",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // ✅ POST /api/contacts — Save contact message
